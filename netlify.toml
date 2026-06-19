@@ -1,8 +1,4 @@
 # Netlify form detection for static HTML (no build step required)
-[[redirects]]
-  from = "/?success=true"
-  to = "/index.html?success=true"
-  status = 200
 
 [[headers]]
   for = "/assets/*"

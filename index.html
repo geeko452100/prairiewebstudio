@@ -339,7 +339,6 @@
               method="POST"
               data-netlify="true"
               netlify-honeypot="bot-field"
-              action="/?success=true#contact"
             >
               <input type="hidden" name="form-name" value="contact">
 
@@ -457,24 +456,50 @@
       }, { passive: true });
     }
 
-    function initFormSuccess() {
-      if (new URLSearchParams(window.location.search).get('success') !== 'true') return;
+    function showFormSuccess() {
       var form = document.getElementById('contact-form');
       var success = document.getElementById('form-success');
       if (form && success) {
         form.setAttribute('hidden', '');
         success.removeAttribute('hidden');
         success.classList.remove('hidden');
+        success.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
       }
-      if (window.history.replaceState) {
-        window.history.replaceState({}, document.title, window.location.pathname + '#contact');
-      }
+    }
+
+    function initContactForm() {
+      var form = document.getElementById('contact-form');
+      if (!form) return;
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var submitBtn = form.querySelector('[type="submit"]');
+        if (submitBtn) {
+          submitBtn.disabled = true;
+          submitBtn.textContent = 'Sending…';
+        }
+        fetch('/', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: new URLSearchParams(new FormData(form)).toString()
+        })
+          .then(function (res) {
+            if (!res.ok) throw new Error('submit failed');
+            showFormSuccess();
+          })
+          .catch(function () {
+            if (submitBtn) {
+              submitBtn.disabled = false;
+              submitBtn.textContent = 'Send Message';
+            }
+            alert('Something went wrong. Please email us directly at ggriffith@snapload-digital.com');
+          });
+      });
     }
 
     var idle = window.requestIdleCallback || function (cb) { setTimeout(cb, 1); };
     idle(function () {
       initMenu();
-      initFormSuccess();
+      initContactForm();
     });
   </script>
 </body>
