@@ -53,7 +53,7 @@
   </script>
 </head>
 <body class="bg-ink-50 font-sans text-ink-800 antialiased">
-  <a href="#main" class="sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:m-0 focus:block focus:h-auto focus:w-auto focus:overflow-visible focus:whitespace-normal focus:rounded-lg focus:bg-brand-600 focus:px-4 focus:py-2 focus:text-sm focus:font-medium focus:text-white">
+  <a href="#main" class="sr-only focus-visible:absolute focus-visible:left-4 focus-visible:top-4 focus-visible:z-50 focus-visible:m-0 focus-visible:block focus-visible:h-auto focus-visible:w-auto focus-visible:overflow-visible focus-visible:whitespace-normal focus-visible:rounded-lg focus-visible:bg-brand-800 focus-visible:px-4 focus-visible:py-2 focus-visible:text-sm focus-visible:font-medium focus-visible:text-white">
     Skip to main content
   </a>
 
@@ -62,14 +62,14 @@
     <div class="container-site flex h-16 items-center justify-between px-4 sm:px-6 lg:px-8">
       <a href="/" class="flex items-center gap-3 rounded-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500" aria-label="Snap Load Digital — Home">
         <img src="./assets/logo.svg" alt="" width="40" height="40" class="h-10 w-10" decoding="async">
-        <span class="text-lg font-bold tracking-tight text-ink-900">Snap Load <span class="text-brand-600">Digital</span></span>
+        <span class="text-lg font-bold tracking-tight text-ink-900">Snap Load <span class="text-brand-800">Digital</span></span>
       </a>
 
       <nav class="hidden items-center gap-8 md:flex" aria-label="Primary">
-        <a href="#services" class="text-sm font-medium text-ink-600 transition-colors hover:text-brand-600">Services</a>
-        <a href="#process" class="text-sm font-medium text-ink-600 transition-colors hover:text-brand-600">Process</a>
-        <a href="#why-us" class="text-sm font-medium text-ink-600 transition-colors hover:text-brand-600">Why Us</a>
-        <a href="#contact" class="text-sm font-medium text-ink-600 transition-colors hover:text-brand-600">Contact</a>
+        <a href="#services" class="nav-link inline-flex">Services</a>
+        <a href="#process" class="nav-link inline-flex">Process</a>
+        <a href="#why-us" class="nav-link inline-flex">Why Us</a>
+        <a href="#contact" class="nav-link inline-flex">Contact</a>
         <a href="#contact" class="btn-primary">Get a Quote</a>
       </nav>
 
@@ -89,12 +89,12 @@
       </button>
     </div>
 
-    <nav id="mobile-nav" class="hidden border-t border-ink-100 bg-white px-4 py-4 md:hidden" aria-label="Mobile">
+    <nav id="mobile-nav" class="hidden border-t border-ink-100 bg-white px-4 py-4 md:hidden" aria-label="Mobile" aria-hidden="true">
       <ul class="flex flex-col gap-1">
-        <li><a href="#services" class="block rounded-lg px-3 py-2 text-sm font-medium text-ink-700 hover:bg-brand-50 hover:text-brand-700">Services</a></li>
-        <li><a href="#process" class="block rounded-lg px-3 py-2 text-sm font-medium text-ink-700 hover:bg-brand-50 hover:text-brand-700">Process</a></li>
-        <li><a href="#why-us" class="block rounded-lg px-3 py-2 text-sm font-medium text-ink-700 hover:bg-brand-50 hover:text-brand-700">Why Us</a></li>
-        <li><a href="#contact" class="block rounded-lg px-3 py-2 text-sm font-medium text-ink-700 hover:bg-brand-50 hover:text-brand-700">Contact</a></li>
+        <li><a href="#services" class="nav-link flex rounded-lg px-3 py-2 hover:bg-brand-50">Services</a></li>
+        <li><a href="#process" class="nav-link flex rounded-lg px-3 py-2 hover:bg-brand-50">Process</a></li>
+        <li><a href="#why-us" class="nav-link flex rounded-lg px-3 py-2 hover:bg-brand-50">Why Us</a></li>
+        <li><a href="#contact" class="nav-link flex rounded-lg px-3 py-2 hover:bg-brand-50">Contact</a></li>
         <li class="pt-2"><a href="#contact" class="btn-primary w-full">Get a Quote</a></li>
       </ul>
     </nav>
@@ -102,18 +102,18 @@
 
   <main id="main">
     <!-- Hero -->
-    <section class="relative overflow-hidden bg-hero-mesh">
+    <section class="relative overflow-hidden bg-hero-mesh" aria-labelledby="hero-heading">
       <div class="absolute inset-0 bg-grid-pattern bg-grid opacity-60" aria-hidden="true"></div>
       <div class="section-pad relative">
         <div class="container-site grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
           <div>
-            <p class="mb-4 inline-flex items-center gap-2 rounded-full border border-brand-200 bg-brand-50 px-4 py-1.5 text-sm font-medium text-brand-800">
-              <span class="h-2 w-2 rounded-full bg-brand-500" aria-hidden="true"></span>
+            <p class="mb-4 inline-flex items-center gap-2 rounded-full border border-brand-300 bg-brand-50 px-4 py-1.5 text-sm font-medium text-brand-900">
+              <span class="h-2 w-2 rounded-full bg-brand-800" aria-hidden="true"></span>
               Serving Great Bend &amp; Central Kansas
             </p>
-            <h1 class="text-4xl font-extrabold leading-tight tracking-tight text-ink-950 sm:text-5xl lg:text-[3.25rem] lg:leading-[1.1]">
+            <h1 id="hero-heading" class="text-4xl font-extrabold leading-tight tracking-tight text-ink-950 sm:text-5xl lg:text-[3.25rem] lg:leading-[1.1]">
               Websites that load fast and
-              <span class="bg-gradient-to-r from-brand-600 to-brand-400 bg-clip-text text-transparent"> win customers</span>
+              <span class="text-brand-800"> win customers</span>
             </h1>
             <p class="mt-6 max-w-xl text-lg leading-relaxed text-ink-600">
               Snap Load Digital builds high-performance static websites for local businesses — engineered for 100% Lighthouse scores, local SEO, and real results without enterprise pricing.
@@ -124,15 +124,15 @@
             </div>
             <dl class="mt-10 grid grid-cols-3 gap-4 border-t border-ink-200/80 pt-8 sm:gap-6">
               <div>
-                <dt class="text-sm text-ink-500">Lighthouse</dt>
-                <dd class="text-2xl font-bold text-brand-600">100</dd>
+                <dt class="text-sm font-medium text-ink-600">Lighthouse</dt>
+                <dd class="text-2xl font-bold text-brand-800">100</dd>
               </div>
               <div>
-                <dt class="text-sm text-ink-500">Launch Time</dt>
+                <dt class="text-sm font-medium text-ink-600">Launch Time</dt>
                 <dd class="text-2xl font-bold text-ink-900">7 Days</dd>
               </div>
               <div>
-                <dt class="text-sm text-ink-500">Starting At</dt>
+                <dt class="text-sm font-medium text-ink-600">Starting At</dt>
                 <dd class="text-2xl font-bold text-ink-900">$499</dd>
               </div>
             </dl>
@@ -163,12 +163,12 @@
         </div>
 
         <div class="mt-14 grid gap-8 lg:grid-cols-2 lg:items-stretch">
-          <article class="pricing-card">
+          <article class="pricing-card" aria-labelledby="plan-ownership-title">
             <span class="pricing-badge invisible" aria-hidden="true">Placeholder</span>
             <div class="pricing-icon">
               <img src="./assets/icon-design.svg" alt="" width="32" height="32" decoding="async">
             </div>
-            <h3 class="text-xl font-bold text-ink-900">Own It Outright</h3>
+            <h3 id="plan-ownership-title" class="text-xl font-bold text-ink-900">Own It Outright</h3>
             <p class="mt-2 text-ink-600">Full website build with a single upfront investment. You own the site — choose monthly or annual care after launch.</p>
 
             <div class="pricing-box">
@@ -196,12 +196,12 @@
             <a href="#contact" class="btn-secondary pricing-cta">Choose Ownership</a>
           </article>
 
-          <article class="pricing-card pricing-card-featured">
+          <article class="pricing-card pricing-card-featured" aria-labelledby="plan-subscription-title">
             <span class="pricing-badge">Lower Upfront</span>
             <div class="pricing-icon">
               <img src="./assets/icon-speed.svg" alt="" width="32" height="32" decoding="async">
             </div>
-            <h3 class="text-xl font-bold text-ink-900">Launch &amp; Support</h3>
+            <h3 id="plan-subscription-title" class="text-xl font-bold text-ink-900">Launch &amp; Support</h3>
             <p class="mt-2 text-ink-600">Subscription-style pricing for businesses that prefer a smaller start and ongoing partnership from day one.</p>
 
             <div class="pricing-box">
@@ -221,7 +221,7 @@
           </article>
         </div>
 
-        <p class="mt-10 text-center text-sm text-ink-500">
+        <p class="mt-10 text-center text-sm text-ink-600">
           Both plans include the same core build quality. Mention your preferred plan in the contact form — we'll confirm the best fit on your discovery call.
         </p>
       </div>
@@ -237,23 +237,23 @@
 
         <ol class="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           <li class="card text-center">
-            <span class="mx-auto flex h-10 w-10 items-center justify-center rounded-full bg-brand-600 text-sm font-bold text-white" aria-hidden="true">1</span>
-            <h3 class="mt-4 text-lg font-bold text-ink-900">Discovery Call</h3>
+            <span class="mx-auto flex h-10 w-10 items-center justify-center rounded-full bg-brand-800 text-sm font-bold text-white" aria-hidden="true">1</span>
+            <h3 class="mt-4 text-lg font-bold text-ink-900"><span class="sr-only">Step 1: </span>Discovery Call</h3>
             <p class="mt-2 text-sm text-ink-600">We learn about your business, goals, and brand in a free 30-minute consultation.</p>
           </li>
           <li class="card text-center">
-            <span class="mx-auto flex h-10 w-10 items-center justify-center rounded-full bg-brand-600 text-sm font-bold text-white" aria-hidden="true">2</span>
-            <h3 class="mt-4 text-lg font-bold text-ink-900">Design &amp; Build</h3>
+            <span class="mx-auto flex h-10 w-10 items-center justify-center rounded-full bg-brand-800 text-sm font-bold text-white" aria-hidden="true">2</span>
+            <h3 class="mt-4 text-lg font-bold text-ink-900"><span class="sr-only">Step 2: </span>Design &amp; Build</h3>
             <p class="mt-2 text-sm text-ink-600">Custom design with Tailwind CSS, optimized graphics, and semantic HTML structure.</p>
           </li>
           <li class="card text-center">
-            <span class="mx-auto flex h-10 w-10 items-center justify-center rounded-full bg-brand-600 text-sm font-bold text-white" aria-hidden="true">3</span>
-            <h3 class="mt-4 text-lg font-bold text-ink-900">Review &amp; Refine</h3>
+            <span class="mx-auto flex h-10 w-10 items-center justify-center rounded-full bg-brand-800 text-sm font-bold text-white" aria-hidden="true">3</span>
+            <h3 class="mt-4 text-lg font-bold text-ink-900"><span class="sr-only">Step 3: </span>Review &amp; Refine</h3>
             <p class="mt-2 text-sm text-ink-600">You review the site on staging. We polish copy, images, and performance until it's perfect.</p>
           </li>
           <li class="card text-center">
-            <span class="mx-auto flex h-10 w-10 items-center justify-center rounded-full bg-brand-600 text-sm font-bold text-white" aria-hidden="true">4</span>
-            <h3 class="mt-4 text-lg font-bold text-ink-900">Launch &amp; Support</h3>
+            <span class="mx-auto flex h-10 w-10 items-center justify-center rounded-full bg-brand-800 text-sm font-bold text-white" aria-hidden="true">4</span>
+            <h3 class="mt-4 text-lg font-bold text-ink-900"><span class="sr-only">Step 4: </span>Launch &amp; Handoff</h3>
             <p class="mt-2 text-sm text-ink-600">We deploy to fast global hosting and hand you simple guides to update content yourself.</p>
           </li>
         </ol>
@@ -266,57 +266,57 @@
         <div class="grid items-center gap-12 lg:grid-cols-2">
           <div>
             <h2 id="why-heading" class="text-3xl font-bold tracking-tight sm:text-4xl">Built for speed. Designed to convert.</h2>
-            <p class="mt-4 text-lg text-ink-300">Most small-business sites are slow, inaccessible, and invisible on Google. We fix all three — using the same engineering principles behind top-performing sites, at a fraction of the cost.</p>
+            <p class="mt-4 text-lg text-ink-200">Most small-business sites are slow, inaccessible, and invisible on Google. We fix all three — using the same engineering principles behind top-performing sites, at a fraction of the cost.</p>
 
             <ul class="mt-8 space-y-5">
               <li class="flex gap-4">
-                <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-brand-600/20 text-brand-400" aria-hidden="true">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+                <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-brand-800/30 text-brand-300" aria-hidden="true">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
                 </span>
                 <div>
                   <h3 class="font-semibold text-white">Blazing Performance</h3>
-                  <p class="mt-1 text-sm text-ink-400">Static HTML with purged CSS — no WordPress bloat, no plugin vulnerabilities, sub-second load times.</p>
+                  <p class="mt-1 text-sm text-ink-200">Static HTML with purged CSS — no WordPress bloat, no plugin vulnerabilities, sub-second load times.</p>
                 </div>
               </li>
               <li class="flex gap-4">
-                <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-brand-600/20 text-brand-400" aria-hidden="true">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-brand-800/30 text-brand-300" aria-hidden="true">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
                 </span>
                 <div>
                   <h3 class="font-semibold text-white">Local SEO Ready</h3>
-                  <p class="mt-1 text-sm text-ink-400">Schema markup, meta tags, and Great Bend geo-targeting so neighbors find you first on Google.</p>
+                  <p class="mt-1 text-sm text-ink-200">Schema markup, meta tags, and Great Bend geo-targeting so neighbors find you first on Google.</p>
                 </div>
               </li>
               <li class="flex gap-4">
-                <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-brand-600/20 text-brand-400" aria-hidden="true">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-brand-800/30 text-brand-300" aria-hidden="true">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
                 </span>
                 <div>
                   <h3 class="font-semibold text-white">Accessible by Default</h3>
-                  <p class="mt-1 text-sm text-ink-400">WCAG-compliant markup, keyboard navigation, and screen-reader support baked into every build.</p>
+                  <p class="mt-1 text-sm text-ink-200">WCAG-compliant markup, keyboard navigation, and screen-reader support baked into every build.</p>
                 </div>
               </li>
             </ul>
           </div>
 
-          <div class="grid grid-cols-2 gap-4">
+          <dl class="grid grid-cols-2 gap-4">
             <div class="rounded-2xl border border-ink-700 bg-ink-800/50 p-6 text-center">
-              <p class="text-4xl font-extrabold text-brand-400">100</p>
-              <p class="mt-1 text-sm text-ink-400">Performance Score</p>
+              <dt class="text-4xl font-extrabold text-brand-300">100</dt>
+              <dd class="mt-1 text-sm font-medium text-ink-200">Performance Score</dd>
             </div>
             <div class="rounded-2xl border border-ink-700 bg-ink-800/50 p-6 text-center">
-              <p class="text-4xl font-extrabold text-brand-400">100</p>
-              <p class="mt-1 text-sm text-ink-400">Accessibility Score</p>
+              <dt class="text-4xl font-extrabold text-brand-300">100</dt>
+              <dd class="mt-1 text-sm font-medium text-ink-200">Accessibility Score</dd>
             </div>
             <div class="rounded-2xl border border-ink-700 bg-ink-800/50 p-6 text-center">
-              <p class="text-4xl font-extrabold text-brand-400">100</p>
-              <p class="mt-1 text-sm text-ink-400">Best Practices</p>
+              <dt class="text-4xl font-extrabold text-brand-300">100</dt>
+              <dd class="mt-1 text-sm font-medium text-ink-200">Best Practices</dd>
             </div>
             <div class="rounded-2xl border border-ink-700 bg-ink-800/50 p-6 text-center">
-              <p class="text-4xl font-extrabold text-brand-400">100</p>
-              <p class="mt-1 text-sm text-ink-400">SEO Score</p>
+              <dt class="text-4xl font-extrabold text-brand-300">100</dt>
+              <dd class="mt-1 text-sm font-medium text-ink-200">SEO Score</dd>
             </div>
-          </div>
+          </dl>
         </div>
       </div>
     </section>
@@ -331,16 +331,16 @@
 
             <address class="mt-8 space-y-4 not-italic">
               <div class="flex items-start gap-4">
-                <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-brand-50 text-brand-600" aria-hidden="true">
+                <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-brand-50 text-brand-800" aria-hidden="true">
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
                 </span>
                 <div>
                   <p class="font-semibold text-ink-900">Email</p>
-                  <a href="mailto:ggriffith@snapload-digital.com" class="text-brand-600 hover:text-brand-500">ggriffith@snapload-digital.com</a>
+                  <a href="mailto:ggriffith@snapload-digital.com" class="text-link">ggriffith@snapload-digital.com</a>
                 </div>
               </div>
               <div class="flex items-start gap-4">
-                <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-brand-50 text-brand-600" aria-hidden="true">
+                <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-brand-50 text-brand-800" aria-hidden="true">
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
                 </span>
                 <div>
@@ -349,7 +349,7 @@
                 </div>
               </div>
               <div class="flex items-start gap-4">
-                <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-brand-50 text-brand-600" aria-hidden="true">
+                <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-brand-50 text-brand-800" aria-hidden="true">
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
                 </span>
                 <div>
@@ -365,7 +365,7 @@
           </div>
 
           <div>
-            <div id="form-success" class="card hidden border-brand-200 bg-brand-50 text-center" role="status" aria-live="polite">
+            <div id="form-success" class="card hidden border-brand-300 bg-brand-50 text-center" role="status" aria-live="polite" hidden>
               <p class="text-lg font-semibold text-ink-900">Message sent</p>
               <p class="mt-2 text-sm text-ink-600">Thanks for reaching out. We'll reply to your email within one business day.</p>
             </div>
@@ -432,8 +432,8 @@
                   class="field-input"
                 ></textarea>
               </div>
-              <button type="submit" class="btn-primary w-full">Send Message</button>
-              <p class="text-center text-xs text-ink-500">Submissions are sent over HTTPS. We only use your email to respond to this request.</p>
+              <button type="submit" class="btn-primary w-full" aria-describedby="form-privacy">Send Message</button>
+              <p id="form-privacy" class="text-center text-xs text-ink-600">Submissions are sent over HTTPS. We only use your email to respond to this request.</p>
             </form>
 
             <a
@@ -466,9 +466,9 @@
         <p class="text-sm text-ink-600">&copy; <time datetime="2026">2026</time> Snap Load Digital. All rights reserved.</p>
       </div>
       <nav aria-label="Footer">
-        <ul class="flex gap-6 text-sm text-ink-600">
-          <li><a href="#services" class="hover:text-brand-600">Services</a></li>
-          <li><a href="#contact" class="hover:text-brand-600">Contact</a></li>
+        <ul class="flex gap-6 text-sm">
+          <li><a href="#services" class="footer-link">Services</a></li>
+          <li><a href="#contact" class="footer-link">Contact</a></li>
         </ul>
       </nav>
     </div>
@@ -478,16 +478,19 @@
     document.getElementById('menu-toggle').addEventListener('click', function () {
       var nav = document.getElementById('mobile-nav');
       var open = this.getAttribute('aria-expanded') === 'true';
-      this.setAttribute('aria-expanded', String(!open));
-      this.setAttribute('aria-label', open ? 'Open navigation menu' : 'Close navigation menu');
+      var nextOpen = !open;
+      this.setAttribute('aria-expanded', String(nextOpen));
+      this.setAttribute('aria-label', nextOpen ? 'Close navigation menu' : 'Open navigation menu');
       nav.classList.toggle('hidden');
+      nav.setAttribute('aria-hidden', String(!nextOpen));
     });
 
     if (new URLSearchParams(window.location.search).get('success') === 'true') {
       var form = document.getElementById('contact-form');
       var success = document.getElementById('form-success');
       if (form && success) {
-        form.classList.add('hidden');
+        form.setAttribute('hidden', '');
+        success.removeAttribute('hidden');
         success.classList.remove('hidden');
       }
       if (window.history.replaceState) {

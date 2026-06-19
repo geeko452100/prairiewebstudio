@@ -36,11 +36,23 @@
   }
 
   .btn-primary {
-    @apply inline-flex min-h-11 items-center justify-center rounded-xl bg-brand-600 px-6 py-3 text-sm font-semibold text-white shadow-glow transition-colors hover:bg-brand-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-400;
+    @apply inline-flex min-h-11 items-center justify-center rounded-xl bg-brand-800 px-6 py-3 text-sm font-semibold text-white shadow-glow transition-colors hover:bg-brand-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-400;
   }
 
   .btn-secondary {
-    @apply inline-flex min-h-11 items-center justify-center rounded-xl border border-ink-200 bg-white px-6 py-3 text-sm font-semibold text-ink-800 transition-colors hover:border-brand-300 hover:bg-brand-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-400;
+    @apply inline-flex min-h-11 items-center justify-center rounded-xl border border-ink-200 bg-white px-6 py-3 text-sm font-semibold text-ink-800 transition-colors hover:border-brand-400 hover:bg-brand-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-400;
+  }
+
+  .nav-link {
+    @apply min-h-11 items-center text-sm font-medium text-ink-700 underline-offset-2 transition-colors hover:text-brand-800 hover:underline focus-visible:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-2;
+  }
+
+  .text-link {
+    @apply font-medium text-brand-800 underline-offset-2 hover:text-brand-900 hover:underline focus-visible:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-2;
+  }
+
+  .footer-link {
+    @apply text-ink-700 underline-offset-2 hover:text-brand-800 hover:underline focus-visible:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-2;
   }
 
   .card {
@@ -56,7 +68,7 @@
   }
 
   .pricing-badge {
-    @apply absolute -top-3 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full bg-brand-600 px-3 py-1 text-xs font-semibold text-white;
+    @apply absolute -top-3 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full bg-brand-800 px-3 py-1 text-xs font-semibold text-white;
   }
 
   .pricing-icon {
@@ -68,11 +80,11 @@
   }
 
   .pricing-amount {
-    @apply text-3xl font-extrabold leading-none text-brand-600;
+    @apply text-3xl font-extrabold leading-none text-brand-800;
   }
 
   .pricing-amount-label {
-    @apply text-base font-medium text-ink-500;
+    @apply text-base font-medium text-ink-600;
   }
 
   .pricing-subtext {
@@ -88,7 +100,7 @@
   }
 
   .pricing-check {
-    @apply mt-0.5 shrink-0 text-brand-500;
+    @apply mt-0.5 shrink-0 text-brand-800;
   }
 
   .pricing-cta {
