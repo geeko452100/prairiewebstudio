@@ -22,8 +22,7 @@
     "name": "Snap Load Digital",
     "description": "Affordable website development and digital marketing for Great Bend, Kansas businesses.",
     "url": "https://snaploaddigital.com",
-    "telephone": "+1-620-555-0147",
-    "email": "hello@snaploaddigital.com",
+    "email": "ggriffith@snapload-digital.com",
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "1205 Main Street",
@@ -366,18 +365,56 @@
           </div>
 
           <div>
-            <form class="card space-y-5" action="mailto:ggriffith@snapload-digital.com" method="post" enctype="text/plain">
+            <div id="form-success" class="card hidden border-brand-200 bg-brand-50 text-center" role="status" aria-live="polite">
+              <p class="text-lg font-semibold text-ink-900">Message sent</p>
+              <p class="mt-2 text-sm text-ink-600">Thanks for reaching out. We'll reply to your email within one business day.</p>
+            </div>
+
+            <form
+              id="contact-form"
+              name="contact"
+              class="card space-y-5"
+              method="POST"
+              data-netlify="true"
+              netlify-honeypot="bot-field"
+              action="/?success=true#contact"
+            >
+              <input type="hidden" name="form-name" value="contact">
+
+              <p class="hidden" aria-hidden="true">
+                <label for="bot-field">Leave this empty</label>
+                <input type="text" id="bot-field" name="bot-field" tabindex="-1" autocomplete="off">
+              </p>
+
               <div>
                 <label for="name" class="block text-sm font-medium text-ink-700">Full Name</label>
-                <input type="text" id="name" name="name" required autocomplete="name" class="field-input">
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  required
+                  minlength="2"
+                  maxlength="100"
+                  autocomplete="name"
+                  class="field-input"
+                >
               </div>
               <div>
                 <label for="email" class="block text-sm font-medium text-ink-700">Email</label>
-                <input type="email" id="email" name="email" required autocomplete="email" class="field-input">
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  required
+                  maxlength="254"
+                  autocomplete="email"
+                  inputmode="email"
+                  class="field-input"
+                >
               </div>
               <div>
                 <label for="plan" class="block text-sm font-medium text-ink-700">Preferred Plan</label>
-                <select id="plan" name="plan" class="field-input">
+                <select id="plan" name="plan" required class="field-input">
                   <option value="ownership">Own It Outright — $1,500 + care plan</option>
                   <option value="subscription">Launch &amp; Support — $499 + $99/mo</option>
                   <option value="unsure">Not sure yet</option>
@@ -385,9 +422,18 @@
               </div>
               <div>
                 <label for="message" class="block text-sm font-medium text-ink-700">How can we help?</label>
-                <textarea id="message" name="message" rows="4" required class="field-input"></textarea>
+                <textarea
+                  id="message"
+                  name="message"
+                  rows="4"
+                  required
+                  minlength="10"
+                  maxlength="2000"
+                  class="field-input"
+                ></textarea>
               </div>
               <button type="submit" class="btn-primary w-full">Send Message</button>
+              <p class="text-center text-xs text-ink-500">Submissions are sent over HTTPS. We only use your email to respond to this request.</p>
             </form>
 
             <a
@@ -436,6 +482,18 @@
       this.setAttribute('aria-label', open ? 'Open navigation menu' : 'Close navigation menu');
       nav.classList.toggle('hidden');
     });
+
+    if (new URLSearchParams(window.location.search).get('success') === 'true') {
+      var form = document.getElementById('contact-form');
+      var success = document.getElementById('form-success');
+      if (form && success) {
+        form.classList.add('hidden');
+        success.classList.remove('hidden');
+      }
+      if (window.history.replaceState) {
+        window.history.replaceState({}, document.title, window.location.pathname + '#contact');
+      }
+    }
   </script>
 </body>
 </html>
