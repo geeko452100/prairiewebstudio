@@ -4,6 +4,8 @@
   "private": true,
   "scripts": {
     "build:css": "tailwindcss -i ./src/input.css -o ./assets/css/main.css --minify",
+    "build:inline": "node scripts/inline-css.js",
+    "build": "npm run build:css && npm run build:inline",
     "watch:css": "tailwindcss -i ./src/input.css -o ./assets/css/main.css --watch"
   },
   "devDependencies": {
