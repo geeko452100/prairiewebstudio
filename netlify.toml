@@ -1,4 +1,8 @@
-# Netlify form detection for static HTML (no build step required)
+# Netlify form detection for static HTML
+
+[build]
+  command = "npm run build"
+  publish = "."
 
 [[headers]]
   for = "/assets/*"
@@ -9,3 +13,17 @@
   for = "/*.html"
   [headers.values]
     Cache-Control = "public, max-age=0, must-revalidate"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+[[headers]]
+  for = "/robots.txt"
+  [headers.values]
+    Cache-Control = "public, max-age=86400"
+    Content-Type = "text/plain; charset=utf-8"
+
+[[headers]]
+  for = "/sitemap.xml"
+  [headers.values]
+    Cache-Control = "public, max-age=86400"
+    Content-Type = "application/xml; charset=utf-8"

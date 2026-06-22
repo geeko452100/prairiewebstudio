@@ -35,7 +35,23 @@ npm run watch:css
 | Performance | Purged CSS, system fonts, preloaded LCP image, no third-party scripts |
 | Accessibility | Skip link, semantic landmarks, ARIA labels, 4.5:1+ contrast, focus states |
 | Best Practices | HTTPS-ready, no deprecated APIs, `rel="noopener"` on external links |
-| SEO | Meta description, canonical URL, JSON-LD, `robots.txt`, `sitemap.xml` |
+| SEO | Central `seo.config.json`, meta + Open Graph + Twitter cards, FAQ schema, JSON-LD `@graph`, `robots.txt`, `sitemap.xml` |
+
+## Customize SEO
+
+Edit **`seo.config.json`** — one file controls the title, meta description, Open Graph/Twitter tags, business schema, FAQs, and sitemap URL. Then rebuild:
+
+```bash
+npm run build:seo
+```
+
+Or run the full build (CSS + inline + SEO):
+
+```bash
+npm run build
+```
+
+The build updates `index.html`, `robots.txt`, and `sitemap.xml` from that config. Change `site.url` before going live so canonical URLs, the sitemap, and structured data all match your domain.
 
 ## How to Update Content
 
@@ -75,4 +91,4 @@ Deploy the project folder (including `assets/css/main.css`) to any static host:
 - [GitHub Pages](https://pages.github.com)
 - [Render Static Sites](https://render.com/docs/static-sites)
 
-Update the canonical URL in `index.html`, `robots.txt`, and `sitemap.xml` with your live domain before going live.
+Update **`seo.config.json`** (`site.url` and related fields) before going live — the build propagates your domain to the canonical tag, `robots.txt`, `sitemap.xml`, and JSON-LD.
