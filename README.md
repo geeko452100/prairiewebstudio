@@ -65,7 +65,18 @@ npm run build
 
 ## Customize SEO
 
-Edit **`seo.config.json`** — one file controls the title, meta description, Open Graph/Twitter tags, business schema, FAQs, and sitemap URL. Then rebuild:
+SEO metadata is driven by **`seo.config.json`** and HTML templates in **`src/templates/`**:
+
+| Template | Purpose |
+|----------|---------|
+| `seo-head.html` | Meta description, robots, geo tags, canonical, Open Graph, Twitter cards |
+| `seo-faq.html` | FAQ section wrapper |
+| `seo-faq-item.html` | Single FAQ accordion item |
+| `seo-jsonld.html` | JSON-LD structured data script wrapper |
+
+Each page is listed in `seo.config.json` under `pages` with its own title, description, canonical path, and which sections to include (FAQ, JSON-LD). The `npm run build:seo` step renders templates into every HTML file listed there.
+
+Edit **`seo.config.json`** for page titles, descriptions, business schema, FAQs, and sitemap settings. Then rebuild:
 
 ```bash
 npm run build:seo
@@ -77,7 +88,9 @@ Or run the full build (CSS + inline + SEO):
 npm run build
 ```
 
-The build updates `src/index.html`, `robots.txt`, and `sitemap.xml` from that config, then outputs production `index.html` with inlined CSS. Change `site.url` before going live so canonical URLs, the sitemap, and structured data all match your domain.
+The build updates each page's `src/*.html`, `robots.txt`, and `sitemap.xml` from that config, then outputs production `index.html` with inlined CSS. Change `site.url` before going live so canonical URLs, the sitemap, and structured data all match your domain.
+
+To add a new page, create the HTML file with `<!-- SEO:HEAD-START -->` / `<!-- SEO:HEAD-END -->` markers (and optional FAQ/JSON-LD markers), then add an entry to the `pages` array in `seo.config.json`.
 
 ## How to Update Content
 

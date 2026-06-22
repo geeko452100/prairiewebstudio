@@ -5,15 +5,12 @@
     "locale": "en_US",
     "language": "en"
   },
-  "meta": {
-    "title": "Affordable Website Development in Great Bend | Snap Load Digital",
-    "description": "Snap Load Digital builds fast, affordable websites for Great Bend, KS businesses. Local web design, SEO, and hosting — perfect Lighthouse scores guaranteed.",
+  "defaults": {
     "themeColor": "#0891b2",
-    "ogTitle": "Snap Load Digital — Great Bend Web Design & Local SEO",
-    "ogDescription": "High-performance websites for Great Bend and Central Kansas businesses. Fast load times, local SEO, and 100 Lighthouse scores.",
     "ogImage": "https://snaploaddigital.com/assets/hero-illustration.svg",
     "ogImageAlt": "Snap Load Digital — fast, affordable websites for Great Bend, Kansas businesses",
-    "twitterHandle": ""
+    "twitterHandle": "",
+    "faqIntro": "Common questions about our web design process, pricing, and local SEO for Great Bend businesses."
   },
   "business": {
     "type": "ProfessionalService",
@@ -73,8 +70,24 @@
       "answer": "With the Own It Outright plan, you own the site from day one. With Launch & Support, you get full use of the site while subscribed; we can discuss ownership transfer anytime."
     }
   ],
-  "sitemap": {
-    "changefreq": "monthly",
-    "priority": "1.0"
-  }
+  "pages": [
+    {
+      "id": "home",
+      "html": "src/index.html",
+      "path": "/",
+      "title": "Affordable Website Development in Great Bend | Snap Load Digital",
+      "description": "Snap Load Digital builds fast, affordable websites for Great Bend, KS businesses. Local web design, SEO, and hosting — perfect Lighthouse scores guaranteed.",
+      "ogTitle": "Snap Load Digital — Great Bend Web Design & Local SEO",
+      "ogDescription": "High-performance websites for Great Bend and Central Kansas businesses. Fast load times, local SEO, and 100 Lighthouse scores.",
+      "preloadImage": "./assets/hero-illustration.svg",
+      "sitemap": {
+        "changefreq": "monthly",
+        "priority": "1.0"
+      },
+      "sections": {
+        "faq": true,
+        "jsonld": true
+      }
+    }
+  ]
 }

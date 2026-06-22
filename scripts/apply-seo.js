@@ -3,15 +3,14 @@ const path = require('path');
 
 const root = path.join(__dirname, '..');
 const configPath = path.join(root, 'seo.config.json');
-const htmlPath = path.join(root, 'src', 'index.html');
+const templatesDir = path.join(root, 'src', 'templates');
 const robotsPath = path.join(root, 'robots.txt');
 const sitemapPath = path.join(root, 'sitemap.xml');
 
 const config = JSON.parse(fs.readFileSync(configPath, 'utf8'));
-const { site, meta, business, services, faqs, sitemap } = config;
+const { site, defaults, business, services, faqs, pages } = config;
 
 const siteUrl = site.url.replace(/\/$/, '');
-const canonical = `${siteUrl}/`;
 const today = new Date().toISOString().slice(0, 10);
 
 function escapeHtml(value) {
@@ -20,6 +19,20 @@ function escapeHtml(value) {
     .replace(/</g, '&lt;')
     .replace(/>/g, '&gt;')
     .replace(/"/g, '&quot;');
+}
+
+function loadTemplate(name) {
+  return fs.readFileSync(path.join(templatesDir, name), 'utf8');
+}
+
+function renderTemplate(template, values) {
+  return template.replace(/\{\{(\w+)\}\}/g, (match, key) => {
+    if (!(key in values)) {
+      console.warn(`Template placeholder missing value: {{${key}}}`);
+      return '';
+    }
+    return values[key];
+  });
 }
 
 function replaceBlock(content, startMarker, endMarker, replacement) {
@@ -32,69 +45,51 @@ function replaceBlock(content, startMarker, endMarker, replacement) {
   return content.slice(0, start) + replacement + content.slice(end + endMarker.length);
 }
 
-function buildHeadBlock() {
-  const twitterTags = meta.twitterHandle
-    ? `  <meta name="twitter:site" content="${escapeHtml(meta.twitterHandle)}">\n`
+function buildHeadBlock(page) {
+  const canonical = `${siteUrl}${page.path === '/' ? '/' : page.path}`;
+  const twitterSite = defaults.twitterHandle
+    ? `  <meta name="twitter:site" content="${escapeHtml(defaults.twitterHandle)}">\n`
     : '';
 
-  return `<!-- SEO:HEAD-START -->
-  <meta name="description" content="${escapeHtml(meta.description)}">
-  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
-  <meta name="theme-color" content="${escapeHtml(meta.themeColor)}">
-  <meta name="geo.region" content="${escapeHtml(business.areaServed.country + '-' + business.areaServed.region)}">
-  <meta name="geo.placename" content="${escapeHtml(business.areaServed.name)}">
-  <meta name="ICBM" content="${business.geo.latitude}, ${business.geo.longitude}">
-  <link rel="canonical" href="${canonical}">
-  <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
-  <link rel="apple-touch-icon" href="./assets/favicon.svg">
-  <link rel="preload" as="image" href="./assets/hero-illustration.svg" fetchpriority="high">
-  <meta property="og:type" content="website">
-  <meta property="og:site_name" content="${escapeHtml(site.name)}">
-  <meta property="og:url" content="${canonical}">
-  <meta property="og:title" content="${escapeHtml(meta.ogTitle)}">
-  <meta property="og:description" content="${escapeHtml(meta.ogDescription)}">
-  <meta property="og:locale" content="${escapeHtml(site.locale)}">
-  <meta property="og:image" content="${escapeHtml(meta.ogImage)}">
-  <meta property="og:image:alt" content="${escapeHtml(meta.ogImageAlt)}">
-  <meta name="twitter:card" content="summary_large_image">
-${twitterTags}  <meta name="twitter:title" content="${escapeHtml(meta.ogTitle)}">
-  <meta name="twitter:description" content="${escapeHtml(meta.ogDescription)}">
-  <meta name="twitter:image" content="${escapeHtml(meta.ogImage)}">
-  <meta name="twitter:image:alt" content="${escapeHtml(meta.ogImageAlt)}">
-<!-- SEO:HEAD-END -->`;
+  return renderTemplate(loadTemplate('seo-head.html'), {
+    description: escapeHtml(page.description),
+    themeColor: escapeHtml(defaults.themeColor),
+    geoRegion: escapeHtml(`${business.areaServed.country}-${business.areaServed.region}`),
+    geoPlacename: escapeHtml(business.areaServed.name),
+    geoCoordinates: `${business.geo.latitude}, ${business.geo.longitude}`,
+    canonical,
+    preloadImage: escapeHtml(page.preloadImage || './assets/hero-illustration.svg'),
+    siteName: escapeHtml(site.name),
+    ogTitle: escapeHtml(page.ogTitle),
+    ogDescription: escapeHtml(page.ogDescription),
+    locale: escapeHtml(site.locale),
+    ogImage: escapeHtml(page.ogImage || defaults.ogImage),
+    ogImageAlt: escapeHtml(page.ogImageAlt || defaults.ogImageAlt),
+    twitterSite,
+  }).trimEnd();
 }
 
 function buildFaqBlock() {
-  const items = faqs
-    .map(
-      (faq) => `          <details class="card group">
-            <summary class="cursor-pointer text-lg font-semibold text-ink-900 marker:content-none [&::-webkit-details-marker]:hidden">
-              <span class="flex items-start justify-between gap-4">
-                <span>${escapeHtml(faq.question)}</span>
-                <span class="shrink-0 text-brand-800 transition-transform group-open:rotate-45" aria-hidden="true">+</span>
-              </span>
-            </summary>
-            <p class="mt-4 text-ink-600">${escapeHtml(faq.answer)}</p>
-          </details>`
+  const itemTemplate = loadTemplate('seo-faq-item.html');
+  const faqItems = faqs
+    .map((faq) =>
+      renderTemplate(itemTemplate, {
+        question: escapeHtml(faq.question),
+        answer: escapeHtml(faq.answer),
+      })
     )
     .join('\n');
 
-  return `<!-- SEO:FAQ-START -->
-    <section id="faq" class="section-pad defer-paint" aria-labelledby="faq-heading">
-      <div class="container-site">
-        <div class="mx-auto max-w-2xl text-center">
-          <h2 id="faq-heading" class="text-3xl font-bold tracking-tight text-ink-950 sm:text-4xl">Frequently Asked Questions</h2>
-          <p class="mt-4 text-lg text-ink-600">Common questions about our web design process, pricing, and local SEO for Great Bend businesses.</p>
-        </div>
-        <div class="mx-auto mt-14 max-w-3xl space-y-4">
-${items}
-        </div>
-      </div>
-    </section>
-<!-- SEO:FAQ-END -->`;
+  return renderTemplate(loadTemplate('seo-faq.html'), {
+    faqIntro: escapeHtml(defaults.faqIntro),
+    faqItems,
+  }).trimEnd();
 }
 
-function buildJsonLd() {
+function buildJsonLd(page) {
+  const canonical = `${siteUrl}${page.path === '/' ? '/' : page.path}`;
+  const pageUrl = page.path === '/' ? siteUrl : `${siteUrl}${page.path}`;
+
   const openingHoursSpecification = business.openingHours.map((entry) => ({
     '@type': 'OpeningHoursSpecification',
     dayOfWeek: entry.days,
@@ -122,82 +117,92 @@ function buildJsonLd() {
     priceCurrency: service.priceCurrency,
   }));
 
-  const graph = {
-    '@context': 'https://schema.org',
-    '@graph': [
-      {
-        '@type': 'WebSite',
-        '@id': `${siteUrl}/#website`,
-        url: siteUrl,
-        name: site.name,
-        description: meta.description,
-        inLanguage: site.language,
-        publisher: { '@id': `${siteUrl}/#organization` },
-      },
-      {
-        '@type': business.type,
-        '@id': `${siteUrl}/#organization`,
-        name: site.name,
-        description: meta.description,
-        url: siteUrl,
-        email: business.email,
-        image: meta.ogImage,
-        logo: `${siteUrl}/assets/logo.svg`,
-        priceRange: business.priceRange,
-        areaServed: {
-          '@type': 'City',
-          name: business.areaServed.name,
-          containedInPlace: {
-            '@type': 'State',
-            name: business.areaServed.region,
-          },
-        },
-        geo: {
-          '@type': 'GeoCoordinates',
-          latitude: business.geo.latitude,
-          longitude: business.geo.longitude,
-        },
-        openingHoursSpecification,
-        hasOfferCatalog: {
-          '@type': 'OfferCatalog',
-          name: 'Website Design Services',
-          itemListElement: offers,
+  const graph = [
+    {
+      '@type': 'WebSite',
+      '@id': `${siteUrl}/#website`,
+      url: siteUrl,
+      name: site.name,
+      description: page.description,
+      inLanguage: site.language,
+      publisher: { '@id': `${siteUrl}/#organization` },
+    },
+    {
+      '@type': business.type,
+      '@id': `${siteUrl}/#organization`,
+      name: site.name,
+      description: page.description,
+      url: siteUrl,
+      email: business.email,
+      image: page.ogImage || defaults.ogImage,
+      logo: `${siteUrl}/assets/logo.svg`,
+      priceRange: business.priceRange,
+      areaServed: {
+        '@type': 'City',
+        name: business.areaServed.name,
+        containedInPlace: {
+          '@type': 'State',
+          name: business.areaServed.region,
         },
       },
-      {
-        '@type': 'FAQPage',
-        '@id': `${siteUrl}/#faq`,
-        mainEntity: faqs.map((faq) => ({
-          '@type': 'Question',
-          name: faq.question,
-          acceptedAnswer: {
-            '@type': 'Answer',
-            text: faq.answer,
-          },
-        })),
+      geo: {
+        '@type': 'GeoCoordinates',
+        latitude: business.geo.latitude,
+        longitude: business.geo.longitude,
       },
-    ],
-  };
+      openingHoursSpecification,
+      hasOfferCatalog: {
+        '@type': 'OfferCatalog',
+        name: 'Website Design Services',
+        itemListElement: offers,
+      },
+    },
+  ];
 
-  return `<!-- SEO:JSONLD-START -->
-  <script type="application/ld+json">
-${JSON.stringify(graph, null, 2)}
-  </script>
-<!-- SEO:JSONLD-END -->`;
+  if (page.sections && page.sections.faq) {
+    graph.push({
+      '@type': 'FAQPage',
+      '@id': `${pageUrl}#faq`,
+      mainEntity: faqs.map((faq) => ({
+        '@type': 'Question',
+        name: faq.question,
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: faq.answer,
+        },
+      })),
+    });
+  }
+
+  const jsonLd = JSON.stringify({ '@context': 'https://schema.org', '@graph': graph }, null, 2);
+
+  return renderTemplate(loadTemplate('seo-jsonld.html'), { jsonLd }).trimEnd();
 }
 
-let html = fs.readFileSync(htmlPath, 'utf8');
+function applyPageSeo(page) {
+  const htmlPath = path.join(root, page.html);
+  let html = fs.readFileSync(htmlPath, 'utf8');
 
-const titleMatch = html.match(/<title>[^<]*<\/title>/);
-if (titleMatch) {
-  html = html.replace(titleMatch[0], `<title>${escapeHtml(meta.title)}</title>`);
+  const titleMatch = html.match(/<title>[^<]*<\/title>/);
+  if (titleMatch) {
+    html = html.replace(titleMatch[0], `<title>${escapeHtml(page.title)}</title>`);
+  }
+
+  html = replaceBlock(html, '<!-- SEO:HEAD-START -->', '<!-- SEO:HEAD-END -->', buildHeadBlock(page));
+
+  if (page.sections && page.sections.faq) {
+    html = replaceBlock(html, '<!-- SEO:FAQ-START -->', '<!-- SEO:FAQ-END -->', buildFaqBlock());
+  }
+
+  if (page.sections && page.sections.jsonld) {
+    html = replaceBlock(html, '<!-- SEO:JSONLD-START -->', '<!-- SEO:JSONLD-END -->', buildJsonLd(page));
+  }
+
+  fs.writeFileSync(htmlPath, html);
+  console.log(`Applied SEO templates to ${page.html}`);
 }
 
-html = replaceBlock(html, '<!-- SEO:HEAD-START -->', '<!-- SEO:HEAD-END -->', buildHeadBlock());
-html = replaceBlock(html, '<!-- SEO:FAQ-START -->', '<!-- SEO:FAQ-END -->', buildFaqBlock());
-html = replaceBlock(html, '<!-- SEO:JSONLD-START -->', '<!-- SEO:JSONLD-END -->', buildJsonLd());
-
-fs.writeFileSync(htmlPath, html);
+pages.forEach(applyPageSeo);
 
 const robots = `User-agent: *
 Allow: /
@@ -206,16 +211,24 @@ Sitemap: ${siteUrl}/sitemap.xml
 `;
 fs.writeFileSync(robotsPath, robots);
 
+const sitemapEntries = pages
+  .filter((page) => page.sitemap)
+  .map((page) => {
+    const loc = `${siteUrl}${page.path === '/' ? '/' : page.path}`;
+    return `  <url>
+    <loc>${loc}</loc>
+    <lastmod>${today}</lastmod>
+    <changefreq>${page.sitemap.changefreq}</changefreq>
+    <priority>${page.sitemap.priority}</priority>
+  </url>`;
+  })
+  .join('\n');
+
 const sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>${canonical}</loc>
-    <lastmod>${today}</lastmod>
-    <changefreq>${sitemap.changefreq}</changefreq>
-    <priority>${sitemap.priority}</priority>
-  </url>
+${sitemapEntries}
 </urlset>
 `;
 fs.writeFileSync(sitemapPath, sitemapXml);
 
-console.log('Applied SEO config to src/index.html, robots.txt, and sitemap.xml');
+console.log(`Updated robots.txt and sitemap.xml (${pages.length} page${pages.length === 1 ? '' : 's'})`);
