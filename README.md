@@ -49,7 +49,7 @@ npm run build
 
 ## Built With
 
-- **HTML5** — Semantic structure, schema.org LocalBusiness markup, and local SEO (`src/index.html` → built `index.html`)
+- **HTML5** — Semantic landmarks (`header`, `main`, `section`, `article`, `nav`, `figure`, `address`, `fieldset`), schema.org markup, and local SEO (`src/index.html` → built `index.html`)
 - **Tailwind CSS** — Purged, minified, inlined production CSS (no runtime CDN compiler)
 - **SVG graphics** — Crisp, lightweight illustrations with zero raster overhead
 - **Vanilla JavaScript** — Deferred, idle-scheduled; no frameworks or third-party scripts

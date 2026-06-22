@@ -68,13 +68,13 @@ function buildFaqBlock() {
   const items = faqs
     .map(
       (faq) => `          <details class="card group">
-            <summary class="cursor-pointer text-lg font-semibold text-ink-900 marker:content-none [&::-webkit-details-marker]:hidden">
-              <span class="flex items-start justify-between gap-4">
-                <span>${escapeHtml(faq.question)}</span>
-                <span class="shrink-0 text-brand-800 transition-transform group-open:rotate-45" aria-hidden="true">+</span>
-              </span>
+            <summary class="faq-summary">
+              <span class="faq-question">${escapeHtml(faq.question)}</span>
+              <span class="faq-toggle" aria-hidden="true">+</span>
             </summary>
-            <p class="mt-4 text-ink-600">${escapeHtml(faq.answer)}</p>
+            <div class="faq-answer">
+              <p>${escapeHtml(faq.answer)}</p>
+            </div>
           </details>`
     )
     .join('\n');
@@ -82,11 +82,11 @@ function buildFaqBlock() {
   return `<!-- SEO:FAQ-START -->
     <section id="faq" class="section-pad defer-paint" aria-labelledby="faq-heading">
       <div class="container-site">
-        <div class="mx-auto max-w-2xl text-center">
+        <header class="section-header">
           <h2 id="faq-heading" class="text-3xl font-bold tracking-tight text-ink-950 sm:text-4xl">Frequently Asked Questions</h2>
           <p class="mt-4 text-lg text-ink-600">Common questions about our web design process, pricing, and local SEO for Great Bend businesses.</p>
-        </div>
-        <div class="mx-auto mt-14 max-w-3xl space-y-4">
+        </header>
+        <div class="faq-list">
 ${items}
         </div>
       </div>
