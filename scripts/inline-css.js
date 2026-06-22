@@ -1,11 +1,10 @@
 const fs = require('fs');
 const path = require('path');
 
-const root = path.join(__dirname, '..');
-const htmlPath = path.join(root, 'index.html');
-const cssPath = path.join(root, 'assets', 'css', 'main.css');
+const { sourceHtmlPath, outputHtmlPath } = require('./prepare-html');
+const cssPath = path.join(__dirname, '..', 'assets', 'css', 'main.css');
 
-const html = fs.readFileSync(htmlPath, 'utf8');
+const html = fs.readFileSync(sourceHtmlPath, 'utf8');
 const css = fs.readFileSync(cssPath, 'utf8');
 
 const start = html.indexOf('  <!-- BUILD:CSS-START -->');
@@ -20,5 +19,5 @@ const replacement = `  <!-- BUILD:CSS-START -->\n  <style>${css}</style>\n  <!--
 
 const next = html.slice(0, start) + replacement + html.slice(end + '  <!-- BUILD:CSS-END -->'.length);
 
-fs.writeFileSync(htmlPath, next);
-console.log(`Inlined ${css.length} bytes of CSS into index.html`);
+fs.writeFileSync(outputHtmlPath, next);
+console.log(`Inlined ${css.length} bytes of CSS into index.html (from src/index.html)`);

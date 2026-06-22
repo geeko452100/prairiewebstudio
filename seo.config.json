@@ -1,0 +1,80 @@
+{
+  "site": {
+    "name": "Snap Load Digital",
+    "url": "https://snaploaddigital.com",
+    "locale": "en_US",
+    "language": "en"
+  },
+  "meta": {
+    "title": "Affordable Website Development in Great Bend | Snap Load Digital",
+    "description": "Snap Load Digital builds fast, affordable websites for Great Bend, KS businesses. Local web design, SEO, and hosting — perfect Lighthouse scores guaranteed.",
+    "themeColor": "#0891b2",
+    "ogTitle": "Snap Load Digital — Great Bend Web Design & Local SEO",
+    "ogDescription": "High-performance websites for Great Bend and Central Kansas businesses. Fast load times, local SEO, and 100 Lighthouse scores.",
+    "ogImage": "https://snaploaddigital.com/assets/hero-illustration.svg",
+    "ogImageAlt": "Snap Load Digital — fast, affordable websites for Great Bend, Kansas businesses",
+    "twitterHandle": ""
+  },
+  "business": {
+    "type": "ProfessionalService",
+    "email": "ggriffith@snapload-digital.com",
+    "priceRange": "$$",
+    "serviceArea": "Great Bend & Central Kansas",
+    "areaServed": {
+      "name": "Great Bend",
+      "region": "KS",
+      "country": "US"
+    },
+    "geo": {
+      "latitude": 38.3645,
+      "longitude": -98.7648
+    },
+    "openingHours": [
+      {
+        "days": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        "opens": "09:00",
+        "closes": "17:00"
+      }
+    ]
+  },
+  "services": [
+    {
+      "name": "Own It Outright",
+      "description": "Full custom website build with a one-time payment and optional monthly or annual care plan.",
+      "price": "1500",
+      "priceCurrency": "USD"
+    },
+    {
+      "name": "Launch & Support",
+      "description": "Lower upfront cost with ongoing monthly support, updates, and local SEO maintenance.",
+      "price": "499",
+      "priceCurrency": "USD"
+    }
+  ],
+  "faqs": [
+    {
+      "question": "How long does it take to launch a new website?",
+      "answer": "Most Snap Load Digital projects launch within 7 business days after we receive your content and brand details. Larger multi-page sites may take up to two weeks."
+    },
+    {
+      "question": "Do you only work with businesses in Great Bend?",
+      "answer": "We specialize in Great Bend and Central Kansas, but we work remotely with small businesses across Kansas. Every site includes local SEO setup tailored to your service area."
+    },
+    {
+      "question": "What SEO is included with every website?",
+      "answer": "Every build includes optimized title tags and meta descriptions, canonical URLs, structured data (JSON-LD), a sitemap, robots.txt, semantic HTML, and local business schema so Google can understand your location and services."
+    },
+    {
+      "question": "Will my website score 100 on Google Lighthouse?",
+      "answer": "Yes — we engineer every site for 100 Lighthouse scores in Performance, Accessibility, Best Practices, and SEO using static HTML, purged CSS, and no bloated page builders."
+    },
+    {
+      "question": "Do I own my website after launch?",
+      "answer": "With the Own It Outright plan, you own the site from day one. With Launch & Support, you get full use of the site while subscribed; we can discuss ownership transfer anytime."
+    }
+  ],
+  "sitemap": {
+    "changefreq": "monthly",
+    "priority": "1.0"
+  }
+}
