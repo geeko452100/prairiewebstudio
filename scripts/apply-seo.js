@@ -3,7 +3,7 @@ const path = require('path');
 
 const root = path.join(__dirname, '..');
 const configPath = path.join(root, 'seo.config.json');
-const htmlPath = path.join(root, 'index.html');
+const htmlPath = path.join(root, 'src', 'index.html');
 const robotsPath = path.join(root, 'robots.txt');
 const sitemapPath = path.join(root, 'sitemap.xml');
 
@@ -47,6 +47,7 @@ function buildHeadBlock() {
   <link rel="canonical" href="${canonical}">
   <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
   <link rel="apple-touch-icon" href="./assets/favicon.svg">
+  <link rel="preload" as="image" href="./assets/hero-illustration.svg" fetchpriority="high">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="${escapeHtml(site.name)}">
   <meta property="og:url" content="${canonical}">
@@ -217,4 +218,4 @@ const sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>
 `;
 fs.writeFileSync(sitemapPath, sitemapXml);
 
-console.log('Applied SEO config to index.html, robots.txt, and sitemap.xml');
+console.log('Applied SEO config to src/index.html, robots.txt, and sitemap.xml');

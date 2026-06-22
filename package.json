@@ -7,6 +7,7 @@
     "build:inline": "node scripts/inline-css.js",
     "build:seo": "node scripts/apply-seo.js",
     "build": "npm run build:seo && npm run build:css && npm run build:inline",
+    "lighthouse": "npm run build && node scripts/lighthouse-check.js",
     "watch:css": "tailwindcss -i ./src/input.css -o ./assets/css/main.css --watch"
   },
   "devDependencies": {
