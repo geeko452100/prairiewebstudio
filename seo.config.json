@@ -1,16 +1,19 @@
 {
   "site": {
     "name": "Snap Load Digital",
-    "url": "https://snaploaddigital.com",
+    "url": "https://snapload-digital.com",
     "locale": "en_US",
     "language": "en"
   },
   "defaults": {
     "themeColor": "#0891b2",
-    "ogImage": "https://snaploaddigital.com/assets/hero-illustration.svg",
+    "ogImage": "https://snapload-digital.com/assets/hero-illustration.svg",
     "ogImageAlt": "Snap Load Digital — fast, affordable websites for Great Bend, Kansas businesses",
     "twitterHandle": "",
     "faqIntro": "Common questions about our web design process, pricing, and local SEO for Great Bend businesses."
+  },
+  "contactForm": {
+    "endpoint": "http://localhost:3000/api/contact"
   },
   "business": {
     "type": "ProfessionalService",

@@ -15,22 +15,22 @@
   <meta name="geo.region" content="US-KS">
   <meta name="geo.placename" content="Great Bend">
   <meta name="ICBM" content="38.3645, -98.7648">
-  <link rel="canonical" href="https://snaploaddigital.com/">
+  <link rel="canonical" href="https://snapload-digital.com/">
   <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
   <link rel="apple-touch-icon" href="./assets/favicon.svg">
   <link rel="preload" as="image" href="./assets/hero-illustration.svg" fetchpriority="high">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Snap Load Digital">
-  <meta property="og:url" content="https://snaploaddigital.com/">
+  <meta property="og:url" content="https://snapload-digital.com/">
   <meta property="og:title" content="Snap Load Digital — Great Bend Web Design &amp; Local SEO">
   <meta property="og:description" content="High-performance websites for Great Bend and Central Kansas businesses. Fast load times, local SEO, and 100 Lighthouse scores.">
   <meta property="og:locale" content="en_US">
-  <meta property="og:image" content="https://snaploaddigital.com/assets/hero-illustration.svg">
+  <meta property="og:image" content="https://snapload-digital.com/assets/hero-illustration.svg">
   <meta property="og:image:alt" content="Snap Load Digital — fast, affordable websites for Great Bend, Kansas businesses">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Snap Load Digital — Great Bend Web Design &amp; Local SEO">
   <meta name="twitter:description" content="High-performance websites for Great Bend and Central Kansas businesses. Fast load times, local SEO, and 100 Lighthouse scores.">
-  <meta name="twitter:image" content="https://snaploaddigital.com/assets/hero-illustration.svg">
+  <meta name="twitter:image" content="https://snapload-digital.com/assets/hero-illustration.svg">
   <meta name="twitter:image:alt" content="Snap Load Digital — fast, affordable websites for Great Bend, Kansas businesses">
 <!-- SEO:HEAD-END -->
 </head>
@@ -425,11 +425,8 @@
               name="contact"
               class="card space-y-5"
               method="POST"
-              data-netlify="true"
-              netlify-honeypot="bot-field"
+              data-endpoint="http://localhost:3000/api/contact"
             >
-              <input type="hidden" name="form-name" value="contact">
-
               <p class="hidden" aria-hidden="true">
                 <label for="bot-field">Leave this empty</label>
                 <input type="text" id="bot-field" name="bot-field" tabindex="-1" autocomplete="off">
@@ -516,24 +513,24 @@
   "@graph": [
     {
       "@type": "WebSite",
-      "@id": "https://snaploaddigital.com/#website",
-      "url": "https://snaploaddigital.com",
+      "@id": "https://snapload-digital.com/#website",
+      "url": "https://snapload-digital.com",
       "name": "Snap Load Digital",
       "description": "Snap Load Digital builds fast, affordable websites for Great Bend, KS businesses. Local web design, SEO, and hosting — perfect Lighthouse scores guaranteed.",
       "inLanguage": "en",
       "publisher": {
-        "@id": "https://snaploaddigital.com/#organization"
+        "@id": "https://snapload-digital.com/#organization"
       }
     },
     {
       "@type": "ProfessionalService",
-      "@id": "https://snaploaddigital.com/#organization",
+      "@id": "https://snapload-digital.com/#organization",
       "name": "Snap Load Digital",
       "description": "Snap Load Digital builds fast, affordable websites for Great Bend, KS businesses. Local web design, SEO, and hosting — perfect Lighthouse scores guaranteed.",
-      "url": "https://snaploaddigital.com",
+      "url": "https://snapload-digital.com",
       "email": "ggriffith@snapload-digital.com",
-      "image": "https://snaploaddigital.com/assets/hero-illustration.svg",
-      "logo": "https://snaploaddigital.com/assets/logo.svg",
+      "image": "https://snapload-digital.com/assets/hero-illustration.svg",
+      "logo": "https://snapload-digital.com/assets/logo.svg",
       "priceRange": "$$",
       "areaServed": {
         "@type": "City",
@@ -573,7 +570,7 @@
               "name": "Own It Outright",
               "description": "Full custom website build with a one-time payment and optional monthly or annual care plan.",
               "provider": {
-                "@id": "https://snaploaddigital.com/#organization"
+                "@id": "https://snapload-digital.com/#organization"
               },
               "areaServed": {
                 "@type": "City",
@@ -594,7 +591,7 @@
               "name": "Launch & Support",
               "description": "Lower upfront cost with ongoing monthly support, updates, and local SEO maintenance.",
               "provider": {
-                "@id": "https://snaploaddigital.com/#organization"
+                "@id": "https://snapload-digital.com/#organization"
               },
               "areaServed": {
                 "@type": "City",
@@ -613,7 +610,7 @@
     },
     {
       "@type": "FAQPage",
-      "@id": "https://snaploaddigital.com#faq",
+      "@id": "https://snapload-digital.com#faq",
       "mainEntity": [
         {
           "@type": "Question",
@@ -712,15 +709,27 @@
       if (!form) return;
       form.addEventListener('submit', function (e) {
         e.preventDefault();
+        var endpoint = form.getAttribute('data-endpoint');
+        if (!endpoint) {
+          showFormError();
+          return;
+        }
         var submitBtn = form.querySelector('[type="submit"]');
         if (submitBtn) {
           submitBtn.disabled = true;
           submitBtn.textContent = 'Sending…';
         }
-        fetch('/', {
+        var payload = {
+          name: form.querySelector('[name="name"]').value,
+          email: form.querySelector('[name="email"]').value,
+          plan: form.querySelector('[name="plan"]').value,
+          message: form.querySelector('[name="message"]').value,
+          'bot-field': form.querySelector('[name="bot-field"]').value
+        };
+        fetch(endpoint, {
           method: 'POST',
-          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-          body: new URLSearchParams(new FormData(form)).toString()
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify(payload)
         })
           .then(function (res) {
             if (!res.ok) throw new Error('submit failed');

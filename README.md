@@ -123,11 +123,24 @@ Edit `tailwind.config.js` for brand colors, then rebuild. Custom component class
 
 ## Deployment
 
-Deploy the project folder (including `assets/css/main.css`) to any static host:
+Deploy with the included **`render.yaml`** Blueprint (recommended) or any static host.
 
-- [Netlify](https://netlify.com) — drag and drop or connect Git
-- [Vercel](https://vercel.com)
-- [GitHub Pages](https://pages.github.com)
-- [Render Static Sites](https://render.com/docs/static-sites)
+### Render (form-to-email)
+
+This repo includes a static site plus a small contact API that sends form submissions to **ggriffith@snapload-digital.com** via [Resend](https://resend.com).
+
+1. Connect the repo in [Render Blueprints](https://dashboard.render.com/blueprints).
+2. Add a **`RESEND_API_KEY`** secret when prompted (create one at Resend and verify **snapload-digital.com**).
+3. Point **snapload-digital.com** at the static site service in the Render Dashboard.
+4. After deploy, test the contact form on the live site.
+
+The static site build reads **`CONTACT_API_URL`** from the linked API service automatically. For local API testing, copy `api/.env.example` to `api/.env`, run `npm start` in `api/`, then `npm run build` (uses `contactForm.endpoint` in `seo.config.json`).
+
+### Other static hosts
+
+Without the API service, form submissions will not send email. Alternatives:
+
+- [Netlify](https://netlify.com) — restore Netlify Forms attributes and enable email notifications in the Netlify Dashboard
+- [Vercel](https://vercel.com), [GitHub Pages](https://pages.github.com) — use a third-party form endpoint or host the `api/` service separately
 
 Update **`seo.config.json`** (`site.url` and related fields) before going live — the build propagates your domain to the canonical tag, `robots.txt`, `sitemap.xml`, and JSON-LD.
