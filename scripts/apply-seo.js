@@ -8,10 +8,17 @@ const robotsPath = path.join(root, 'robots.txt');
 const sitemapPath = path.join(root, 'sitemap.xml');
 
 const config = JSON.parse(fs.readFileSync(configPath, 'utf8'));
-const { site, defaults, business, services, faqs, pages } = config;
+const { site, defaults, business, services, faqs, pages, contactForm } = config;
 
 const siteUrl = site.url.replace(/\/$/, '');
 const today = new Date().toISOString().slice(0, 10);
+
+function resolveContactEndpoint() {
+  const raw = process.env.CONTACT_API_URL || contactForm?.endpoint || '';
+  if (!raw) return '';
+  if (raw.startsWith('http://') || raw.startsWith('https://')) return raw;
+  return `https://${raw.replace(/\/$/, '')}/api/contact`;
+}
 
 function escapeHtml(value) {
   return String(value)
@@ -199,6 +206,11 @@ function applyPageSeo(page) {
 
   if (page.sections && page.sections.jsonld) {
     html = replaceBlock(html, '<!-- SEO:JSONLD-START -->', '<!-- SEO:JSONLD-END -->', buildJsonLd(page));
+  }
+
+  const contactEndpoint = resolveContactEndpoint();
+  if (contactEndpoint) {
+    html = html.replace(/\{\{CONTACT_API_URL\}\}/g, escapeHtml(contactEndpoint));
   }
 
   fs.writeFileSync(htmlPath, html);
