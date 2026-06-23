@@ -53,6 +53,9 @@ function buildHeadBlock(page) {
 
   return renderTemplate(loadTemplate('seo-head.html'), {
     description: escapeHtml(page.description),
+    robots: escapeHtml(
+      page.robots || 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1'
+    ),
     themeColor: escapeHtml(defaults.themeColor),
     geoRegion: escapeHtml(`${business.areaServed.country}-${business.areaServed.region}`),
     geoPlacename: escapeHtml(business.areaServed.name),

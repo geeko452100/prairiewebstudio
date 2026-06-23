@@ -1,9 +1,21 @@
-// Source of truth: src/index.html. Production output: index.html (inlined CSS).
-// This module is used by inline-css.js; kept separate for clarity.
+// Source of truth: src/*.html. Production output: root *.html (inlined CSS).
 
 const path = require('path');
 
+const root = path.join(__dirname, '..');
+
+const pageDefinitions = [
+  { source: 'src/index.html', output: 'index.html' },
+  { source: 'src/success.html', output: 'success.html' },
+];
+
+const pages = pageDefinitions.map((page) => ({
+  sourceHtmlPath: path.join(root, page.source),
+  outputHtmlPath: path.join(root, page.output),
+}));
+
 module.exports = {
-  sourceHtmlPath: path.join(__dirname, '..', 'src', 'index.html'),
-  outputHtmlPath: path.join(__dirname, '..', 'index.html'),
+  pages,
+  sourceHtmlPath: pages[0].sourceHtmlPath,
+  outputHtmlPath: pages[0].outputHtmlPath,
 };
