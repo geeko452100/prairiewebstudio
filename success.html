@@ -15,13 +15,13 @@
   <meta name="geo.region" content="US-KS">
   <meta name="geo.placename" content="Great Bend">
   <meta name="ICBM" content="38.3645, -98.7648">
-  <link rel="canonical" href="https://snaploaddigital.com/success.html">
+  <link rel="canonical" href="https://snaploaddigital.com/payment/success">
   <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
   <link rel="apple-touch-icon" href="./assets/favicon.svg">
   <link rel="preload" as="image" href="./assets/hero-illustration.svg" fetchpriority="high">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Snap Load Digital">
-  <meta property="og:url" content="https://snaploaddigital.com/success.html">
+  <meta property="og:url" content="https://snaploaddigital.com/payment/success">
   <meta property="og:title" content="Thank You | Snap Load Digital">
   <meta property="og:description" content="Your payment was successful. Thank you for choosing Snap Load Digital.">
   <meta property="og:locale" content="en_US">
@@ -61,7 +61,7 @@
           Thank you for your business!
         </h1>
 
-        <p class="mt-4 text-lg leading-relaxed text-ink-600">
+        <p id="success-subtext" class="mt-4 text-lg leading-relaxed text-ink-600">
           Your payment was received successfully. We appreciate your trust and look forward to working with you.
         </p>
 
@@ -82,20 +82,61 @@
   <script>
     (function () {
       var heading = document.getElementById('success-heading');
+      var subtext = document.getElementById('success-subtext');
       var defaultMessage = 'Thank you for your business!';
       var params = new URLSearchParams(window.location.search);
       var name = params.get('name');
+      var sessionId = params.get('session_id');
 
-      if (name && heading) {
-        var firstName = name.trim().split(/\s+/)[0];
+      function formatFirstName(fullName) {
+        var first = (fullName || '').trim().split(/\s+/)[0];
+        if (!first) return '';
+        return first.charAt(0).toUpperCase() + first.slice(1);
+      }
+
+      function setGreeting(fullName) {
+        if (!heading) return;
+        var firstName = formatFirstName(fullName);
         if (firstName) {
-          heading.textContent = 'Thank you, ' + firstName + '!';
+          heading.textContent = 'Thank You, ' + firstName + '!';
         } else {
           heading.textContent = defaultMessage;
         }
-      } else if (heading) {
-        heading.textContent = defaultMessage;
       }
+
+      function showLoading() {
+        if (subtext) {
+          subtext.textContent = 'Confirming your payment\u2026';
+        }
+      }
+
+      if (name) {
+        setGreeting(name);
+        return;
+      }
+
+      if (sessionId) {
+        showLoading();
+        fetch('/api/checkout-session?session_id=' + encodeURIComponent(sessionId))
+          .then(function (response) {
+            return response.ok ? response.json() : null;
+          })
+          .then(function (data) {
+            setGreeting(data && data.name ? data.name : '');
+            if (subtext) {
+              subtext.textContent = 'Your payment was received successfully. We appreciate your trust and look forward to working with you.';
+            }
+          })
+          .catch(function () {
+            setGreeting('');
+            if (subtext) {
+              subtext.textContent = 'Your payment was received successfully. We appreciate your trust and look forward to working with you.';
+            }
+          });
+        return;
+      }
+
+      setGreeting('');
 
       var yearEl = document.getElementById('year');
       if (yearEl) {

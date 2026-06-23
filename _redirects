@@ -1,4 +1,20 @@
-# Snap Load Digital - Stripe Payment Shortcuts
-/deposit    https://stripe.com       302
-/final      https://stripe.com    302
-/annual     https://stripe.com 302
+# Snap Load Digital - Payment Routing
+#
+# Stripe Payment Links (shortcuts to checkout):
+#   /deposit  -> Stripe deposit payment link
+#   /final    -> Stripe final payment link
+#   /annual   -> Stripe annual payment link
+#
+# Configure each Stripe Payment Link success URL to:
+#   https://snaploaddigital.com/payment/success?session_id={CHECKOUT_SESSION_ID}
+#
+# The success page reads the session_id, looks up the customer name, and displays:
+#   "Thank You, [First Name]!"
+
+/deposit              https://stripe.com       302
+/final                https://stripe.com       302
+/annual               https://stripe.com       302
+
+# Payment success page (preserves query string for session_id / name)
+/payment/success      /success.html            200
+/success              /success.html            200

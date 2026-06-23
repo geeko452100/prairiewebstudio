@@ -4,6 +4,14 @@
   command = "npm run build"
   publish = "."
 
+[functions]
+  directory = "netlify/functions"
+
+[[redirects]]
+  from = "/api/checkout-session"
+  to = "/.netlify/functions/checkout-session"
+  status = 200
+
 [[headers]]
   for = "/*"
   [headers.values]
