@@ -88,6 +88,16 @@
         "faq": true,
         "jsonld": true
       }
+    },
+    {
+      "id": "success",
+      "html": "src/success.html",
+      "path": "/success.html",
+      "title": "Thank You | Snap Load Digital",
+      "description": "Your payment was successful. Thank you for choosing Snap Load Digital.",
+      "ogTitle": "Thank You | Snap Load Digital",
+      "ogDescription": "Your payment was successful. Thank you for choosing Snap Load Digital.",
+      "robots": "noindex, nofollow"
     }
   ]
 }
