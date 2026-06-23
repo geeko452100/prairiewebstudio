@@ -1,4 +1,2 @@
 # Snap Load Digital - Stripe Payment Shortcuts
-/deposit    https://stripe.com       302
-/final      https://stripe.com    302
-/annual     https://stripe.com 302
+/deposit https://stripe.com 302
