@@ -53,8 +53,14 @@
       "priceCurrency": "USD"
     },
     {
-      "name": "Care & Support",
-      "description": "Ongoing website subscription with content updates, uptime monitoring, and priority support at $12.50/month or $150/year.",
+      "name": "Care & Support (Monthly)",
+      "description": "Ongoing website maintenance subscription with content updates, uptime monitoring, and priority support at $12.50/month.",
+      "price": "12.50",
+      "priceCurrency": "USD"
+    },
+    {
+      "name": "Care & Support (Annual)",
+      "description": "Ongoing website maintenance subscription with content updates, uptime monitoring, and priority support at $150/year.",
       "price": "150",
       "priceCurrency": "USD"
     }
@@ -78,7 +84,7 @@
     },
     {
       "question": "Do I own my website after launch?",
-      "answer": "With Own It Outright, you own the site from day one. Launch & Support lowers your upfront build cost. Either build plan can pair with our Care & Support subscription for ongoing updates and monitoring — we can discuss ownership transfer anytime."
+      "answer": "With Own It Outright, you own the site from day one. Launch & Support lowers your upfront build cost. Either build plan can pair with a maintenance subscription for ongoing updates and monitoring — we can discuss ownership transfer anytime."
     }
   ],
   "pages": [
