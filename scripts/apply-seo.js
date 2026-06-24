@@ -40,6 +40,23 @@ function loadTemplate(name) {
   return fs.readFileSync(path.join(templatesDir, name), 'utf8');
 }
 
+function renderLogoMark({ sizeClass, width, height, gradId }) {
+  return renderTemplate(loadTemplate('logo-mark.html'), {
+    sizeClass,
+    width: String(width),
+    height: String(height),
+    gradId,
+  });
+}
+
+function obfuscateJsonLdEmail(jsonLd) {
+  if (!business.email.includes('@')) {
+    return jsonLd;
+  }
+  const escapedEmail = business.email.replace('@', '\\u0040');
+  return jsonLd.replace(`"email": "${business.email}"`, `"email": "${escapedEmail}"`);
+}
+
 function renderTemplate(template, values) {
   return template.replace(/\{\{(\w+)\}\}/g, (match, key) => {
     if (!(key in values)) {
@@ -66,6 +83,11 @@ function buildHeadBlock(page) {
     ? `  <meta name="twitter:site" content="${escapeHtml(defaults.twitterHandle)}">\n`
     : '';
 
+  const preloadImage = page.preloadImage || '';
+  const preloadLink = preloadImage
+    ? `  <link rel="preload" as="image" href="${escapeHtml(preloadImage)}" fetchpriority="high">\n`
+    : '';
+
   return renderTemplate(loadTemplate('seo-head.html'), {
     description: escapeHtml(page.description),
     robots: escapeHtml(
@@ -76,7 +98,7 @@ function buildHeadBlock(page) {
     geoPlacename: escapeHtml(business.areaServed.name),
     geoCoordinates: `${business.geo.latitude}, ${business.geo.longitude}`,
     canonical,
-    preloadImage: escapeHtml(page.preloadImage || './assets/hero-illustration.svg'),
+    preloadLink,
     siteName: escapeHtml(site.name),
     ogTitle: escapeHtml(page.ogTitle),
     ogDescription: escapeHtml(page.ogDescription),
@@ -192,7 +214,9 @@ function buildJsonLd(page) {
     });
   }
 
-  const jsonLd = JSON.stringify({ '@context': 'https://schema.org', '@graph': graph }, null, 2);
+  const jsonLd = obfuscateJsonLdEmail(
+    JSON.stringify({ '@context': 'https://schema.org', '@graph': graph }, null, 2)
+  );
 
   return renderTemplate(loadTemplate('seo-jsonld.html'), { jsonLd }).trimEnd();
 }
@@ -219,6 +243,24 @@ function applyPageSeo(page) {
   const formConfig = resolveContactForm();
   html = html.replace(/\{\{CONTACT_FORM_ENDPOINT\}\}/g, escapeHtml(formConfig.endpoint));
   html = html.replace(/\{\{CONTACT_FORM_SUBJECT\}\}/g, escapeHtml(formConfig.subject));
+  html = html.replace(
+    /<!-- LOGO:HEADER-START -->[\s\S]*?<!-- LOGO:HEADER-END -->/,
+    `<!-- LOGO:HEADER-START -->${renderLogoMark({
+      sizeClass: 'h-10 w-10',
+      width: 40,
+      height: 40,
+      gradId: 'logo-grad-header',
+    })}<!-- LOGO:HEADER-END -->`
+  );
+  html = html.replace(
+    /<!-- LOGO:FOOTER-START -->[\s\S]*?<!-- LOGO:FOOTER-END -->/,
+    `<!-- LOGO:FOOTER-START -->${renderLogoMark({
+      sizeClass: 'h-8 w-8',
+      width: 32,
+      height: 32,
+      gradId: 'logo-grad-footer',
+    })}<!-- LOGO:FOOTER-END -->`
+  );
 
   fs.writeFileSync(htmlPath, html);
   console.log(`Applied SEO templates to ${page.html}`);

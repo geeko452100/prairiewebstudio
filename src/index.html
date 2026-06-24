@@ -43,7 +43,19 @@
   <header class="sticky top-0 z-40 border-b border-ink-100/80 bg-white">
     <div class="container-site flex h-16 items-center justify-between px-4 sm:px-6 lg:px-8">
       <a href="./" class="flex items-center gap-3 rounded-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500" aria-label="Snap Load Digital — Home">
-        <img src="./assets/logo.svg" alt="" width="40" height="40" class="h-10 w-10" decoding="async" fetchpriority="high">
+        <!-- LOGO:HEADER-START --><svg class="h-10 w-10 shrink-0" width="40" height="40" viewBox="0 0 48 48" aria-hidden="true" focusable="false">
+  <defs>
+    <linearGradient id="logo-grad-header" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#06b6d4"/>
+      <stop offset="100%" stop-color="#0891b2"/>
+    </linearGradient>
+  </defs>
+  <rect width="48" height="48" rx="12" fill="url(#logo-grad-header)"/>
+  <path fill="#fff" d="M24 10c-1.2 0-2.2 1-2.2 2.2v2.4l-6.8 2.8a2.2 2.2 0 0 0-1.3 2v8.8c0 .9.5 1.7 1.3 2.1l6.8 3.4V36c0 1.2 1 2.2 2.2 2.2s2.2-1 2.2-2.2v-4.3l6.8-3.4a2.2 2.2 0 0 0 1.3-2.1v-8.8a2.2 2.2 0 0 0-1.3-2L26.2 14.6v-2.4C26.2 11 25.2 10 24 10zm0 4.8l5.6 2.3-5.6 2.3-5.6-2.3L24 14.8zm-7.6 5.5 6.2 2.6v7.2l-6.2-3.1v-6.7zm15.2 0v6.7l-6.2 3.1v-7.2l6.2-2.6z"/>
+  <circle cx="34" cy="14" r="4" fill="#fbbf24"/>
+  <path fill="#0f172a" d="M33 12.5h2v3h-2z"/>
+</svg>
+<!-- LOGO:HEADER-END -->
         <span class="text-lg font-bold tracking-tight text-ink-900">Snap Load <span class="text-brand-800">Digital</span></span>
       </a>
 
@@ -392,7 +404,9 @@
                 </span>
                 <div>
                   <p class="font-semibold text-ink-900">Email</p>
+                  <!--email_off-->
                   <a href="mailto:ggriffith@snapload-digital.com" class="text-link">ggriffith@snapload-digital.com</a>
+                  <!--/email_off-->
                 </div>
               </div>
               <div class="flex items-start gap-4">
@@ -423,7 +437,7 @@
           <div class="space-y-6">
             <div id="form-error" class="card hidden border-ink-200 bg-ink-50 text-center" role="alert" hidden>
               <p class="text-lg font-semibold text-ink-900">Message not sent</p>
-              <p class="mt-2 text-sm text-ink-600">Something went wrong. Please email us directly at <a href="mailto:ggriffith@snapload-digital.com" class="text-link">ggriffith@snapload-digital.com</a>.</p>
+              <p class="mt-2 text-sm text-ink-600">Something went wrong. Please email us directly at <!--email_off--><a href="mailto:ggriffith@snapload-digital.com" class="text-link">ggriffith@snapload-digital.com</a><!--/email_off-->.</p>
             </div>
 
             <div id="form-success" class="card hidden border-brand-300 bg-brand-50 text-center" role="status" aria-live="polite" hidden>
@@ -530,7 +544,19 @@
   <footer class="border-t border-ink-200 bg-ink-50 py-10">
     <div class="container-site flex flex-col items-center justify-between gap-6 px-4 sm:flex-row sm:px-6 lg:px-8">
       <div class="flex items-center gap-3">
-        <img src="./assets/logo.svg" alt="" width="32" height="32" class="h-8 w-8" decoding="async" loading="lazy">
+        <!-- LOGO:FOOTER-START --><svg class="h-8 w-8 shrink-0" width="32" height="32" viewBox="0 0 48 48" aria-hidden="true" focusable="false">
+  <defs>
+    <linearGradient id="logo-grad-footer" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#06b6d4"/>
+      <stop offset="100%" stop-color="#0891b2"/>
+    </linearGradient>
+  </defs>
+  <rect width="48" height="48" rx="12" fill="url(#logo-grad-footer)"/>
+  <path fill="#fff" d="M24 10c-1.2 0-2.2 1-2.2 2.2v2.4l-6.8 2.8a2.2 2.2 0 0 0-1.3 2v8.8c0 .9.5 1.7 1.3 2.1l6.8 3.4V36c0 1.2 1 2.2 2.2 2.2s2.2-1 2.2-2.2v-4.3l6.8-3.4a2.2 2.2 0 0 0 1.3-2.1v-8.8a2.2 2.2 0 0 0-1.3-2L26.2 14.6v-2.4C26.2 11 25.2 10 24 10zm0 4.8l5.6 2.3-5.6 2.3-5.6-2.3L24 14.8zm-7.6 5.5 6.2 2.6v7.2l-6.2-3.1v-6.7zm15.2 0v6.7l-6.2 3.1v-7.2l6.2-2.6z"/>
+  <circle cx="34" cy="14" r="4" fill="#fbbf24"/>
+  <path fill="#0f172a" d="M33 12.5h2v3h-2z"/>
+</svg>
+<!-- LOGO:FOOTER-END -->
         <p class="text-sm text-ink-600">&copy; <time datetime="2026">2026</time> Snap Load Digital. All rights reserved.</p>
       </div>
       <nav aria-label="Footer">
@@ -568,7 +594,7 @@
       "name": "Snap Load Digital",
       "description": "Snap Load Digital builds fast, affordable websites for Great Bend, KS businesses. Local web design, SEO, and hosting — perfect Lighthouse scores guaranteed.",
       "url": "https://snapload-digital.com",
-      "email": "ggriffith@snapload-digital.com",
+      "email": "ggriffith\u0040snapload-digital.com",
       "image": "https://snapload-digital.com/assets/hero-illustration.svg",
       "logo": "https://snapload-digital.com/assets/logo.svg",
       "priceRange": "$$",
