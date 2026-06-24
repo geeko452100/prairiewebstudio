@@ -13,7 +13,9 @@
     "faqIntro": "Common questions about our web design process, pricing, and local SEO for Great Bend businesses."
   },
   "contactForm": {
-    "endpoint": "http://localhost:3000/api/contact"
+    "endpoint": "https://api.web3forms.com/submit",
+    "accessKey": "",
+    "subject": "New Snap Load Digital contact"
   },
   "business": {
     "type": "ProfessionalService",

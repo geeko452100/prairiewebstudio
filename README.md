@@ -123,24 +123,22 @@ Edit `tailwind.config.js` for brand colors, then rebuild. Custom component class
 
 ## Deployment
 
-Deploy with the included **`render.yaml`** Blueprint (recommended) or any static host.
+Deploy to [Cloudflare Pages](https://pages.cloudflare.com) (recommended) or any static host.
 
-### Render (form-to-email)
+### Cloudflare Pages
 
-This repo includes a static site plus a small contact API that sends form submissions to **ggriffith@snapload-digital.com** via [Resend](https://resend.com).
+1. Connect the repo in the Cloudflare Pages dashboard.
+2. Set the build command to **`npm run build`** and the output directory to **`.`** (repo root).
+3. Add a **`WEB3FORMS_ACCESS_KEY`** environment variable:
+   - Create a free access key at [Web3Forms](https://web3forms.com)
+   - Restrict the key to your domain (e.g. **snapload-digital.com**)
+   - Set the notification email to **ggriffith@snapload-digital.com**
+4. Deploy and test the contact form on the live site.
 
-1. Connect the repo in [Render Blueprints](https://dashboard.render.com/blueprints).
-2. Add a **`RESEND_API_KEY`** secret when prompted (create one at Resend and verify **snapload-digital.com**).
-3. Point **snapload-digital.com** at the static site service in the Render Dashboard.
-4. After deploy, test the contact form on the live site.
+The contact form submits directly from the browser to Web3Forms — no backend required. The build injects your access key from the environment variable into the static HTML.
 
-The static site build reads **`CONTACT_API_URL`** from the linked API service automatically. For local API testing, copy `api/.env.example` to `api/.env`, run `npm start` in `api/`, then `npm run build` (uses `contactForm.endpoint` in `seo.config.json`).
+For local testing, add your access key to `contactForm.accessKey` in **`seo.config.json`**, then run `npm run build`. Do not commit real keys to the repo; use the Cloudflare Pages env var in production.
 
-### Other static hosts
-
-Without the API service, form submissions will not send email. Alternatives:
-
-- [Netlify](https://netlify.com) — restore Netlify Forms attributes and enable email notifications in the Netlify Dashboard
-- [Vercel](https://vercel.com), [GitHub Pages](https://pages.github.com) — use a third-party form endpoint or host the `api/` service separately
+Stripe payment redirects in **`_redirects`** are supported automatically on Cloudflare Pages.
 
 Update **`seo.config.json`** (`site.url` and related fields) before going live — the build propagates your domain to the canonical tag, `robots.txt`, `sitemap.xml`, and JSON-LD.
