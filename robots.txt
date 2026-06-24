@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://snaploaddigital.com/sitemap.xml
+Sitemap: https://snapload-digital.com/sitemap.xml
