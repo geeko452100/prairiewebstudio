@@ -13,11 +13,19 @@ const { site, defaults, business, services, faqs, pages, contactForm } = config;
 const siteUrl = site.url.replace(/\/$/, '');
 const today = new Date().toISOString().slice(0, 10);
 
-function resolveContactEndpoint() {
-  const raw = process.env.CONTACT_API_URL || contactForm?.endpoint || '';
-  if (!raw) return '';
-  if (raw.startsWith('http://') || raw.startsWith('https://')) return raw;
-  return `https://${raw.replace(/\/$/, '')}/api/contact`;
+function resolveContactForm() {
+  const formId = process.env.FORMSPREE_FORM_ID || contactForm?.formId || '';
+  let endpoint = process.env.FORMSPREE_ENDPOINT || contactForm?.endpoint || '';
+  if (!endpoint && formId) {
+    endpoint = `https://formspree.io/f/${formId}`;
+  }
+  if (!endpoint) {
+    endpoint = 'https://formspree.io/f/YOUR_FORM_ID';
+  }
+  return {
+    endpoint,
+    subject: contactForm?.subject || 'New contact form submission',
+  };
 }
 
 function escapeHtml(value) {
@@ -208,10 +216,11 @@ function applyPageSeo(page) {
     html = replaceBlock(html, '<!-- SEO:JSONLD-START -->', '<!-- SEO:JSONLD-END -->', buildJsonLd(page));
   }
 
-  const contactEndpoint = resolveContactEndpoint();
-  if (contactEndpoint) {
-    html = html.replace(/\{\{CONTACT_API_URL\}\}/g, escapeHtml(contactEndpoint));
-  }
+  const formConfig = resolveContactForm();
+  html = html.replace(/\{\{CONTACT_FORM_ENDPOINT\}\}/g, escapeHtml(formConfig.endpoint));
+  html = html.replace(/\{\{CONTACT_FORM_SUBJECT\}\}/g, escapeHtml(formConfig.subject));
+  html = html.replace(/\{\{CONTACT_EMAIL\}\}/g, escapeHtml(business.email));
+  html = html.replace(/\{\{CONTACT_MAILTO\}\}/g, escapeHtml(`mailto:${business.email}`));
 
   fs.writeFileSync(htmlPath, html);
   console.log(`Applied SEO templates to ${page.html}`);

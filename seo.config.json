@@ -13,7 +13,9 @@
     "faqIntro": "Common questions about our web design process, pricing, and local SEO for Great Bend businesses."
   },
   "contactForm": {
-    "endpoint": "http://localhost:3000/api/contact"
+    "endpoint": "https://formspree.io/f/xojndgwa",
+    "formId": "xojndgwa",
+    "subject": "New Snap Load Digital contact"
   },
   "business": {
     "type": "ProfessionalService",
@@ -40,14 +42,26 @@
   "services": [
     {
       "name": "Own It Outright",
-      "description": "Full custom website build with a one-time payment and optional monthly or annual care plan.",
+      "description": "Full custom website build with two payments ($750 deposit + $750 at deployment). You own the site at launch.",
       "price": "1500",
       "priceCurrency": "USD"
     },
     {
       "name": "Launch & Support",
-      "description": "Lower upfront cost with ongoing monthly support, updates, and local SEO maintenance.",
-      "price": "499",
+      "description": "Lower build cost with two payments ($249 deposit + $249 at deployment). Same quality build with a smaller upfront investment.",
+      "price": "498",
+      "priceCurrency": "USD"
+    },
+    {
+      "name": "Care & Support (Monthly)",
+      "description": "Ongoing website maintenance subscription with content updates, uptime monitoring, and priority support at $12.50/month.",
+      "price": "12.50",
+      "priceCurrency": "USD"
+    },
+    {
+      "name": "Care & Support (Annual)",
+      "description": "Ongoing website maintenance subscription with content updates, uptime monitoring, and priority support at $150/year.",
+      "price": "150",
       "priceCurrency": "USD"
     }
   ],
@@ -70,7 +84,7 @@
     },
     {
       "question": "Do I own my website after launch?",
-      "answer": "With the Own It Outright plan, you own the site from day one. With Launch & Support, you get full use of the site while subscribed; we can discuss ownership transfer anytime."
+      "answer": "With Own It Outright, you own the site from day one. Launch & Support lowers your upfront build cost. Either build plan can pair with a maintenance subscription for ongoing updates and monitoring — we can discuss ownership transfer anytime."
     }
   ],
   "pages": [
