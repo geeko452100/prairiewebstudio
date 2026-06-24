@@ -425,8 +425,12 @@
               name="contact"
               class="card space-y-5"
               method="POST"
-              data-endpoint="http://localhost:3000/api/contact"
+              data-endpoint="https://api.web3forms.com/submit"
             >
+              <input type="hidden" name="access_key" value="">
+              <input type="hidden" name="subject" value="New Snap Load Digital contact">
+              <input type="hidden" name="from_name" value="Snap Load Digital Website">
+
               <p class="hidden" aria-hidden="true">
                 <label for="bot-field">Leave this empty</label>
                 <input type="text" id="bot-field" name="bot-field" tabindex="-1" autocomplete="off">
@@ -710,7 +714,8 @@
       form.addEventListener('submit', function (e) {
         e.preventDefault();
         var endpoint = form.getAttribute('data-endpoint');
-        if (!endpoint) {
+        var accessKey = form.querySelector('[name="access_key"]').value;
+        if (!endpoint || !accessKey) {
           showFormError();
           return;
         }
@@ -719,20 +724,13 @@
           submitBtn.disabled = true;
           submitBtn.textContent = 'Sending…';
         }
-        var payload = {
-          name: form.querySelector('[name="name"]').value,
-          email: form.querySelector('[name="email"]').value,
-          plan: form.querySelector('[name="plan"]').value,
-          message: form.querySelector('[name="message"]').value,
-          'bot-field': form.querySelector('[name="bot-field"]').value
-        };
         fetch(endpoint, {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-          body: JSON.stringify(payload)
+          body: new FormData(form)
         })
-          .then(function (res) {
-            if (!res.ok) throw new Error('submit failed');
+          .then(function (res) { return res.json(); })
+          .then(function (data) {
+            if (!data.success) throw new Error('submit failed');
             showFormSuccess();
           })
           .catch(function () {

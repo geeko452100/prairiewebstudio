@@ -1,35 +1,9 @@
 services:
   - type: web
-    name: snapload-contact-api
-    runtime: node
-    plan: free
-    region: ohio
-    buildCommand: cd api && npm install
-    startCommand: cd api && npm start
-    healthCheckPath: /health
-    envVars:
-      - key: NODE_VERSION
-        value: "20"
-      - key: CONTACT_TO
-        value: ggriffith@snapload-digital.com
-      - key: FROM_EMAIL
-        value: Snap Load Digital <contact@snapload-digital.com>
-      - key: RESEND_API_KEY
-        sync: false
-      - key: ALLOWED_ORIGINS
-        value: https://snapload-digital.com,https://www.snapload-digital.com,https://snaploaddigital.com,https://www.snaploaddigital.com
-
-  - type: web
     name: snapload-digital
     runtime: static
     buildCommand: npm install && npm run build
     staticPublishPath: .
-    envVars:
-      - key: CONTACT_API_URL
-        fromService:
-          type: web
-          name: snapload-contact-api
-          property: host
     routes:
       - type: redirect
         source: /deposit
