@@ -5,8 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Affordable Website Development in Great Bend | Snap Load Digital</title>
   <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
+  <!-- LCP image preload — must come before stylesheet to win fetch priority race -->
+  <link rel="preload" as="image" href="./assets/hero-illustration.svg" fetchpriority="high" type="image/svg+xml">
+  <!-- Preconnect to origins used at runtime -->
+  <link rel="preconnect" href="https://snapload-digital.com">
+  <link rel="dns-prefetch" href="https://snapload-digital.com">
   <!-- BUILD:CSS-START -->
-  <link rel="stylesheet" href="./assets/css/main.css">
+  <!-- Load stylesheet non-render-blocking; noscript fallback ensures it still loads -->
+  <link rel="preload" href="./assets/css/main.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="./assets/css/main.css"></noscript>
   <!-- BUILD:CSS-END -->
   <!-- SEO:HEAD-START -->
   <meta name="description" content="Snap Load Digital builds fast, affordable websites for Great Bend, KS businesses. Local web design, SEO, and hosting — perfect Lighthouse scores guaranteed.">
@@ -18,7 +25,6 @@
   <link rel="canonical" href="https://snapload-digital.com/">
   <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
   <link rel="apple-touch-icon" href="./assets/favicon.svg">
-  <link rel="preload" as="image" href="./assets/hero-illustration.svg" fetchpriority="high">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Snap Load Digital">
   <meta property="og:url" content="https://snapload-digital.com/">
@@ -32,6 +38,12 @@
   <meta name="twitter:description" content="High-performance websites for Great Bend and Central Kansas businesses. Fast load times, local SEO, and 100 Lighthouse scores.">
   <meta name="twitter:image" content="https://snapload-digital.com/assets/hero-illustration.svg">
   <meta name="twitter:image:alt" content="Snap Load Digital — fast, affordable websites for Great Bend, Kansas businesses">
+  <!-- Best Practices: security headers as meta equivalents -->
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <!-- OG image dimensions help crawlers -->
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
 <!-- SEO:HEAD-END -->
 </head>
 <body class="bg-ink-50 font-sans text-ink-800 antialiased">
@@ -43,7 +55,7 @@
   <header class="sticky top-0 z-40 border-b border-ink-100/80 bg-white">
     <div class="container-site flex h-16 items-center justify-between px-4 sm:px-6 lg:px-8">
       <a href="./" class="flex items-center gap-3 rounded-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500" aria-label="Snap Load Digital — Home">
-        <img src="./assets/logo.svg" alt="" width="40" height="40" class="h-10 w-10" decoding="async" fetchpriority="high">
+        <img src="./assets/logo.svg" alt="" width="40" height="40" class="h-10 w-10" decoding="sync" fetchpriority="high">
         <span class="text-lg font-bold tracking-tight text-ink-900">Snap Load <span class="text-brand-800">Digital</span></span>
       </a>
 
@@ -128,8 +140,9 @@
               width="640"
               height="480"
               class="relative h-full w-full rounded-2xl object-contain"
-              decoding="async"
+              decoding="sync"
               fetchpriority="high"
+              loading="eager"
             >
           </div>
         </div>
@@ -478,7 +491,7 @@
                   <label for="contact-plan" class="block text-sm font-medium text-ink-700">
                     Preferred plan <span class="text-brand-800" aria-hidden="true">*</span><span class="sr-only"> (required)</span>
                   </label>
-                  <select id="contact-plan" name="plan" required aria-required="true" class="field-input">
+                  <select id="contact-plan" name="plan" required aria-required="true" autocomplete="off" class="field-input">
                     <option value="ownership">Own It Outright — 2 × $700 + $99/yr</option>
                     <option value="launch">Launch &amp; Support — 2 × $200 + $99/yr</option>
                     <option value="unsure">Not sure yet</option>
@@ -497,6 +510,8 @@
                     minlength="10"
                     maxlength="2000"
                     aria-required="true"
+                    autocomplete="off"
+                    spellcheck="true"
                     class="field-input min-h-[8rem] resize-y"
                     placeholder="Briefly describe your business, timeline, and what you need from your website."
                   ></textarea>
@@ -515,7 +530,7 @@
   <footer class="border-t border-ink-200 bg-ink-50 py-10">
     <div class="container-site flex flex-col items-center justify-between gap-6 px-4 sm:flex-row sm:px-6 lg:px-8">
       <div class="flex items-center gap-3">
-        <img src="./assets/logo.svg" alt="" width="32" height="32" class="h-8 w-8" decoding="async" loading="lazy">
+        <img src="./assets/logo.svg" alt="" width="32" height="32" class="h-8 w-8" decoding="async" loading="lazy" fetchpriority="low">
         <p class="text-sm text-ink-600">&copy; <time datetime="2026">2026</time> Snap Load Digital. All rights reserved.</p>
       </div>
       <nav aria-label="Footer">
@@ -681,7 +696,7 @@
   </script>
 <!-- SEO:JSONLD-END -->
 
-  <script defer>
+  <script type="module">
     function initMenu() {
       var toggle = document.getElementById('menu-toggle');
       var nav = document.getElementById('mobile-nav');
@@ -701,9 +716,8 @@
     }
 
     function showFormError() {
-      var form = document.getElementById('contact-form');
       var error = document.getElementById('form-error');
-      if (form && error) {
+      if (error) {
         error.removeAttribute('hidden');
         error.classList.remove('hidden');
         error.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
@@ -764,11 +778,11 @@
       });
     }
 
-    var idle = window.requestIdleCallback || function (cb) { setTimeout(cb, 1); };
-    idle(function () {
-      initMenu();
-      initContactForm();
-    });
+    if ('requestIdleCallback' in window) {
+      requestIdleCallback(function () { initMenu(); initContactForm(); });
+    } else {
+      setTimeout(function () { initMenu(); initContactForm(); }, 1);
+    }
   </script>
 </body>
 </html>
