@@ -16,8 +16,8 @@ const allowedOrigins = (process.env.ALLOWED_ORIGINS || '')
 const resend = resendApiKey ? new Resend(resendApiKey) : null;
 
 const planLabels = {
-  ownership: 'Own It Outright — $1,500 + care plan',
-  subscription: 'Launch & Support — $499 + $99/mo',
+  ownership: 'Own It Outright — 2 × $750 + care ($150/yr or $12.50/mo)',
+  subscription: 'Launch & Support — 2 × $249 + support ($150/yr or $12.50/mo)',
   unsure: 'Not sure yet',
 };
 

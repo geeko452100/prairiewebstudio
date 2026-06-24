@@ -40,14 +40,14 @@
   "services": [
     {
       "name": "Own It Outright",
-      "description": "Full custom website build with a one-time payment and optional monthly or annual care plan.",
+      "description": "Full custom website build with two payments ($750 deposit + $750 at deployment). Optional care plan at $12.50/month or $150/year.",
       "price": "1500",
       "priceCurrency": "USD"
     },
     {
       "name": "Launch & Support",
-      "description": "Lower upfront cost with ongoing monthly support, updates, and local SEO maintenance.",
-      "price": "499",
+      "description": "Lower build cost with two payments ($249 deposit + $249 at deployment). Ongoing support at $12.50/month or $150/year.",
+      "price": "498",
       "priceCurrency": "USD"
     }
   ],
