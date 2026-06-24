@@ -219,6 +219,8 @@ function applyPageSeo(page) {
   const formConfig = resolveContactForm();
   html = html.replace(/\{\{CONTACT_FORM_ENDPOINT\}\}/g, escapeHtml(formConfig.endpoint));
   html = html.replace(/\{\{CONTACT_FORM_SUBJECT\}\}/g, escapeHtml(formConfig.subject));
+  html = html.replace(/\{\{CONTACT_EMAIL\}\}/g, escapeHtml(business.email));
+  html = html.replace(/\{\{CONTACT_MAILTO\}\}/g, escapeHtml(`mailto:${business.email}`));
 
   fs.writeFileSync(htmlPath, html);
   console.log(`Applied SEO templates to ${page.html}`);
