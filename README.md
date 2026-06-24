@@ -129,15 +129,13 @@ Deploy to [Cloudflare Pages](https://pages.cloudflare.com) (recommended) or any 
 
 1. Connect the repo in the Cloudflare Pages dashboard.
 2. Set the build command to **`npm run build`** and the output directory to **`.`** (repo root).
-3. Add a **`WEB3FORMS_ACCESS_KEY`** environment variable:
-   - Create a free access key at [Web3Forms](https://web3forms.com)
-   - Restrict the key to your domain (e.g. **snapload-digital.com**)
-   - Set the notification email to **ggriffith@snapload-digital.com**
-4. Deploy and test the contact form on the live site.
+3. Create a form at [Formspree](https://formspree.io) and copy your form ID.
+4. Add a **`FORMSPREE_FORM_ID`** environment variable in Cloudflare Pages (or set the full URL via **`FORMSPREE_ENDPOINT`**).
+5. Deploy and test the contact form on the live site.
 
-The contact form submits directly from the browser to Web3Forms — no backend required. The build injects your access key from the environment variable into the static HTML.
+The contact form uses `method="POST"` and submits directly from the browser to your Formspree endpoint — no backend required. The build injects the endpoint from the environment variable into the form's `action` attribute.
 
-For local testing, add your access key to `contactForm.accessKey` in **`seo.config.json`**, then run `npm run build`. Do not commit real keys to the repo; use the Cloudflare Pages env var in production.
+For local testing, set `contactForm.endpoint` or `contactForm.formId` in **`seo.config.json`**, then run `npm run build`. Do not commit real form IDs to the repo; use the Cloudflare Pages env var in production.
 
 Stripe payment redirects in **`_redirects`** are supported automatically on Cloudflare Pages.
 

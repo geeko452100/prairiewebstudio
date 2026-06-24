@@ -14,9 +14,16 @@ const siteUrl = site.url.replace(/\/$/, '');
 const today = new Date().toISOString().slice(0, 10);
 
 function resolveContactForm() {
+  const formId = process.env.FORMSPREE_FORM_ID || contactForm?.formId || '';
+  let endpoint = process.env.FORMSPREE_ENDPOINT || contactForm?.endpoint || '';
+  if (!endpoint && formId) {
+    endpoint = `https://formspree.io/f/${formId}`;
+  }
+  if (!endpoint) {
+    endpoint = 'https://formspree.io/f/YOUR_FORM_ID';
+  }
   return {
-    endpoint: process.env.CONTACT_FORM_ENDPOINT || contactForm?.endpoint || 'https://api.web3forms.com/submit',
-    accessKey: process.env.WEB3FORMS_ACCESS_KEY || contactForm?.accessKey || '',
+    endpoint,
     subject: contactForm?.subject || 'New contact form submission',
   };
 }
@@ -211,7 +218,6 @@ function applyPageSeo(page) {
 
   const formConfig = resolveContactForm();
   html = html.replace(/\{\{CONTACT_FORM_ENDPOINT\}\}/g, escapeHtml(formConfig.endpoint));
-  html = html.replace(/\{\{CONTACT_FORM_ACCESS_KEY\}\}/g, escapeHtml(formConfig.accessKey));
   html = html.replace(/\{\{CONTACT_FORM_SUBJECT\}\}/g, escapeHtml(formConfig.subject));
 
   fs.writeFileSync(htmlPath, html);
