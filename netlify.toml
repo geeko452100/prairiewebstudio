@@ -1,4 +1,4 @@
-# Netlify form detection for static HTML
+# Static site build settings (also usable on Netlify)
 
 [build]
   command = "npm run build"

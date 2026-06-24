@@ -13,11 +13,12 @@ const { site, defaults, business, services, faqs, pages, contactForm } = config;
 const siteUrl = site.url.replace(/\/$/, '');
 const today = new Date().toISOString().slice(0, 10);
 
-function resolveContactEndpoint() {
-  const raw = process.env.CONTACT_API_URL || contactForm?.endpoint || '';
-  if (!raw) return '';
-  if (raw.startsWith('http://') || raw.startsWith('https://')) return raw;
-  return `https://${raw.replace(/\/$/, '')}/api/contact`;
+function resolveContactForm() {
+  return {
+    endpoint: process.env.CONTACT_FORM_ENDPOINT || contactForm?.endpoint || 'https://api.web3forms.com/submit',
+    accessKey: process.env.WEB3FORMS_ACCESS_KEY || contactForm?.accessKey || '',
+    subject: contactForm?.subject || 'New contact form submission',
+  };
 }
 
 function escapeHtml(value) {
@@ -208,10 +209,10 @@ function applyPageSeo(page) {
     html = replaceBlock(html, '<!-- SEO:JSONLD-START -->', '<!-- SEO:JSONLD-END -->', buildJsonLd(page));
   }
 
-  const contactEndpoint = resolveContactEndpoint();
-  if (contactEndpoint) {
-    html = html.replace(/\{\{CONTACT_API_URL\}\}/g, escapeHtml(contactEndpoint));
-  }
+  const formConfig = resolveContactForm();
+  html = html.replace(/\{\{CONTACT_FORM_ENDPOINT\}\}/g, escapeHtml(formConfig.endpoint));
+  html = html.replace(/\{\{CONTACT_FORM_ACCESS_KEY\}\}/g, escapeHtml(formConfig.accessKey));
+  html = html.replace(/\{\{CONTACT_FORM_SUBJECT\}\}/g, escapeHtml(formConfig.subject));
 
   fs.writeFileSync(htmlPath, html);
   console.log(`Applied SEO templates to ${page.html}`);
