@@ -4,6 +4,12 @@
   command = "npm run build"
   publish = "."
 
+[[redirects]]
+  from = "/api/*"
+  to = "https://prairie-web-studio-api.onrender.com/api/:splat"
+  status = 200
+  force = true
+
 [[headers]]
   for = "/*"
   [headers.values]

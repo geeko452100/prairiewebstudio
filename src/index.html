@@ -448,6 +448,53 @@
     </section>
 <!-- SEO:FAQ-END -->
 
+    <!-- Tax Calculator Widget -->
+    <section id="tax-calculator" class="section-pad defer-paint bg-ink-50" aria-labelledby="tax-calc-heading">
+      <div class="container-site">
+        <div class="mx-auto max-w-2xl text-center">
+          <h2 id="tax-calc-heading" class="text-3xl font-bold tracking-tight text-ink-950 sm:text-4xl">Sales Tax Calculator</h2>
+          <p class="mt-4 text-lg text-ink-600">Estimate Kansas sales tax on any purchase — handy for local businesses pricing their services.</p>
+        </div>
+        <div class="mx-auto mt-10 max-w-lg">
+          <div class="card space-y-5">
+            <div>
+              <label for="calc-city" class="block text-sm font-medium text-ink-700">City</label>
+              <select id="calc-city" class="field-input">
+                <option value="">— Enter rate manually —</option>
+                <option value="Great Bend" data-rate="8.70" selected>Great Bend (8.70%)</option>
+                <option value="Hoisington" data-rate="8.25">Hoisington (8.25%)</option>
+                <option value="Ellinwood" data-rate="8.00">Ellinwood (8.00%)</option>
+                <option value="Larned" data-rate="9.00">Larned (9.00%)</option>
+              </select>
+            </div>
+            <div>
+              <label for="calc-amount" class="block text-sm font-medium text-ink-700">Purchase Amount ($)</label>
+              <input type="number" id="calc-amount" min="0" step="0.01" class="field-input" placeholder="0.00" inputmode="decimal">
+            </div>
+            <div>
+              <label for="calc-rate" class="block text-sm font-medium text-ink-700">Tax Rate (%)</label>
+              <input type="number" id="calc-rate" min="0" max="20" step="0.001" value="8.70" class="field-input">
+              <p class="mt-1 text-xs text-ink-500">Auto-filled by city — or enter a custom rate.</p>
+            </div>
+            <div class="rounded-xl border border-brand-300 bg-brand-50 p-4" aria-live="polite" aria-label="Tax calculation results">
+              <div class="flex justify-between text-sm text-ink-700">
+                <span>Subtotal</span>
+                <span id="calc-subtotal">$0.00</span>
+              </div>
+              <div class="mt-1 flex justify-between text-sm text-ink-700">
+                <span>Sales Tax</span>
+                <span id="calc-tax">$0.00</span>
+              </div>
+              <div class="mt-2 flex justify-between border-t border-brand-300 pt-2 font-bold text-ink-900">
+                <span>Total</span>
+                <span id="calc-total">$0.00</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- Contact Section -->
     <section id="contact" class="section-pad defer-paint bg-brand-50" aria-labelledby="contact-heading">
       <div class="container-site">
@@ -854,93 +901,6 @@
   </script>
 <!-- SEO:JSONLD-END -->
 
-  <script type="module">
-    function initMenu() {
-      var toggle = document.getElementById('menu-toggle');
-      var nav = document.getElementById('mobile-nav');
-      if (!toggle || !nav) return;
-      toggle.addEventListener('click', function () {
-        var open = toggle.getAttribute('aria-expanded') === 'true';
-        var nextOpen = !open;
-        toggle.setAttribute('aria-expanded', String(nextOpen));
-        toggle.setAttribute('aria-label', nextOpen ? 'Close navigation menu' : 'Open navigation menu');
-        nav.classList.toggle('hidden');
-        if (nextOpen) {
-          nav.removeAttribute('inert');
-        } else {
-          nav.setAttribute('inert', '');
-        }
-      }, { passive: true });
-    }
-
-    function showFormError() {
-      var error = document.getElementById('form-error');
-      if (error) {
-        error.removeAttribute('hidden');
-        error.classList.remove('hidden');
-        error.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-      }
-    }
-
-    function showFormSuccess() {
-      var form = document.getElementById('contact-form');
-      var success = document.getElementById('form-success');
-      var error = document.getElementById('form-error');
-      if (error) {
-        error.setAttribute('hidden', '');
-        error.classList.add('hidden');
-      }
-      if (form && success) {
-        form.setAttribute('hidden', '');
-        success.removeAttribute('hidden');
-        success.classList.remove('hidden');
-        success.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-      }
-    }
-
-    function initContactForm() {
-      var form = document.getElementById('contact-form');
-      if (!form) return;
-      form.addEventListener('submit', function (e) {
-        e.preventDefault();
-        var action = form.getAttribute('action');
-        if (!action || action.indexOf('YOUR_FORM_ID') !== -1) {
-          showFormError();
-          return;
-        }
-        var submitBtn = document.getElementById('contact-submit');
-        if (submitBtn) {
-          submitBtn.disabled = true;
-          submitBtn.textContent = 'Sending…';
-        }
-        fetch(action, {
-          method: 'POST',
-          headers: { 'Accept': 'application/json' },
-          body: new FormData(form)
-        })
-          .then(function (res) {
-            if (!res.ok) throw new Error('submit failed');
-            return res.json();
-          })
-          .then(function (data) {
-            if (!data.ok) throw new Error('submit failed');
-            showFormSuccess();
-          })
-          .catch(function () {
-            if (submitBtn) {
-              submitBtn.disabled = false;
-              submitBtn.textContent = "Let's Get To Work";
-            }
-            showFormError();
-          });
-      });
-    }
-
-    if ('requestIdleCallback' in window) {
-      requestIdleCallback(function () { initMenu(); initContactForm(); });
-    } else {
-      setTimeout(function () { initMenu(); initContactForm(); }, 1);
-    }
-  </script>
+  <script type="module" src="./main.js"></script>
 </body>
 </html>

@@ -1,5 +1,15 @@
 services:
   - type: web
+    name: prairie-web-studio-api
+    runtime: python
+    rootDir: api
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.0
+
+  - type: web
     name: snapload-digital
     runtime: static
     buildCommand: npm install && npm run build
@@ -9,3 +19,6 @@ services:
         source: /deposit
         destination: https://stripe.com
         status: 302
+      - type: rewrite
+        source: /api/*
+        destination: https://prairie-web-studio-api.onrender.com/api/:splat
