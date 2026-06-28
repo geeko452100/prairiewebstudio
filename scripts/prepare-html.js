@@ -6,6 +6,9 @@ const root = path.join(__dirname, '..');
 
 const pageDefinitions = [
   { source: 'src/index.html', output: 'index.html' },
+  { source: 'src/services.html', output: 'services.html' },
+  { source: 'src/faq.html', output: 'faq.html' },
+  { source: 'src/contact.html', output: 'contact.html' },
   { source: 'src/success.html', output: 'success.html' },
 ];
 

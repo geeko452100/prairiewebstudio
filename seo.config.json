@@ -102,7 +102,58 @@
         "priority": "1.0"
       },
       "sections": {
+        "jsonld": true
+      }
+    },
+    {
+      "id": "services",
+      "html": "src/services.html",
+      "path": "/services.html",
+      "title": "Website Design Services & Pricing | Prairie Web Studio",
+      "description": "Web design pricing for Great Bend & Central Kansas businesses. Own your site outright or launch with a lower deposit — plus optional monthly or annual maintenance.",
+      "ogTitle": "Services & Pricing — Prairie Web Studio",
+      "ogDescription": "Two simple build options and an optional care plan. Honest, Main-Street pricing for fast, easy-to-find websites.",
+      "preloadImage": "./assets/kansas-fields.avif",
+      "sitemap": {
+        "changefreq": "monthly",
+        "priority": "0.9"
+      },
+      "sections": {
+        "jsonld": true
+      }
+    },
+    {
+      "id": "faq",
+      "html": "src/faq.html",
+      "path": "/faq.html",
+      "title": "Frequently Asked Questions | Prairie Web Studio",
+      "description": "Answers to common questions about Prairie Web Studio — timelines, pricing, local SEO, Lighthouse scores, and website ownership for Great Bend businesses.",
+      "ogTitle": "FAQ — Prairie Web Studio",
+      "ogDescription": "Common questions about our web design process, pricing, and local SEO for Great Bend businesses.",
+      "preloadImage": "./assets/kansas-fields.avif",
+      "sitemap": {
+        "changefreq": "monthly",
+        "priority": "0.7"
+      },
+      "sections": {
         "faq": true,
+        "jsonld": true
+      }
+    },
+    {
+      "id": "contact",
+      "html": "src/contact.html",
+      "path": "/contact.html",
+      "title": "Contact | Prairie Web Studio",
+      "description": "Get in touch with Prairie Web Studio for a free website quote. Serving Great Bend & Central Kansas — we respond within one business day.",
+      "ogTitle": "Contact — Prairie Web Studio",
+      "ogDescription": "Ready to get online or upgrade your current site? Reach out for a free quote — we respond within one business day.",
+      "preloadImage": "./assets/kansas-fields.avif",
+      "sitemap": {
+        "changefreq": "yearly",
+        "priority": "0.8"
+      },
+      "sections": {
         "jsonld": true
       }
     },
