@@ -10,8 +10,8 @@
       <stop offset="100%" stop-color="#1e293b"/>
     </linearGradient>
     <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0%" stop-color="#06b6d4"/>
-      <stop offset="100%" stop-color="#22d3ee"/>
+      <stop offset="0%" stop-color="#678c3e"/>
+      <stop offset="100%" stop-color="#86ab5b"/>
     </linearGradient>
     <linearGradient id="warm" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0%" stop-color="#f59e0b"/>
@@ -20,9 +20,9 @@
   </defs>
 
   <rect width="640" height="480" fill="url(#sky)" rx="24"/>
-  <circle cx="520" cy="80" r="56" fill="#06b6d4" opacity="0.12"/>
+  <circle cx="520" cy="80" r="56" fill="#678c3e" opacity="0.12"/>
   <circle cx="100" cy="380" r="72" fill="#f59e0b" opacity="0.1"/>
-  <circle cx="560" cy="360" r="40" fill="#22d3ee" opacity="0.15"/>
+  <circle cx="560" cy="360" r="40" fill="#86ab5b" opacity="0.15"/>
 
   <g transform="translate(120 60)">
     <rect width="400" height="300" rx="16" fill="#fff"/>
@@ -39,9 +39,9 @@
     <rect x="40" y="152" width="88" height="32" rx="8" fill="url(#accent)"/>
     <rect x="140" y="152" width="88" height="32" rx="8" fill="#334155"/>
     <g transform="translate(280 140)">
-      <rect x="0" y="48" width="20" height="40" rx="4" fill="#06b6d4" opacity="0.7"/>
-      <rect x="28" y="24" width="20" height="64" rx="4" fill="#22d3ee"/>
-      <rect x="56" y="36" width="20" height="52" rx="4" fill="#0891b2" opacity="0.8"/>
+      <rect x="0" y="48" width="20" height="40" rx="4" fill="#678c3e" opacity="0.7"/>
+      <rect x="28" y="24" width="20" height="64" rx="4" fill="#86ab5b"/>
+      <rect x="56" y="36" width="20" height="52" rx="4" fill="#507030" opacity="0.8"/>
     </g>
     <rect x="40" y="200" width="140" height="48" rx="8" fill="#1e293b"/>
     <rect x="48" y="208" width="60" height="8" rx="2" fill="#475569"/>
@@ -50,7 +50,7 @@
     <g transform="translate(300 200)">
       <circle cx="40" cy="24" r="28" fill="none" stroke="#334155" stroke-width="6"/>
       <path d="M 12 24 A 28 28 0 0 1 68 24" fill="none" stroke="url(#accent)" stroke-width="6" stroke-linecap="round"/>
-      <text x="40" y="30" text-anchor="middle" fill="#22d3ee" font-family="system-ui,sans-serif" font-size="14" font-weight="700">100</text>
+      <text x="40" y="30" text-anchor="middle" fill="#86ab5b" font-family="system-ui,sans-serif" font-size="14" font-weight="700">100</text>
     </g>
   </g>
 

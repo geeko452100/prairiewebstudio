@@ -1,10 +1,21 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
   <defs>
     <linearGradient id="fg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#06b6d4"/>
-      <stop offset="100%" stop-color="#0891b2"/>
+      <stop offset="0%" stop-color="#678c3e"/>
+      <stop offset="100%" stop-color="#3f5a2a"/>
     </linearGradient>
   </defs>
   <rect width="32" height="32" rx="8" fill="url(#fg)"/>
-  <path fill="#fff" d="M16 8c-1 0-1.8.8-1.8 1.8v1.6l-4.5 1.9a1.5 1.5 0 0 0-.9 1.4v5.8c0 .6.3 1.1.9 1.4l4.5 2.2V24c0 1 .8 1.8 1.8 1.8s1.8-.8 1.8-1.8v-2.8l4.5-2.2a1.5 1.5 0 0 0 .9-1.4v-5.8a1.5 1.5 0 0 0-.9-1.4L17.8 11.4V9.8C17.8 8.8 17 8 16 8z"/>
+  <g stroke="#f7faf0" stroke-width="1.6" stroke-linecap="round">
+    <path d="M16 27 V13.5" fill="none"/>
+    <path d="M16 21.5 q-4.8 -0.7 -6.5 -4.4" fill="none"/>
+    <path d="M16 21.5 q4.8 -0.7 6.5 -4.4" fill="none"/>
+  </g>
+  <g fill="#f7faf0">
+    <g transform="translate(16 13.5)"><ellipse cx="0" cy="-3.4" rx="1.45" ry="3"/></g>
+    <g transform="translate(16 16.6) rotate(-30)"><ellipse cx="0" cy="-3.4" rx="1.45" ry="3"/></g>
+    <g transform="translate(16 16.6) rotate(30)"><ellipse cx="0" cy="-3.4" rx="1.45" ry="3"/></g>
+    <g transform="translate(16 19.8) rotate(-34)"><ellipse cx="0" cy="-3.4" rx="1.45" ry="3"/></g>
+    <g transform="translate(16 19.8) rotate(34)"><ellipse cx="0" cy="-3.4" rx="1.45" ry="3"/></g>
+  </g>
 </svg>
