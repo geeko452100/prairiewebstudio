@@ -41,6 +41,19 @@
   <meta name="twitter:image:alt" content="Sunset over Kansas prairie fields near Central Kansas">
 <!-- SEO:HEAD-END -->
   <style>
+    /* Two layers replace the white background: a hazy cornfield-yellow wash
+       over the Kansas wheat field photo, kept faint but still visible. */
+    body {
+      background-color: #eee1a8;
+      background-image:
+        linear-gradient(rgba(238, 225, 168, 0.86), rgba(235, 219, 158, 0.89)),
+        url("./assets/kansas-fields.avif");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+    }
+
     .hero-country {
       background-image: linear-gradient(90deg, rgba(16, 24, 12, 0.86) 0%, rgba(24, 34, 18, 0.66) 48%, rgba(24, 34, 18, 0.18) 100%), url("./assets/kansas-fields.avif");
       background-position: center;
@@ -55,13 +68,13 @@
     }
   </style>
 </head>
-<body class="bg-ink-50 font-sans text-ink-800 antialiased">
+<body class="font-sans text-ink-800 antialiased">
   <a href="#main" class="sr-only focus-visible:absolute focus-visible:left-4 focus-visible:top-4 focus-visible:z-50 focus-visible:m-0 focus-visible:block focus-visible:h-auto focus-visible:w-auto focus-visible:overflow-visible focus-visible:whitespace-normal focus-visible:rounded-lg focus-visible:bg-brand-800 focus-visible:px-4 focus-visible:py-2 focus-visible:text-sm focus-visible:font-medium focus-visible:text-white">
     Skip to main content
   </a>
 
   <!-- Header -->
-  <header class="sticky top-0 z-40 border-b border-ink-100/80 bg-white">
+  <header class="sticky top-0 z-40 border-b border-ink-100/80 bg-[#f4ead0]/95 backdrop-blur">
     <div class="container-site flex h-16 items-center justify-between px-4 sm:px-6 lg:px-8">
       <a href="./" class="flex items-center gap-3 rounded-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500" aria-label="Prairie Web Studio — Home">
         <img src="./assets/logo.svg" alt="" width="40" height="40" class="h-10 w-10" decoding="sync" fetchpriority="high">
@@ -156,7 +169,7 @@
     </section>
 
     <!-- Services Section -->
-    <section id="services" class="section-pad defer-paint bg-ink-50" aria-labelledby="services-heading">
+    <section id="services" class="section-pad defer-paint" aria-labelledby="services-heading">
       <div class="container-site">
         <div class="mx-auto max-w-2xl text-center">
           <h2 id="services-heading" class="text-3xl font-bold tracking-tight text-ink-950 sm:text-4xl">Services &amp; Pricing</h2>
@@ -387,7 +400,7 @@
                 <span class="shrink-0 text-brand-800 transition-transform group-open:rotate-45" aria-hidden="true">+</span>
               </span>
             </summary>
-            <p class="mt-4 text-ink-600">Most Prairie Web Studio projects launch within 7 business days after we receive your content and brand details. Larger multi-page sites may take up to two weeks.</p>
+            <p class="mt-4 text-ink-600">Most of our projects launch within 7 business days after we receive your content and brand details. Larger multi-page sites may take up to two weeks.</p>
           </details>
 
           <details class="card group">
@@ -459,7 +472,7 @@
                 </span>
                 <div>
                   <p class="font-semibold text-ink-900">Service Area</p>
-                  <p class="text-ink-600">Great Bend &amp; Central Kansas — remote only, no walk-in office</p>
+                  <p class="text-ink-600">Great Bend &amp; Central Kansas — Fully digital agency | Consultations by appointments</p>
                 </div>
               </div>
               <div class="flex items-start gap-4">
@@ -469,7 +482,7 @@
                 <div>
                   <p class="font-semibold text-ink-900">Business Hours</p>
                   <dl class="text-ink-600">
-                    <div class="flex justify-between gap-8"><dt>Mon – Fri</dt><dd>9:00 AM – 5:00 PM</dd></div>
+                    <div class="flex justify-between gap-8"><dt>Mon &hyphen; Fri</dt><dd>9:00 AM &hyphen; 5:00 PM</dd></div>
                     <div class="flex justify-between gap-8"><dt>Saturday</dt><dd>By appointment</dd></div>
                     <div class="flex justify-between gap-8"><dt>Sunday</dt><dd>Closed</dd></div>
                   </dl>
@@ -592,13 +605,46 @@
         </div>
       </div>
     </section>
+
+    <!-- Local roots gallery — the hard-working folks we build for -->
+    <section class="section-pad defer-paint" aria-labelledby="roots-heading">
+      <div class="container-site">
+        <div class="mx-auto max-w-2xl text-center">
+          <h2 id="roots-heading" class="text-3xl font-bold tracking-tight text-ink-950 sm:text-4xl">Built for hard-working folks</h2>
+          <p class="mt-4 text-lg text-ink-700">From the field to the job site, we build websites for the growers, tradespeople, and family businesses that keep Central Kansas running.</p>
+        </div>
+        <ul class="mt-12 grid gap-6 sm:grid-cols-3">
+          <li class="overflow-hidden rounded-3xl border border-ink-100 bg-white shadow-card">
+            <div class="aspect-[4/5] overflow-hidden bg-brand-50">
+              <!-- Swap src with your photo, e.g. ./assets/worker-1.jpg -->
+              <img src="./assets/farmer.avif" alt="A farmer taking pride in his crops" width="400" height="500" class="h-full w-full object-cover" loading="lazy" decoding="async">
+            </div>
+            <p class="px-4 py-3 text-center text-sm font-semibold text-ink-800">Farmers &amp; growers</p>
+          </li>
+          <li class="overflow-hidden rounded-3xl border border-ink-100 bg-white shadow-card">
+            <div class="aspect-[4/5] overflow-hidden bg-brand-50">
+              <!-- Swap src with your photo, e.g. ./assets/worker-2.jpg -->
+              <img src="./assets/blue-collar.avif" alt="A mechanic hard at work on the engine of a vehicle" width="400" height="500" class="h-full w-full object-cover" loading="lazy" decoding="async">
+            </div>
+            <p class="px-4 py-3 text-center text-sm font-semibold text-ink-800">Trades &amp; builders</p>
+          </li>
+          <li class="overflow-hidden rounded-3xl border border-ink-100 bg-white shadow-card">
+            <div class="aspect-[4/5] overflow-hidden bg-brand-50">
+              <!-- Swap src with your photo, e.g. ./assets/worker-4.jpg -->
+              <img src="./assets/small-business.avif" alt="A small business owner standing in front of their storefront" width="400" height="500" class="h-full w-full object-cover" loading="lazy" decoding="async">
+            </div>
+            <p class="px-4 py-3 text-center text-sm font-semibold text-ink-800">Small business owners</p>
+          </li>
+        </ul>
+      </div>
+    </section>
   </main>
 
   <!-- Decorative local farm-town band — the field rises out of the footer -->
-  <img src="./assets/field-band.svg" alt="" width="1440" height="360" class="-mb-px block w-full select-none" decoding="async" loading="lazy" fetchpriority="low" aria-hidden="true">
+  <img src="./assets/field-band.svg" alt="" width="1440" height="360" class="-mb-px mt-12 block w-full select-none sm:mt-16" decoding="async" loading="lazy" fetchpriority="low" aria-hidden="true">
 
-  <footer class="bg-brand-900 py-10 text-white">
-    <div class="container-site flex flex-col items-center justify-between gap-6 px-4 sm:flex-row sm:px-6 lg:px-8">
+  <footer class="bg-brand-900 py-14 text-white">
+    <div class="container-site flex flex-col items-center justify-between gap-8 px-4 sm:flex-row sm:px-6 lg:px-8">
       <div class="flex items-center gap-3">
         <img src="./assets/logo.svg" alt="" width="32" height="32" class="h-8 w-8" decoding="async" loading="lazy" fetchpriority="low">
         <p class="text-sm text-ink-200">&copy; <time datetime="2026">2026</time> Prairie Web Studio. All rights reserved.</p>
