@@ -83,6 +83,8 @@ function initContactForm() {
   });
 }
 
+var API_BASE = 'https://api.prairiewebstudio.com';
+
 function initTaxCalculator() {
   var amountInput = document.getElementById('calc-amount');
   var rateInput = document.getElementById('calc-rate');
@@ -110,7 +112,7 @@ function initTaxCalculator() {
       var amount = parseFloat(amountInput.value) || 0;
       var rate = parseFloat(rateInput.value) || 0;
       var city = citySelect ? citySelect.value : '';
-      var url = '/api/tax?amount=' + amount + (city ? '&city_name=' + encodeURIComponent(city) : '');
+      var url = API_BASE + '/api/tax?amount=' + amount + '&rate=' + rate + (city ? '&city_name=' + encodeURIComponent(city) : '');
       fetch(url)
         .then(function (res) { return res.json(); })
         .then(function (data) {
