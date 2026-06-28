@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://snapload-digital.com/sitemap.xml
+Sitemap: https://prairiewebstudio.com/sitemap.xml

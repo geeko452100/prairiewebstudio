@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 360" width="1440" height="360" fill="none" role="img" aria-label="Illustration of a small Kansas farm town with grain elevator, barn, and wheat fields at sunset" preserveAspectRatio="xMidYMax slice">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f6f9f0"/>
+      <stop offset="1" stop-color="#e7efda"/>
+    </linearGradient>
+    <radialGradient id="sun" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#f2dca0"/>
+      <stop offset="0.55" stop-color="#e6c878"/>
+      <stop offset="1" stop-color="#e6c878" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Sky -->
+  <rect width="1440" height="360" fill="url(#sky)"/>
+
+  <!-- Harvest sun + soft halo -->
+  <circle cx="1140" cy="120" r="150" fill="url(#sun)"/>
+  <circle cx="1140" cy="120" r="56" fill="#ecd190"/>
+
+  <!-- Far rolling hills -->
+  <path d="M0 232 C 220 200 360 248 560 236 C 760 224 920 196 1120 220 C 1280 238 1380 224 1440 216 L1440 360 L0 360 Z" fill="#cfe0b5"/>
+
+  <!-- Tree line -->
+  <g fill="#a9c684">
+    <circle cx="120" cy="214" r="26"/><circle cx="156" cy="220" r="22"/><circle cx="88" cy="222" r="20"/>
+    <circle cx="980" cy="206" r="24"/><circle cx="1014" cy="214" r="20"/><circle cx="950" cy="216" r="18"/>
+  </g>
+
+  <!-- Small-town skyline on the horizon -->
+  <g fill="#6f9a4a">
+    <!-- Barn with gable roof -->
+    <rect x="300" y="200" width="78" height="60"/>
+    <path d="M296 200 L339 168 L382 200 Z"/>
+    <rect x="332" y="226" width="14" height="34"/>
+    <!-- Silo with domed cap -->
+    <rect x="386" y="186" width="26" height="74"/>
+    <path d="M386 186 a13 13 0 0 1 26 0 Z"/>
+    <!-- Grain elevator: cluster of tall rounded-top bins -->
+    <rect x="560" y="120" width="30" height="140" rx="15"/>
+    <rect x="592" y="108" width="30" height="152" rx="15"/>
+    <rect x="624" y="128" width="30" height="132" rx="15"/>
+    <rect x="556" y="96" width="102" height="22" rx="6"/>
+    <!-- Water tower on legs -->
+    <path d="M724 168 h44 l-6 26 h-32 Z"/>
+    <rect x="726" y="160" width="40" height="12" rx="6"/>
+    <path d="M730 194 L724 252 M762 194 L768 252 M740 196 L740 252 M752 196 L752 252" stroke="#6f9a4a" stroke-width="4"/>
+  </g>
+
+  <!-- Mid field -->
+  <path d="M0 268 C 260 246 520 276 760 268 C 1000 260 1220 282 1440 264 L1440 360 L0 360 Z" fill="#9bc06b"/>
+
+  <!-- Foreground field -->
+  <path d="M0 304 C 300 288 620 314 900 302 C 1140 292 1320 312 1440 300 L1440 360 L0 360 Z" fill="#6f9a4a"/>
+
+  <!-- Closest field band — meets the footer color seamlessly -->
+  <path d="M0 336 C 360 326 760 344 1080 334 C 1260 329 1360 338 1440 334 L1440 360 L0 360 Z" fill="#2d3e23"/>
+
+  <!-- Wheat stalks in the foreground -->
+  <g stroke="#3f5a2a" stroke-width="3" stroke-linecap="round" fill="none">
+    <g transform="translate(70 360)">
+      <path d="M0 0 V-46"/>
+      <path d="M0 -30 q-9 -6 -13 -16 M0 -30 q9 -6 13 -16 M0 -40 q-8 -6 -11 -15 M0 -40 q8 -6 11 -15"/>
+    </g>
+    <g transform="translate(96 360)">
+      <path d="M0 0 V-38"/>
+      <path d="M0 -24 q-8 -5 -11 -14 M0 -24 q8 -5 11 -14 M0 -33 q-7 -5 -9 -12 M0 -33 q7 -5 9 -12"/>
+    </g>
+    <g transform="translate(1330 360)">
+      <path d="M0 0 V-48"/>
+      <path d="M0 -32 q-9 -6 -13 -16 M0 -32 q9 -6 13 -16 M0 -42 q-8 -6 -11 -15 M0 -42 q8 -6 11 -15"/>
+    </g>
+    <g transform="translate(1356 360)">
+      <path d="M0 0 V-40"/>
+      <path d="M0 -26 q-8 -5 -11 -14 M0 -26 q8 -5 11 -14 M0 -35 q-7 -5 -9 -12 M0 -35 q7 -5 9 -12"/>
+    </g>
+  </g>
+</svg>

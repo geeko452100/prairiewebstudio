@@ -1,4 +1,4 @@
-# Snap Load Digital - Great Bend Business Website
+# Prairie Web Studio - Great Bend Business Website
 
 A high-performance, static landing page built with HTML and Tailwind CSS for a local Great Bend, KS business — engineered for **100 Lighthouse scores** in Performance, Accessibility, Best Practices, and SEO.
 

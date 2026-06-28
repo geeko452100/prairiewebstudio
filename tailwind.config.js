@@ -4,31 +4,33 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        // Warm sage / garden green — friendly, agricultural, Kansas-prairie feel
         brand: {
-          50: '#ecfeff',
-          100: '#cffafe',
-          200: '#a5f3fc',
-          300: '#67e8f9',
-          400: '#22d3ee',
-          500: '#06b6d4',
-          600: '#0891b2',
-          700: '#0e7490',
-          800: '#155e75',
-          900: '#164e63',
-          950: '#083344',
+          50: '#f4f7ef',
+          100: '#e6efd9',
+          200: '#cddfb4',
+          300: '#abc886',
+          400: '#86ab5b',
+          500: '#678c3e',
+          600: '#507030',
+          700: '#3f5a2a',
+          800: '#354a27',
+          900: '#2d3e23',
+          950: '#16210f',
         },
+        // Warm stone neutral — pairs with sage without going muddy
         ink: {
-          50: '#f8fafc',
-          100: '#f1f5f9',
-          200: '#e2e8f0',
-          300: '#cbd5e1',
-          400: '#94a3b8',
-          500: '#64748b',
-          600: '#475569',
-          700: '#334155',
-          800: '#1e293b',
-          900: '#0f172a',
-          950: '#020617',
+          50: '#f8f8f4',
+          100: '#ecece4',
+          200: '#dadacd',
+          300: '#bdbdaa',
+          400: '#999985',
+          500: '#7a7a68',
+          600: '#616153',
+          700: '#4d4d43',
+          800: '#34342e',
+          900: '#23231f',
+          950: '#151512',
         },
       },
       fontFamily: {
@@ -47,15 +49,15 @@ module.exports = {
         ],
       },
       boxShadow: {
-        glow: '0 0 40px -8px rgba(6, 182, 212, 0.45)',
-        card: '0 4px 24px -4px rgba(15, 23, 42, 0.08)',
-        'card-hover': '0 12px 40px -8px rgba(15, 23, 42, 0.14)',
+        glow: '0 12px 32px -14px rgba(53, 74, 39, 0.35)',
+        card: '0 4px 22px -6px rgba(35, 35, 31, 0.12)',
+        'card-hover': '0 14px 34px -12px rgba(35, 35, 31, 0.18)',
       },
       backgroundImage: {
         'hero-mesh':
-          'radial-gradient(ellipse 80% 60% at 50% -10%, rgba(6, 182, 212, 0.18), transparent), radial-gradient(ellipse 50% 40% at 90% 20%, rgba(245, 158, 11, 0.12), transparent), radial-gradient(ellipse 40% 35% at 10% 60%, rgba(6, 182, 212, 0.1), transparent)',
+          'radial-gradient(ellipse 80% 60% at 50% -10%, rgba(171, 200, 134, 0.22), transparent), radial-gradient(ellipse 50% 40% at 90% 20%, rgba(80, 112, 48, 0.12), transparent), radial-gradient(ellipse 40% 35% at 10% 60%, rgba(103, 140, 62, 0.1), transparent)',
         'grid-pattern':
-          'linear-gradient(rgba(15, 23, 42, 0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(15, 23, 42, 0.04) 1px, transparent 1px)',
+          'linear-gradient(rgba(35, 35, 31, 0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(35, 35, 31, 0.04) 1px, transparent 1px)',
       },
       backgroundSize: {
         grid: '48px 48px',

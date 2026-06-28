@@ -1,25 +1,25 @@
 {
   "site": {
-    "name": "Snap Load Digital",
-    "url": "https://snapload-digital.com",
+    "name": "Prairie Web Studio",
+    "url": "https://prairiewebstudio.com",
     "locale": "en_US",
     "language": "en"
   },
   "defaults": {
-    "themeColor": "#0891b2",
-    "ogImage": "https://snapload-digital.com/assets/hero-illustration.svg",
-    "ogImageAlt": "Snap Load Digital — fast, affordable websites for Great Bend, Kansas businesses",
+    "themeColor": "#507030",
+    "ogImage": "https://prairiewebstudio.com/assets/kansas-fields.avif",
+    "ogImageAlt": "Sunset over Kansas prairie fields near Central Kansas",
     "twitterHandle": "",
     "faqIntro": "Common questions about our web design process, pricing, and local SEO for Great Bend businesses."
   },
   "contactForm": {
     "endpoint": "https://formspree.io/f/xojndgwa",
     "formId": "xojndgwa",
-    "subject": "New Snap Load Digital contact"
+    "subject": "New Prairie Web Studio contact"
   },
   "business": {
     "type": "ProfessionalService",
-    "email": "ggriffith@snapload-digital.com",
+    "email": "ggriffith@prairiewebstudio.com",
     "priceRange": "$$",
     "serviceArea": "Great Bend & Central Kansas",
     "areaServed": {
@@ -68,7 +68,7 @@
   "faqs": [
     {
       "question": "How long does it take to launch a new website?",
-      "answer": "Most Snap Load Digital projects launch within 7 business days after we receive your content and brand details. Larger multi-page sites may take up to two weeks."
+      "answer": "Most Prairie Web Studio projects launch within 7 business days after we receive your content and brand details. Larger multi-page sites may take up to two weeks."
     },
     {
       "question": "Do you only work with businesses in Great Bend?",
@@ -76,11 +76,11 @@
     },
     {
       "question": "What SEO is included with every website?",
-      "answer": "Every build includes optimized title tags and meta descriptions, canonical URLs, structured data (JSON-LD), a sitemap, robots.txt, semantic HTML, and local business schema so Google can understand your location and services."
+      "answer": "Every site comes ready to be found. We write clear page titles and descriptions, add your business name, hours, and location in the format Google reads, and include a sitemap so search engines can list all your pages. The technical SEO is handled behind the scenes — you don't have to think about any of it."
     },
     {
-      "question": "Will my website score 100 on Google Lighthouse?",
-      "answer": "Yes — we engineer every site for 100 Lighthouse scores in Performance, Accessibility, Best Practices, and SEO using static HTML, purged CSS, and no bloated page builders."
+      "question": "Will my website score 90-100 on Google Lighthouse?",
+      "answer": "Yes — we build every site to score 90-100 on Google's Lighthouse checks for speed, ease of use, and search-friendliness. In plain terms: your pages load fast, work great on phones, and look good to Google. No clunky page builders weighing things down."
     },
     {
       "question": "Do I own my website after launch?",
@@ -92,11 +92,11 @@
       "id": "home",
       "html": "src/index.html",
       "path": "/",
-      "title": "Affordable Website Development in Great Bend | Snap Load Digital",
-      "description": "Snap Load Digital builds fast, affordable websites for Great Bend, KS businesses. Local web design, SEO, and hosting — perfect Lighthouse scores guaranteed.",
-      "ogTitle": "Snap Load Digital — Great Bend Web Design & Local SEO",
-      "ogDescription": "High-performance websites for Great Bend and Central Kansas businesses. Fast load times, local SEO, and 100 Lighthouse scores.",
-      "preloadImage": "./assets/hero-illustration.svg",
+      "title": "Affordable Website Development in Great Bend | Prairie Web Studio",
+      "description": "Prairie Web Studio is a Great Bend, KS web shop building fast, affordable websites for local businesses. Friendly web design, SEO, and hosting at a fair price.",
+      "ogTitle": "Prairie Web Studio — Great Bend Web Design & Local SEO",
+      "ogDescription": "Friendly, fast websites for Great Bend and Central Kansas businesses. Quick to load, easy to find on Google, and priced for Main Street.",
+      "preloadImage": "./assets/kansas-fields.avif",
       "sitemap": {
         "changefreq": "monthly",
         "priority": "1.0"
@@ -110,10 +110,10 @@
       "id": "success",
       "html": "src/success.html",
       "path": "/success.html",
-      "title": "Thank You | Snap Load Digital",
-      "description": "Your payment was successful. Thank you for choosing Snap Load Digital.",
-      "ogTitle": "Thank You | Snap Load Digital",
-      "ogDescription": "Your payment was successful. Thank you for choosing Snap Load Digital.",
+      "title": "Thank You | Prairie Web Studio",
+      "description": "Your payment was successful. Thank you for choosing Prairie Web Studio.",
+      "ogTitle": "Thank You | Prairie Web Studio",
+      "ogDescription": "Your payment was successful. Thank you for choosing Prairie Web Studio.",
       "robots": "noindex, nofollow"
     }
   ]
