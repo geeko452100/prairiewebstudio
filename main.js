@@ -122,17 +122,20 @@ function initTaxCalculator() {
     }, 300);
   }
 
+  var calcBtn = document.getElementById('calc-btn');
+  if (calcBtn) calcBtn.addEventListener('click', update);
+
+  function onEnter(e) { if (e.key === 'Enter') update(); }
+  amountInput.addEventListener('keydown', onEnter);
+  rateInput.addEventListener('keydown', onEnter);
+
   if (citySelect) {
     citySelect.addEventListener('change', function () {
       var selected = citySelect.options[citySelect.selectedIndex];
       var dataRate = selected.getAttribute('data-rate');
       if (dataRate) rateInput.value = dataRate;
-      update();
     });
   }
-
-  amountInput.addEventListener('input', update);
-  rateInput.addEventListener('input', update);
 }
 
 if ('requestIdleCallback' in window) {
