@@ -48,6 +48,12 @@ module.exports = {
           'sans-serif',
         ],
       },
+
+      borderRadius: {
+        small: '20px',
+        medium: '25px',
+        large: '30px',
+      },  
       boxShadow: {
         glow: '0 12px 32px -14px rgba(53, 74, 39, 0.35)',
         card: '0 4px 22px -6px rgba(35, 35, 31, 0.12)',

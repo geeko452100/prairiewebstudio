@@ -45,6 +45,8 @@ function showFormSuccess() {
   }
 }
 
+// Contact form submission
+
 function initContactForm() {
   var form = document.getElementById('contact-form');
   if (!form) return;
@@ -81,68 +83,4 @@ function initContactForm() {
         showFormError();
       });
   });
-}
-
-var API_BASE = 'https://api.prairiewebstudio.com';
-var TAX_API_BASE = 'https://api.prairiewebstudio.com/api/tax';
-
-function initTaxCalculator() {
-  var amountInput = document.getElementById('calc-amount');
-  var rateInput = document.getElementById('calc-rate');
-  var citySelect = document.getElementById('calc-city');
-  var subtotalEl = document.getElementById('calc-subtotal');
-  var taxEl = document.getElementById('calc-tax');
-  var totalEl = document.getElementById('calc-total');
-  if (!amountInput || !rateInput) return;
-
-  function fmt(n) {
-    return '$' + n.toFixed(2);
-  }
-
-  function applyLocal(amount, rate) {
-    var tax = amount * (rate / 100);
-    subtotalEl.textContent = fmt(amount);
-    taxEl.textContent = fmt(tax);
-    totalEl.textContent = fmt(amount + tax);
-  }
-
-  var debounceTimer;
-  function update() {
-    clearTimeout(debounceTimer);
-    debounceTimer = setTimeout(function () {
-      var amount = parseFloat(amountInput.value) || 0;
-      var rate = parseFloat(rateInput.value) || 0;
-      var city = citySelect ? citySelect.value : '';
-      var url = TAX_API_BASE + '?amount=' + amount + '&rate=' + rate + (city ? '&city_name=' + encodeURIComponent(city) : '');
-      fetch(url)
-        .then(function (res) { return res.json(); })
-        .then(function (data) {
-          subtotalEl.textContent = fmt(data.calculated_base_cost);
-          taxEl.textContent = fmt(data.calculated_tax_cost);
-          totalEl.textContent = fmt(data.calculated_grand_total);
-        })
-        .catch(function () { applyLocal(amount, rate); });
-    }, 300);
-  }
-
-  var calcBtn = document.getElementById('calc-btn');
-  if (calcBtn) calcBtn.addEventListener('click', update);
-
-  function onEnter(e) { if (e.key === 'Enter') update(); }
-  amountInput.addEventListener('keydown', onEnter);
-  rateInput.addEventListener('keydown', onEnter);
-
-  if (citySelect) {
-    citySelect.addEventListener('change', function () {
-      var selected = citySelect.options[citySelect.selectedIndex];
-      var dataRate = selected.getAttribute('data-rate');
-      if (dataRate) rateInput.value = dataRate;
-    });
-  }
-}
-
-if ('requestIdleCallback' in window) {
-  requestIdleCallback(function () { initMenu(); initContactForm(); initTaxCalculator(); });
-} else {
-  setTimeout(function () { initMenu(); initContactForm(); initTaxCalculator(); }, 1);
 }
