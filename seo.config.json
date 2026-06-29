@@ -48,8 +48,8 @@
     },
     {
       "name": "Launch & Support",
-      "description": "Lower build cost with two payments ($249 deposit + $249 at deployment). Same quality build with a smaller upfront investment.",
-      "price": "498",
+      "description": "Lower build cost with two payments ($250 deposit + $250 at deployment). Same quality build with a smaller upfront investment.",
+      "price": "500",
       "priceCurrency": "USD"
     },
     {
@@ -90,8 +90,8 @@
   "pages": [
     {
       "id": "home",
-      "html": "src/index.html",
-      "path": "/",
+      "html": "/index.html",
+      "path": "/index.html",
       "title": "Local Web Designer in Great Bend | Prairie Web Studio",
       "description": "Prairie Web Studio is a Great Bend, KS web shop building fast, affordable websites for local businesses. Friendly web design, SEO, and hosting at a fair price.",
       "ogTitle": "Prairie Web Studio — Great Bend Web Design & Local SEO",
@@ -107,7 +107,7 @@
     },
     {
       "id": "services",
-      "html": "src/services.html",
+      "html": "/services.html",
       "path": "/services.html",
       "title": "Website Design Services & Pricing | Prairie Web Studio",
       "description": "Web design pricing for Great Bend & Central Kansas businesses. Own your site outright or launch with a lower deposit — plus optional monthly or annual maintenance.",
@@ -124,7 +124,7 @@
     },
     {
       "id": "faq",
-      "html": "src/faq.html",
+      "html": "/faq.html",
       "path": "/faq.html",
       "title": "Frequently Asked Questions | Prairie Web Studio",
       "description": "Answers to common questions about Prairie Web Studio — timelines, pricing, local SEO, Lighthouse scores, and website ownership for Great Bend businesses.",
@@ -142,7 +142,7 @@
     },
     {
       "id": "contact",
-      "html": "src/contact.html",
+      "html": "/contact.html",
       "path": "/contact.html",
       "title": "Contact | Prairie Web Studio",
       "description": "Get in touch with Prairie Web Studio for a free website quote. Serving Great Bend & Central Kansas — we respond within one business day.",
@@ -159,7 +159,7 @@
     },
     {
       "id": "success",
-      "html": "src/success.html",
+      "html": "/success.html",
       "path": "/success.html",
       "title": "Thank You | Prairie Web Studio",
       "description": "Your payment was successful. Thank you for choosing Prairie Web Studio.",
