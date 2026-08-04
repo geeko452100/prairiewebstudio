@@ -10,7 +10,7 @@
     "ogImage": "https://prairiewebstudio.com/assets/kansas-fields.avif",
     "ogImageAlt": "Sunset over Kansas prairie fields near Central Kansas",
     "twitterHandle": "",
-    "faqIntro": "Common questions about our web design process, pricing, and local SEO for Great Bend businesses."
+    "faqIntro": "Common questions about our web design and web application process, pricing, and local SEO for Great Bend businesses."
   },
   "contactForm": {
     "endpoint": "https://formspree.io/f/xojndgwa",
@@ -41,50 +41,42 @@
   },
   "services": [
     {
-      "name": "Own It Outright",
-      "description": "Full custom website build with two payments ($750 deposit + $750 at deployment). You own the site at launch.",
-      "price": "1500",
-      "priceCurrency": "USD"
-    },
-    {
-      "name": "Launch & Support",
-      "description": "Lower build cost with two payments ($250 deposit + $250 at deployment). Same quality build with a smaller upfront investment.",
+      "name": "Simple Static Site",
+      "description": "Custom multi-page static website with two payments ($250 deposit + $250 at deployment). Fast, search-friendly, and fully yours at launch.",
       "price": "500",
       "priceCurrency": "USD"
     },
     {
-      "name": "Care & Support (Monthly)",
-      "description": "Ongoing website maintenance subscription with content updates, uptime monitoring, and priority support at $12.50/month.",
-      "price": "12.50",
-      "priceCurrency": "USD"
-    },
-    {
-      "name": "Care & Support (Annual)",
-      "description": "Ongoing website maintenance subscription with content updates, uptime monitoring, and priority support at $150/year.",
-      "price": "150",
+      "name": "Full Custom Web Application",
+      "description": "Custom web application with secure authentication, two payments ($750 deposit + $750 at deployment), and two free code reviews after deployment.",
+      "price": "1500",
       "priceCurrency": "USD"
     }
   ],
   "faqs": [
     {
-      "question": "How long does it take to launch a new website?",
-      "answer": "Most Prairie Web Studio projects launch within 7 business days after we receive your content and brand details. Larger multi-page sites may take up to two weeks."
+      "question": "How long does it take to launch a new website or web app?",
+      "answer": "A Simple Static Site is typically ready to launch within 7 business days after we receive your content and brand details. A Full Custom Web Application — with features like secure logins or custom functionality — usually takes 2 to 4 weeks depending on scope."
+    },
+    {
+      "question": "Should I get a static site or a custom web application?",
+      "answer": "Most small businesses just need to be found online and share information — that's exactly what a Simple Static Site is built for: fast, multi-page, and easy to update. If you need user accounts, secure authentication, or custom backend logic, a Full Custom Web Application is the better fit. Tell us what you need your site to do and we'll recommend the right build."
     },
     {
       "question": "Do you only work with businesses in Great Bend?",
-      "answer": "We specialize in Great Bend and Central Kansas, but we work remotely with small businesses across Kansas. Every site includes local SEO setup tailored to your service area."
+      "answer": "We specialize in Great Bend and Central Kansas, but we build static sites and custom web applications remotely for clients across Kansas and beyond. Every static site includes local SEO setup tailored to your service area."
     },
     {
       "question": "What SEO is included with every website?",
-      "answer": "Every site comes ready to be found. We write clear page titles and descriptions, add your business name, hours, and location in the format Google reads, and include a sitemap so search engines can list all your pages. The technical SEO is handled behind the scenes — you don't have to think about any of it."
+      "answer": "Every site comes ready to be found. We write clear page titles and descriptions, add your business name, hours, and location in the format Google reads, and include a sitemap so search engines can list all your pages. If you're building a Full Custom Web Application, we make sure your public marketing pages are just as search-friendly while any logged-in areas stay private. The technical SEO is handled behind the scenes — you don't have to think about any of it."
     },
     {
       "question": "Will my website score 90-100 on Google Lighthouse?",
-      "answer": "Yes — we build every site to score 90-100 on Google's Lighthouse checks for speed, ease of use, and search-friendliness. In plain terms: your pages load fast, work great on phones, and look good to Google. No clunky page builders weighing things down."
+      "answer": "Yes — our Simple Static Sites are built from scratch to score 90-100 on Google's Lighthouse checks for speed, ease of use, and search-friendliness, with no clunky page builders weighing things down. Full Custom Web Applications get the same performance-first treatment; scores can vary slightly depending on features like authentication or third-party integrations, but speed and usability stay a top priority."
     },
     {
-      "question": "Do I own my website after launch?",
-      "answer": "With Own It Outright, you own the site from day one. Launch & Support lowers your upfront build cost. Either build plan can pair with a maintenance subscription for ongoing updates and monitoring — we can discuss ownership transfer anytime."
+      "question": "Do I own my website or web app after launch?",
+      "answer": "Yes — whether you choose a Simple Static Site or a Full Custom Web Application, it's yours to own outright once it's live, with no recurring license fees. Web application builds also include two free code reviews after deployment, and we're happy to discuss ongoing support or updates anytime after launch."
     }
   ],
   "pages": [
@@ -92,10 +84,10 @@
       "id": "home",
       "html": "/index.html",
       "path": "/index.html",
-      "title": "Local Web Designer in Great Bend | Prairie Web Studio",
-      "description": "Prairie Web Studio is a Great Bend, KS web shop building fast, affordable websites for local businesses. Friendly web design, SEO, and hosting at a fair price.",
-      "ogTitle": "Prairie Web Studio — Great Bend Web Design & Local SEO",
-      "ogDescription": "Friendly, fast websites for Great Bend and Central Kansas businesses. Quick to load, easy to find on Google, and priced for Main Street.",
+      "title": "Web Design & Custom Web Apps in Great Bend | Prairie Web Studio",
+      "description": "Prairie Web Studio builds fast, affordable websites and custom web applications for small town businesses in Great Bend and Central Kansas. Friendly web design, secure web apps, SEO, and hosting at a fair price.",
+      "ogTitle": "Prairie Web Studio — Great Bend Web Design & Web Apps",
+      "ogDescription": "Friendly, fast websites and custom web applications for Great Bend and Central Kansas businesses. Quick to load, easy to find on Google, and priced for Main Street.",
       "preloadImage": "./assets/kansas-fields.avif",
       "sitemap": {
         "changefreq": "monthly",
@@ -109,10 +101,10 @@
       "id": "services",
       "html": "/services.html",
       "path": "/services.html",
-      "title": "Website Design Services & Pricing | Prairie Web Studio",
-      "description": "Web design pricing for Great Bend & Central Kansas businesses. Own your site outright or launch with a lower deposit — plus optional monthly or annual maintenance.",
+      "title": "Website & Web App Design Services & Pricing | Prairie Web Studio",
+      "description": "Web design & web application pricing for Great Bend & Central Kansas businesses. Choose a Simple Static Site or a Full Custom Web Application — honest, Main-Street pricing either way.",
       "ogTitle": "Services & Pricing — Prairie Web Studio",
-      "ogDescription": "Two simple build options and an optional care plan. Honest, Main-Street pricing for fast, easy-to-find websites.",
+      "ogDescription": "Two ways to get online — a Simple Static Site or a Full Custom Web Application. Honest, Main-Street pricing for fast, easy-to-find sites and apps.",
       "preloadImage": "./assets/kansas-fields.avif",
       "sitemap": {
         "changefreq": "monthly",
@@ -127,9 +119,9 @@
       "html": "/faq.html",
       "path": "/faq.html",
       "title": "Frequently Asked Questions | Prairie Web Studio",
-      "description": "Answers to common questions about Prairie Web Studio — timelines, pricing, local SEO, Lighthouse scores, and website ownership for Great Bend businesses.",
+      "description": "Answers to common questions about Prairie Web Studio — timelines, pricing, local SEO, Lighthouse scores, and ownership for both static websites and custom web applications in Great Bend.",
       "ogTitle": "FAQ — Prairie Web Studio",
-      "ogDescription": "Common questions about our web design process, pricing, and local SEO for Great Bend businesses.",
+      "ogDescription": "Common questions about our web design and web application process, pricing, and local SEO for Great Bend businesses.",
       "preloadImage": "./assets/kansas-fields.avif",
       "sitemap": {
         "changefreq": "monthly",
@@ -145,9 +137,9 @@
       "html": "/contact.html",
       "path": "/contact.html",
       "title": "Contact | Prairie Web Studio",
-      "description": "Get in touch with Prairie Web Studio for a free website quote. Serving Great Bend & Central Kansas — we respond within one business day.",
+      "description": "Get in touch with Prairie Web Studio for a free website or web application quote. Serving Great Bend & Central Kansas — we respond within one business day.",
       "ogTitle": "Contact — Prairie Web Studio",
-      "ogDescription": "Ready to get online or upgrade your current site? Reach out for a free quote — we respond within one business day.",
+      "ogDescription": "Ready to get online, launch a custom web application, or upgrade what you've got? Reach out for a free quote — we respond within one business day.",
       "preloadImage": "./assets/kansas-fields.avif",
       "sitemap": {
         "changefreq": "yearly",
