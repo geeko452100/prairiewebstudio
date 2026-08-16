@@ -166,8 +166,6 @@
               id="contact-form"
               name="contact"
               class="card space-y-6"
-              method="POST"
-              action="/api/contact"
             >
               <p class="sr-only" aria-hidden="true">
                 <label for="contact-gotcha">Leave this field empty</label>
@@ -190,7 +188,7 @@
                     <input
                       type="text"
                       id="contact-name"
-                      name="name"
+                      name="customerName"
                       required
                       minlength="2"
                       maxlength="100"
@@ -233,6 +231,23 @@
                     aria-required="true"
                     class="field-input"
                     placeholder="(620) 555-0123"
+                  >
+                </div>
+
+                <div>
+                  <label for="contact-address" class="block text-sm font-medium text-ink-700">
+                    Business location <span class="text-brand-800" aria-hidden="true">*</span><span class="sr-only"> (required)</span>
+                  </label>
+                  <input
+                    type="text"
+                    id="contact-address"
+                    name="address"
+                    required
+                    maxlength="200"
+                    autocomplete="street-address"
+                    aria-required="true"
+                    class="field-input"
+                    placeholder="City, or full address if you'd like a site visit"
                   >
                 </div>
 
@@ -447,6 +462,7 @@
   </script>
 <!-- SEO:JSONLD-END -->
 
+  <script src="https://dispatch.prairiewebstudio.com/v1/prairie-dispatch.js"></script>
   <script type="module" src="./main.js"></script>
 </body>
 </html>

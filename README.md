@@ -129,13 +129,9 @@ Deploy to [Cloudflare Pages](https://pages.cloudflare.com) (recommended) or any 
 
 1. Connect the repo in the Cloudflare Pages dashboard.
 2. Set the build command to **`npm run build`** and the output directory to **`.`** (repo root).
-3. Create a form at [Formspree](https://formspree.io) and copy your form ID.
-4. Add a **`FORMSPREE_FORM_ID`** environment variable in Cloudflare Pages (or set the full URL via **`FORMSPREE_ENDPOINT`**).
-5. Deploy and test the contact form on the live site.
+3. Deploy and test the contact form on the live site.
 
-The contact form uses `method="POST"` and submits directly from the browser to your Formspree endpoint — no backend required. The build injects the endpoint from the environment variable into the form's `action` attribute.
-
-For local testing, set `contactForm.endpoint` or `contactForm.formId` in **`seo.config.json`**, then run `npm run build`. Do not commit real form IDs to the repo; use the Cloudflare Pages env var in production.
+`contact.html`'s form submits client-side via the [Prairie Dispatch Engine](https://github.com/geeko452100/Dispatcher-Micro-Plugin) SDK (`https://dispatch.prairiewebstudio.com/v1/prairie-dispatch.js`) — no Pages Function or backend in this repo. It's tied to this business's tenant API key, hardcoded in `main.js`'s `initContactForm()`; the dispatch engine relays each lead as a text to the tenant's `veriphoneGateway` and sends from `ggriffith@prairiewebstudio.com` (this tenant's `resendFrom` override).
 
 Stripe payment redirects in **`_redirects`** are supported automatically on Cloudflare Pages.
 

@@ -50,29 +50,34 @@ function showFormSuccess() {
 function initContactForm() {
   var form = document.getElementById('contact-form');
   if (!form) return;
+
+  var dispatch = new PrairieDispatch('pk_85bfd3e424c165bb63bf0e59efc203ef6dfb26da7c97eb56');
+
   form.addEventListener('submit', function (e) {
     e.preventDefault();
-    var action = form.getAttribute('action');
-    if (!action || action.indexOf('YOUR_FORM_ID') !== -1) {
-      showFormError();
+
+    // Formspree-style honeypot: bots fill hidden fields humans never see.
+    if (String(new FormData(form).get('_gotcha') || '').trim() !== '') {
+      showFormSuccess();
       return;
     }
+
     var submitBtn = document.getElementById('contact-submit');
     if (submitBtn) {
       submitBtn.disabled = true;
       submitBtn.textContent = 'Sending…';
     }
-    fetch(action, {
-      method: 'POST',
-      headers: { 'Accept': 'application/json' },
-      body: new FormData(form)
-    })
-      .then(function (res) {
-        if (!res.ok) throw new Error('submit failed');
-        return res.json();
+
+    var data = Object.fromEntries(new FormData(form).entries());
+
+    dispatch
+      .send({
+        customerName: data.customerName,
+        phone: data.phone,
+        address: data.address,
+        notes: data.message,
       })
-      .then(function (data) {
-        if (!data.ok) throw new Error('submit failed');
+      .then(function () {
         showFormSuccess();
       })
       .catch(function () {
