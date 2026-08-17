@@ -12,18 +12,31 @@ function initMenu() {
   var toggle = document.getElementById('menu-toggle');
   var nav = document.getElementById('mobile-nav');
   if (!toggle || !nav) return;
-  toggle.addEventListener('click', function () {
-    var open = toggle.getAttribute('aria-expanded') === 'true';
-    var nextOpen = !open;
+
+  function setOpen(nextOpen) {
     toggle.setAttribute('aria-expanded', String(nextOpen));
     toggle.setAttribute('aria-label', nextOpen ? 'Close navigation menu' : 'Open navigation menu');
-    nav.classList.toggle('hidden');
+    nav.classList.toggle('hidden', !nextOpen);
     if (nextOpen) {
       nav.removeAttribute('inert');
+      var firstLink = nav.querySelector('a');
+      if (firstLink) firstLink.focus();
     } else {
       nav.setAttribute('inert', '');
     }
+  }
+
+  toggle.addEventListener('click', function () {
+    var open = toggle.getAttribute('aria-expanded') === 'true';
+    setOpen(!open);
   }, { passive: true });
+
+  nav.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') {
+      setOpen(false);
+      toggle.focus();
+    }
+  });
 }
 
 function showFormError() {

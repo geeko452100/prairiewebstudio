@@ -42,14 +42,14 @@
   "services": [
     {
       "name": "Simple Static Site",
-      "description": "Custom multi-page static website with two payments ($250 deposit + $250 at deployment). Fast, search-friendly, and fully yours at launch.",
-      "price": "500",
+      "description": "Custom multi-page static website with two payments ($375 deposit + $375 at deployment). Fast, search-friendly, and fully yours at launch.",
+      "price": "750",
       "priceCurrency": "USD"
     },
     {
       "name": "Full Custom Web Application",
-      "description": "Custom web application with secure authentication, two payments ($750 deposit + $750 at deployment), and two free code reviews after deployment.",
-      "price": "1500",
+      "description": "Custom web application with secure authentication, two payments ($1,125 deposit + $1,125 at deployment), and two free code reviews after deployment.",
+      "price": "2250",
       "priceCurrency": "USD"
     }
   ],
@@ -71,8 +71,8 @@
       "answer": "Every site comes ready to be found. We write clear page titles and descriptions, add your business name, hours, and location in the format Google reads, and include a sitemap so search engines can list all your pages. If you're building a Full Custom Web Application, we make sure your public marketing pages are just as search-friendly while any logged-in areas stay private. The technical SEO is handled behind the scenes — you don't have to think about any of it."
     },
     {
-      "question": "Will my website score 90-100 on Google Lighthouse?",
-      "answer": "Yes — our Simple Static Sites are built from scratch to score 90-100 on Google's Lighthouse checks for speed, ease of use, and search-friendliness, with no clunky page builders weighing things down. Full Custom Web Applications get the same performance-first treatment; scores can vary slightly depending on features like authentication or third-party integrations, but speed and usability stay a top priority."
+      "question": "Will my website actually load fast?",
+      "answer": "Yes. Every Simple Static Site is hand-built with clean, lightweight code instead of a bloated page-builder or theme — it should open before a customer even finishes typing your name into Google. Full Custom Web Applications get the same speed-first treatment; a feature like secure logins can add a touch of load time, but staying fast and easy to use is always the goal."
     },
     {
       "question": "Do I own my website or web app after launch?",
@@ -119,7 +119,7 @@
       "html": "/faq.html",
       "path": "/faq.html",
       "title": "Frequently Asked Questions | Prairie Web Studio",
-      "description": "Answers to common questions about Prairie Web Studio — timelines, pricing, local SEO, Lighthouse scores, and ownership for both static websites and custom web applications in Great Bend.",
+      "description": "Answers to common questions about Prairie Web Studio — timelines, pricing, local SEO, site speed, and ownership for both static websites and custom web applications in Great Bend.",
       "ogTitle": "FAQ — Prairie Web Studio",
       "ogDescription": "Common questions about our web design and web application process, pricing, and local SEO for Great Bend businesses.",
       "preloadImage": "./assets/kansas-fields.avif",

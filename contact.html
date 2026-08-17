@@ -64,10 +64,11 @@
 
       <nav class="hidden items-center gap-8 md:flex" aria-label="Primary">
         <a href="/services.html" class="nav-link inline-flex">Services</a>
+        <a href="/work.html" class="nav-link inline-flex">Our Work</a>
         <a href="/faq.html" class="nav-link inline-flex">FAQ</a>
         <a href="/contact.html" class="nav-link inline-flex">Contact</a>
         <a href="tel:+16202823847" class="btn-primary gap-2" aria-label="Call Prairie Web Studio at (620) 282-3847">
-          <img src="./assets/call.svg">
+          <img src="./assets/call.svg" alt="" width="16" height="16">
           Call (620) 282-3847
         </a>
       </nav>
@@ -97,6 +98,7 @@
     <nav id="mobile-nav" class="hidden border-t border-ink-100 bg-white px-4 py-4 md:hidden" aria-label="Mobile" inert>
       <ul class="flex flex-col gap-1">
         <li><a href="/services.html" class="nav-link flex rounded-lg px-3 py-2 hover:bg-brand-50">Services</a></li>
+        <li><a href="/work.html" class="nav-link flex rounded-lg px-3 py-2 hover:bg-brand-50">Our Work</a></li>
         <li><a href="/faq.html" class="nav-link flex rounded-lg px-3 py-2 hover:bg-brand-50">FAQ</a></li>
         <li><a href="/contact.html" class="nav-link flex rounded-lg px-3 py-2 hover:bg-brand-50">Contact</a></li>
         <li class="pt-2"><a href="tel:+16202823847" class="btn-primary w-full gap-2" aria-label="Call Prairie Web Studio at (620) 282-3847">
@@ -293,41 +295,13 @@
       <nav aria-label="Footer">
         <ul class="flex flex-wrap items-center gap-6 text-sm">
           <li><a href="/services.html" class="footer-link-light">Services</a></li>
+          <li><a href="/work.html" class="footer-link-light">Our Work</a></li>
           <li><a href="/faq.html" class="footer-link-light">FAQ</a></li>
           <li><a href="/contact.html" class="footer-link-light">Contact</a></li>
         </ul>
       </nav>
     </div>
   </footer>
-
-  <nav class="fixed bottom-0 left-0 right-0 z-50 border-t border-ink-100 bg-white/95 backdrop-blur-md pb-safe md:hidden" aria-label="Mobile Navigation">
-    <ul class="flex h-16 items-center justify-around px-2">
-      <li class="flex-1">
-        <a href="/" class="flex flex-col items-center justify-center gap-1 text-center text-ink-600 hover:text-brand-800">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-5.5 w-5.5"><m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-          <span class="text-xs font-medium tracking-tight">Home</span>
-        </a>
-      </li>
-      <li class="flex-1">
-        <a href="/services.html" class="flex flex-col items-center justify-center gap-1 text-center text-ink-600 hover:text-brand-800">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-5.5 w-5.5"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M21 12H3"/><path d="M12 3v18"/></svg>
-          <span class="text-xs font-medium tracking-tight">Services</span>
-        </a>
-      </li>
-      <li class="flex-1">
-        <a href="/faq.html" class="flex flex-col items-center justify-center gap-1 text-center text-ink-600 hover:text-brand-800">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-5.5 w-5.5"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg>
-          <span class="text-xs font-medium tracking-tight">FAQ</span>
-        </a>
-      </li>
-      <li class="flex-1">
-        <a href="/contact.html" class="flex flex-col items-center justify-center gap-1 text-center text-brand-800" aria-current="page">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="h-5.5 w-5.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.38 2 2 0 0 1 3.62 1.5h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-          <span class="text-xs font-bold tracking-tight">Contact</span>
-        </a>
-      </li>
-    </ul>
-  </nav>
 
   <!-- PARTIAL:FOOTER-END -->
 
@@ -401,7 +375,7 @@
             "itemOffered": {
               "@type": "Service",
               "name": "Simple Static Site",
-              "description": "Custom multi-page static website with two payments ($250 deposit + $250 at deployment). Fast, search-friendly, and fully yours at launch.",
+              "description": "Custom multi-page static website with two payments ($375 deposit + $375 at deployment). Fast, search-friendly, and fully yours at launch.",
               "provider": {
                 "@id": "https://prairiewebstudio.com/#organization"
               },
@@ -422,7 +396,7 @@
                 }
               ]
             },
-            "price": "500",
+            "price": "750",
             "priceCurrency": "USD"
           },
           {
@@ -430,7 +404,7 @@
             "itemOffered": {
               "@type": "Service",
               "name": "Full Custom Web Application",
-              "description": "Custom web application with secure authentication, two payments ($750 deposit + $750 at deployment), and two free code reviews after deployment.",
+              "description": "Custom web application with secure authentication, two payments ($1,125 deposit + $1,125 at deployment), and two free code reviews after deployment.",
               "provider": {
                 "@id": "https://prairiewebstudio.com/#organization"
               },
@@ -451,7 +425,268 @@
                 }
               ]
             },
-            "price": "1500",
+            "price": "2250",
+            "priceCurrency": "USD"
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Static Site Care (Monthly)",
+              "description": "Optional ongoing add-on for a Simple Static Site: hosting and uptime monitoring, up to two small content updates a month, and priority phone support. Cancel anytime.",
+              "provider": {
+                "@id": "https://prairiewebstudio.com/#organization"
+              },
+              "areaServed": [
+                {
+                  "@type": "City",
+                  "name": "Great Bend",
+                  "containedInPlace": { "@type": "State", "name": "KS" }
+                },
+                {
+                  "@type": "City",
+                  "name": "Hays",
+                  "containedInPlace": { "@type": "State", "name": "KS" }
+                },
+                {
+                  "@type": "Place",
+                  "name": "Central Kansas"
+                }
+              ]
+            },
+            "price": "60",
+            "priceCurrency": "USD"
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Static Site Care (Annual)",
+              "description": "Optional ongoing add-on for a Simple Static Site billed yearly: everything in the monthly plan plus one yearly refresh of copy, photos, and a speed/security check. Two months free compared to paying monthly.",
+              "provider": {
+                "@id": "https://prairiewebstudio.com/#organization"
+              },
+              "areaServed": [
+                {
+                  "@type": "City",
+                  "name": "Great Bend",
+                  "containedInPlace": { "@type": "State", "name": "KS" }
+                },
+                {
+                  "@type": "City",
+                  "name": "Hays",
+                  "containedInPlace": { "@type": "State", "name": "KS" }
+                },
+                {
+                  "@type": "Place",
+                  "name": "Central Kansas"
+                }
+              ]
+            },
+            "price": "600",
+            "priceCurrency": "USD"
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Web App Care (Monthly)",
+              "description": "Optional ongoing add-on for a Full Custom Web Application: hosting, uptime and integration monitoring for logins and payments, up to two small updates a month, and priority phone support. Cancel anytime.",
+              "provider": {
+                "@id": "https://prairiewebstudio.com/#organization"
+              },
+              "areaServed": [
+                {
+                  "@type": "City",
+                  "name": "Great Bend",
+                  "containedInPlace": { "@type": "State", "name": "KS" }
+                },
+                {
+                  "@type": "City",
+                  "name": "Hays",
+                  "containedInPlace": { "@type": "State", "name": "KS" }
+                },
+                {
+                  "@type": "Place",
+                  "name": "Central Kansas"
+                }
+              ]
+            },
+            "price": "99",
+            "priceCurrency": "USD"
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Web App Care (Annual)",
+              "description": "Optional ongoing add-on for a Full Custom Web Application billed yearly: everything in the monthly plan plus one yearly refresh of copy, photos, and a speed/security check. Two months free compared to paying monthly.",
+              "provider": {
+                "@id": "https://prairiewebstudio.com/#organization"
+              },
+              "areaServed": [
+                {
+                  "@type": "City",
+                  "name": "Great Bend",
+                  "containedInPlace": { "@type": "State", "name": "KS" }
+                },
+                {
+                  "@type": "City",
+                  "name": "Hays",
+                  "containedInPlace": { "@type": "State", "name": "KS" }
+                },
+                {
+                  "@type": "Place",
+                  "name": "Central Kansas"
+                }
+              ]
+            },
+            "price": "990",
+            "priceCurrency": "USD"
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Static Site Bug Fix — Diagnostic",
+              "description": "Flat diagnostic fee to investigate a static site issue, credited toward the repair cost if you approve the quote.",
+              "provider": {
+                "@id": "https://prairiewebstudio.com/#organization"
+              },
+              "areaServed": [
+                {
+                  "@type": "City",
+                  "name": "Great Bend",
+                  "containedInPlace": { "@type": "State", "name": "KS" }
+                },
+                {
+                  "@type": "City",
+                  "name": "Hays",
+                  "containedInPlace": { "@type": "State", "name": "KS" }
+                },
+                {
+                  "@type": "Place",
+                  "name": "Central Kansas"
+                }
+              ]
+            },
+            "price": "25",
+            "priceCurrency": "USD"
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Web App Bug Fix — Diagnostic",
+              "description": "Flat diagnostic fee to investigate a web application issue, credited toward the repair cost if you approve the quote.",
+              "provider": {
+                "@id": "https://prairiewebstudio.com/#organization"
+              },
+              "areaServed": [
+                {
+                  "@type": "City",
+                  "name": "Great Bend",
+                  "containedInPlace": { "@type": "State", "name": "KS" }
+                },
+                {
+                  "@type": "City",
+                  "name": "Hays",
+                  "containedInPlace": { "@type": "State", "name": "KS" }
+                },
+                {
+                  "@type": "Place",
+                  "name": "Central Kansas"
+                }
+              ]
+            },
+            "price": "50",
+            "priceCurrency": "USD"
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Minor Bug Fix",
+              "description": "Flat-rate fix for a minor issue such as a typo, broken link, image swap, or styling tweak, on either a static site or web application.",
+              "provider": {
+                "@id": "https://prairiewebstudio.com/#organization"
+              },
+              "areaServed": [
+                {
+                  "@type": "City",
+                  "name": "Great Bend",
+                  "containedInPlace": { "@type": "State", "name": "KS" }
+                },
+                {
+                  "@type": "City",
+                  "name": "Hays",
+                  "containedInPlace": { "@type": "State", "name": "KS" }
+                },
+                {
+                  "@type": "Place",
+                  "name": "Central Kansas"
+                }
+              ]
+            },
+            "price": "75",
+            "priceCurrency": "USD"
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Static Site Moderate Bug Fix",
+              "description": "Flat-rate fix for a moderate static site issue such as a form or feature not working correctly.",
+              "provider": {
+                "@id": "https://prairiewebstudio.com/#organization"
+              },
+              "areaServed": [
+                {
+                  "@type": "City",
+                  "name": "Great Bend",
+                  "containedInPlace": { "@type": "State", "name": "KS" }
+                },
+                {
+                  "@type": "City",
+                  "name": "Hays",
+                  "containedInPlace": { "@type": "State", "name": "KS" }
+                },
+                {
+                  "@type": "Place",
+                  "name": "Central Kansas"
+                }
+              ]
+            },
+            "price": "150",
+            "priceCurrency": "USD"
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Web App Moderate Bug Fix",
+              "description": "Flat-rate fix for a moderate web application issue such as a feature or logic bug.",
+              "provider": {
+                "@id": "https://prairiewebstudio.com/#organization"
+              },
+              "areaServed": [
+                {
+                  "@type": "City",
+                  "name": "Great Bend",
+                  "containedInPlace": { "@type": "State", "name": "KS" }
+                },
+                {
+                  "@type": "City",
+                  "name": "Hays",
+                  "containedInPlace": { "@type": "State", "name": "KS" }
+                },
+                {
+                  "@type": "Place",
+                  "name": "Central Kansas"
+                }
+              ]
+            },
+            "price": "250",
             "priceCurrency": "USD"
           }
         ]
