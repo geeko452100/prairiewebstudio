@@ -7,7 +7,7 @@
   },
   "defaults": {
     "themeColor": "#507030",
-    "ogImage": "https://prairiewebstudio.com/assets/kansas-fields.avif",
+    "ogImage": "https://prairiewebstudio.com/assets/wordpress-import/kansas-fields.avif",
     "ogImageAlt": "Sunset over Kansas prairie fields near Central Kansas",
     "twitterHandle": "",
     "faqIntro": "Common questions about our web design and web application process, pricing, and local SEO for Great Bend businesses."
@@ -88,7 +88,7 @@
       "description": "Prairie Web Studio builds fast, affordable websites and custom web applications for small town businesses in Great Bend and Central Kansas. Friendly web design, secure web apps, SEO, and hosting at a fair price.",
       "ogTitle": "Prairie Web Studio — Great Bend Web Design & Web Apps",
       "ogDescription": "Friendly, fast websites and custom web applications for Great Bend and Central Kansas businesses. Quick to load, easy to find on Google, and priced for Main Street.",
-      "preloadImage": "./assets/kansas-fields.avif",
+      "preloadImage": "./assets/wordpress-import/kansas-fields.avif",
       "sitemap": {
         "changefreq": "monthly",
         "priority": "1.0"
@@ -105,7 +105,7 @@
       "description": "Web design & web application pricing for Great Bend & Central Kansas businesses. Choose a Simple Static Site or a Full Custom Web Application — honest, Main-Street pricing either way.",
       "ogTitle": "Services & Pricing — Prairie Web Studio",
       "ogDescription": "Two ways to get online — a Simple Static Site or a Full Custom Web Application. Honest, Main-Street pricing for fast, easy-to-find sites and apps.",
-      "preloadImage": "./assets/kansas-fields.avif",
+      "preloadImage": "./assets/wordpress-import/kansas-fields.avif",
       "sitemap": {
         "changefreq": "monthly",
         "priority": "0.9"
@@ -122,7 +122,7 @@
       "description": "Answers to common questions about Prairie Web Studio — timelines, pricing, local SEO, site speed, and ownership for both static websites and custom web applications in Great Bend.",
       "ogTitle": "FAQ — Prairie Web Studio",
       "ogDescription": "Common questions about our web design and web application process, pricing, and local SEO for Great Bend businesses.",
-      "preloadImage": "./assets/kansas-fields.avif",
+      "preloadImage": "./assets/wordpress-import/kansas-fields.avif",
       "sitemap": {
         "changefreq": "monthly",
         "priority": "0.7"
@@ -140,7 +140,7 @@
       "description": "Get in touch with Prairie Web Studio for a free website or web application quote. Serving Great Bend & Central Kansas — we respond within one business day.",
       "ogTitle": "Contact — Prairie Web Studio",
       "ogDescription": "Ready to get online, launch a custom web application, or upgrade what you've got? Reach out for a free quote — we respond within one business day.",
-      "preloadImage": "./assets/kansas-fields.avif",
+      "preloadImage": "./assets/wordpress-import/kansas-fields.avif",
       "sitemap": {
         "changefreq": "yearly",
         "priority": "0.8"

@@ -237,6 +237,24 @@
                 </div>
 
                 <div>
+                  <label for="contact-email" class="block text-sm font-medium text-ink-700">
+                    Email <span class="text-brand-800" aria-hidden="true">*</span><span class="sr-only"> (required)</span>
+                  </label>
+                  <input
+                    type="email"
+                    id="contact-email"
+                    name="email"
+                    required
+                    maxlength="200"
+                    autocomplete="email"
+                    inputmode="email"
+                    aria-required="true"
+                    class="field-input"
+                    placeholder="jane@example.com"
+                  >
+                </div>
+
+                <div>
                   <label for="contact-address" class="block text-sm font-medium text-ink-700">
                     Business location <span class="text-brand-800" aria-hidden="true">*</span><span class="sr-only"> (required)</span>
                   </label>
@@ -697,7 +715,6 @@
   </script>
 <!-- SEO:JSONLD-END -->
 
-  <script src="https://dispatch.prairiewebstudio.com/v1/prairie-dispatch.js"></script>
   <script type="module" src="./main.js"></script>
 </body>
 </html>

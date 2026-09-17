@@ -1,6 +1,6 @@
 # Prairie Web Studio - Great Bend Business Website
 
-A static HTML + Tailwind CSS marketing site for Prairie Web Studio, a Great Bend, KS web shop — built to load fast, rank well, and stay accessible. The contact form submits client-side to the Prairie Dispatch Engine, an external service — there's no backend in this repo.
+A static HTML + Tailwind CSS marketing site for Prairie Web Studio, a Great Bend, KS web shop — built to load fast, rank well, and stay accessible. The contact form posts to a small Cloudflare Pages Function in this repo (`functions/api/contact.js`), which sends the lead via Resend directly — no external dispatch service involved.
 
 ## How this repo actually works
 
@@ -26,7 +26,7 @@ Open the URL `serve` prints. This serves the static files as-is — no build req
 - **Tailwind CSS** — Pre-compiled and inlined per page (no runtime CDN compiler, no live build step)
 - **SVG graphics** — Crisp, lightweight illustrations with zero raster overhead
 - **Vanilla JavaScript** (`main.js`) — Deferred `<script type="module">`; handles the mobile nav toggle and the contact form's submit flow
-- **Prairie Dispatch Engine** — external SDK (loaded via `<script src="https://dispatch.prairiewebstudio.com/v1/prairie-dispatch.js">` in `contact.html`) that the contact form submits to directly from the browser; no backend code lives in this repo
+- **Cloudflare Pages Function** (`functions/api/contact.js`) — same-origin `/api/contact` endpoint that validates the submission and sends it via the Resend API; holds `RESEND_API_KEY` server-side, never exposed to the browser
 
 ## Site Structure
 
@@ -38,12 +38,11 @@ Open the URL `serve` prints. This serves the static files as-is — no build req
 | `faq.html` | FAQ accordion with matching `FAQPage` JSON-LD |
 | `contact.html` | Contact form + business info (phone, hours, service area) |
 | `success.html` | Post-payment landing page (Stripe redirect target) |
-| `main.js` | Shared vanilla JS: mobile nav toggle, contact form submission via Prairie Dispatch Engine |
+| `main.js` | Shared vanilla JS: mobile nav toggle, contact form submission to `/api/contact` |
+| `functions/api/contact.js` | Cloudflare Pages Function — validates the submission and sends it via Resend |
 | `assets/` | Logos, icons, and photos (`.avif`/`.svg`) |
 | `_redirects` | Stripe payment link redirects (`/payment` → Stripe Checkout URLs) |
 | `robots.txt`, `sitemap.xml` | Hand-maintained, not generated |
-
-There's no `functions/` directory in this repo — the contact form has no backend here (see Contact Form section below).
 
 ## How to Update Content
 
@@ -73,9 +72,17 @@ Because CSS is pre-compiled and inlined, there's no `tailwind.config.js` rebuild
 
 ## Contact Form & Lead Alerts
 
-The contact form (`contact.html`) submits client-side via the [Prairie Dispatch Engine](https://github.com/geeko452100/Dispatcher-Micro-Plugin) SDK — a `<script src="https://dispatch.prairiewebstudio.com/v1/prairie-dispatch.js">` tag loaded in `contact.html`, initialized in `main.js`'s `initContactForm()`. **There's no backend code in this repo** — the SDK is tied to this business's tenant API key, hardcoded directly in `main.js`. The dispatch engine relays each lead as a text to the tenant's `veriphoneGateway` and sends email from `ggriffith@prairiewebstudio.com` (this tenant's `resendFrom` override). To change how leads are delivered (a different phone/email, honeypot behavior, etc.), that's configured on the dispatch engine's side, not in this repo.
+The contact form (`contact.html`) posts JSON to `/api/contact`, handled by `functions/api/contact.js` — a Cloudflare Pages Function in this repo. It validates the submission server-side, then sends two emails via the [Resend](https://resend.com) API: a lead notification to you (reply-able straight to the customer, via `reply_to`) and a short confirmation to the customer's own address (best-effort — a failure there doesn't fail the form, since the lead notification is what matters). `main.js`'s `initContactForm()` does the client-side honeypot check (`_gotcha`) and shows the success/error state based on the function's response.
 
-The form still includes a `_gotcha` honeypot field that `main.js` checks client-side before calling the dispatch SDK, to silently drop obvious bot submissions.
+Required Pages environment variables (Settings → Environment variables on the Pages project):
+
+| Name | Type | Notes |
+|------|------|-------|
+| `RESEND_API_KEY` | secret | from resend.com/api-keys |
+| `RESEND_FROM` | var | sender address — **must be on a domain verified in the Resend dashboard**, or every send fails even with a valid key |
+| `CONTACT_TO` | var | where leads are delivered (defaults to `ggriffith@prairiewebstudio.com` if unset) |
+
+To change where leads go, or how they're formatted, edit `functions/api/contact.js` directly — there's no external service involved anymore.
 
 ## Deployment
 
@@ -83,7 +90,8 @@ Deploy to [Cloudflare Pages](https://pages.cloudflare.com).
 
 1. Connect the repo in the Cloudflare Pages dashboard.
 2. Leave the build command empty (or `true`/no-op) and set the output directory to **`.`** (repo root) — there's nothing to build.
-3. Deploy and test the contact form on the live site — since the dispatch engine is external, a successful local test still requires network access to `dispatch.prairiewebstudio.com`.
+3. Set `RESEND_API_KEY`, `RESEND_FROM`, and `CONTACT_TO` in the Pages project's environment variables (see Contact Form section above) — the form will silently fail to deliver mail without these, even though the page itself loads fine.
+4. Deploy and test the contact form on the live site.
 
 Stripe payment redirects in `_redirects` are supported automatically on Cloudflare Pages. `CNAME` pins the custom domain for GitHub Pages-style hosting if that's ever used instead; Cloudflare Pages manages its own custom domain configuration separately in the dashboard.
 

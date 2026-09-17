@@ -64,13 +64,12 @@ function initContactForm() {
   var form = document.getElementById('contact-form');
   if (!form) return;
 
-  var dispatch = new PrairieDispatch('pk_85bfd3e424c165bb63bf0e59efc203ef6dfb26da7c97eb56');
-
   form.addEventListener('submit', function (e) {
     e.preventDefault();
 
     // Formspree-style honeypot: bots fill hidden fields humans never see.
-    if (String(new FormData(form).get('_gotcha') || '').trim() !== '') {
+    var gotcha = String(new FormData(form).get('_gotcha') || '').trim();
+    if (gotcha !== '') {
       showFormSuccess();
       return;
     }
@@ -83,12 +82,22 @@ function initContactForm() {
 
     var data = Object.fromEntries(new FormData(form).entries());
 
-    dispatch
-      .send({
+    fetch('/api/contact', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
         customerName: data.customerName,
+        business: data.business,
+        email: data.email,
         phone: data.phone,
         address: data.address,
-        notes: data.message,
+        message: data.message,
+        _gotcha: gotcha,
+      }),
+    })
+      .then(function (res) {
+        if (!res.ok) throw new Error('Request failed (' + res.status + ')');
+        return res.json();
       })
       .then(function () {
         showFormSuccess();
