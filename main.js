@@ -64,6 +64,13 @@ function initContactForm() {
   var form = document.getElementById('contact-form');
   if (!form) return;
 
+<<<<<<< HEAD
+=======
+  // The secret key lives server-side (functions/api/v1/dispatch.js) — this
+  // just routes the SDK's POST to our own origin instead of the dispatch API.
+  var dispatch = new PrairieDispatch('local-relay', { baseUrl: window.location.origin });
+
+>>>>>>> 892981f530132be17d8790d4422be3d2230f519d
   form.addEventListener('submit', function (e) {
     e.preventDefault();
 
