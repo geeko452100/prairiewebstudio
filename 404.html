@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Page Not Found | Prairie Web Studio</title>
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/css/success.css">
+  <meta name="description" content="The page you're looking for doesn't exist. Head back to Prairie Web Studio's homepage.">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#507030">
+  <link rel="apple-touch-icon" href="/assets/favicon.svg">
+</head>
+<body class="bg-ink-50 font-sans text-ink-800 antialiased">
+  <a href="#main" class="sr-only focus-visible:absolute focus-visible:left-4 focus-visible:top-4 focus-visible:z-50 focus-visible:m-0 focus-visible:block focus-visible:h-auto focus-visible:w-auto focus-visible:overflow-visible focus-visible:whitespace-normal focus-visible:rounded-lg focus-visible:bg-brand-800 focus-visible:px-4 focus-visible:py-2 focus-visible:text-sm focus-visible:font-medium focus-visible:text-white">
+    Skip to main content
+  </a>
+
+  <div class="flex min-h-screen flex-col">
+    <header class="border-b border-ink-100/80 bg-white">
+      <div class="container-site flex h-16 items-center justify-center px-4 sm:px-6 lg:px-8">
+        <a href="/" class="flex items-center gap-3 rounded-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500" aria-label="Prairie Web Studio — Home">
+          <img src="/assets/logo.svg" alt="" width="40" height="40" class="h-10 w-10" decoding="async">
+          <span class="text-lg font-bold tracking-tight text-ink-900">Prairie Web <span class="text-brand-800">Studio</span></span>
+        </a>
+      </div>
+    </header>
+
+    <main id="main" class="flex flex-1 items-center justify-center px-4 py-16 sm:px-6 lg:px-8">
+      <div class="w-full max-w-lg text-center">
+        <div class="mb-8 text-brand-800" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" width="140" height="140" viewBox="0 0 140 140" fill="none" class="mx-auto">
+            <!-- ears -->
+            <path d="M32 46 22 16l26 20" fill="currentColor" opacity="0.15"/>
+            <path d="M108 46 118 16l-26 20" fill="currentColor" opacity="0.15"/>
+            <path d="M32 46 22 16l26 20" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/>
+            <path d="M108 46 118 16l-26 20" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/>
+            <!-- head -->
+            <circle cx="70" cy="76" r="46" fill="white" stroke="currentColor" stroke-width="3"/>
+            <!-- inner ears -->
+            <path d="M40 40 34 24l14 12" fill="currentColor" opacity="0.35"/>
+            <path d="M100 40 106 24l-14 12" fill="currentColor" opacity="0.35"/>
+            <!-- eyes (closed, happy) -->
+            <path d="M50 74q6-8 12 0" stroke="currentColor" stroke-width="3" stroke-linecap="round" fill="none"/>
+            <path d="M78 74q6-8 12 0" stroke="currentColor" stroke-width="3" stroke-linecap="round" fill="none"/>
+            <!-- nose -->
+            <path d="M66 88h8l-4 5z" fill="currentColor"/>
+            <!-- mouth -->
+            <path d="M70 93v4M70 97q-6 6-12 2M70 97q6 6 12 2" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+            <!-- whiskers -->
+            <path d="M24 82h18M24 92h17M98 82h18M99 92h17" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" opacity="0.6"/>
+            <!-- blush -->
+            <circle cx="46" cy="86" r="4" fill="currentColor" opacity="0.2"/>
+            <circle cx="94" cy="86" r="4" fill="currentColor" opacity="0.2"/>
+          </svg>
+        </div>
+
+        <h1 id="not-found-heading" class="text-3xl font-extrabold tracking-tight text-ink-950 sm:text-4xl">
+          404 — Page Not Found
+        </h1>
+
+        <p class="mt-4 text-lg leading-relaxed text-ink-600">
+          This page wandered off somewhere. Even our cat couldn't track it down.
+        </p>
+
+        <div class="mt-10 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
+          <a href="/" class="btn-primary w-full sm:w-auto">Return to Home</a>
+          <a href="/contact.html" class="btn-secondary w-full sm:w-auto">Contact Us</a>
+        </div>
+      </div>
+    </main>
+
+    <footer class="border-t border-ink-100 bg-white py-6">
+      <p class="text-center text-sm text-ink-500">
+        &copy; <span id="year"></span> Prairie Web Studio. All rights reserved.
+      </p>
+    </footer>
+  </div>
+
+  <script type="module" src="/main.js"></script>
+</body>
+</html>

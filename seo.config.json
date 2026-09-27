@@ -42,14 +42,14 @@
   "services": [
     {
       "name": "Simple Static Site",
-      "description": "Custom multi-page static website with two payments ($375 deposit + $375 at deployment). Fast, search-friendly, and fully yours at launch.",
-      "price": "750",
+      "description": "Custom multi-page static website with three payments ($500 deposit, $500 at the project midpoint, and $500 due at deployment). Fast, search-friendly, and fully yours at launch.",
+      "price": "1500",
       "priceCurrency": "USD"
     },
     {
       "name": "Full Custom Web Application",
-      "description": "Custom web application with secure authentication, two payments ($1,125 deposit + $1,125 at deployment), and two free code reviews after deployment.",
-      "price": "2250",
+      "description": "Custom web application with secure authentication, three payments ($900 at project start, $900 at the project midpoint, and $900 at project completion), and two free code reviews after deployment.",
+      "price": "2700",
       "priceCurrency": "USD"
     }
   ],
@@ -98,13 +98,30 @@
       }
     },
     {
-      "id": "services",
-      "html": "/services.html",
-      "path": "/services.html",
-      "title": "Website & Web App Design Services & Pricing | Prairie Web Studio",
-      "description": "Web design & web application pricing for Great Bend & Central Kansas businesses. Choose a Simple Static Site or a Full Custom Web Application — honest, Main-Street pricing either way.",
-      "ogTitle": "Services & Pricing — Prairie Web Studio",
-      "ogDescription": "Two ways to get online — a Simple Static Site or a Full Custom Web Application. Honest, Main-Street pricing for fast, easy-to-find sites and apps.",
+      "id": "simple",
+      "html": "/simple.html",
+      "path": "/simple.html",
+      "title": "Simple Sites — Static Website Pricing | Prairie Web Studio",
+      "description": "Simple, fast static websites for Great Bend & Central Kansas businesses — $1,500 total in three easy payments. See live examples and get a free quote.",
+      "ogTitle": "Simple Sites — Prairie Web Studio",
+      "ogDescription": "Fast, findable static websites for local businesses — $1,500 total in three easy payments. Live examples and honest pricing.",
+      "preloadImage": "./assets/wordpress-import/kansas-fields.avif",
+      "sitemap": {
+        "changefreq": "monthly",
+        "priority": "0.9"
+      },
+      "sections": {
+        "jsonld": true
+      }
+    },
+    {
+      "id": "multi-layer",
+      "html": "/multi-layer.html",
+      "path": "/multi-layer.html",
+      "title": "Multi-Layer Sites — Custom Web App Pricing | Prairie Web Studio",
+      "description": "Full custom web applications for Great Bend & Central Kansas businesses — logins, payments, and dashboards. $2,700 total in three easy payments.",
+      "ogTitle": "Multi-Layer Sites — Prairie Web Studio",
+      "ogDescription": "Custom web applications with secure logins, payments, and dashboards — $2,700 total in three easy payments.",
       "preloadImage": "./assets/wordpress-import/kansas-fields.avif",
       "sitemap": {
         "changefreq": "monthly",
