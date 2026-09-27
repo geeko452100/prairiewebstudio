@@ -1,6 +1,9 @@
 /payment https://buy.stripe.com/fZudR2ga913D9P411JdQQ04 302
 /payment https://buy.stripe.com/9B63co0bb3bL6CSfWDdQQ03 302
 
-/services.html /simple.html 301
-/work.html /simple.html 301
+/simple /services 301
+/simple.html /services 301
+/multi-layer /services 301
+/multi-layer.html /services 301
+/work.html /services 301
 

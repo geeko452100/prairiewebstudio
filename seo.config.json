@@ -98,30 +98,13 @@
       }
     },
     {
-      "id": "simple",
-      "html": "/simple.html",
-      "path": "/simple.html",
-      "title": "Simple Sites — Static Website Pricing | Prairie Web Studio",
-      "description": "Simple, fast static websites for Great Bend & Central Kansas businesses — $1,500 total in three easy payments. See live examples and get a free quote.",
-      "ogTitle": "Simple Sites — Prairie Web Studio",
-      "ogDescription": "Fast, findable static websites for local businesses — $1,500 total in three easy payments. Live examples and honest pricing.",
-      "preloadImage": "./assets/wordpress-import/kansas-fields.avif",
-      "sitemap": {
-        "changefreq": "monthly",
-        "priority": "0.9"
-      },
-      "sections": {
-        "jsonld": true
-      }
-    },
-    {
-      "id": "multi-layer",
-      "html": "/multi-layer.html",
-      "path": "/multi-layer.html",
-      "title": "Multi-Layer Sites — Custom Web App Pricing | Prairie Web Studio",
-      "description": "Full custom web applications for Great Bend & Central Kansas businesses — logins, payments, and dashboards. $2,700 total in three easy payments.",
-      "ogTitle": "Multi-Layer Sites — Prairie Web Studio",
-      "ogDescription": "Custom web applications with secure logins, payments, and dashboards — $2,700 total in three easy payments.",
+      "id": "services",
+      "html": "/services.html",
+      "path": "/services.html",
+      "title": "Services & Pricing — Websites & Web Apps | Prairie Web Studio",
+      "description": "Simple Sites from $1,500 or Multi-Layer Sites (custom web apps with logins, payments & dashboards) from $2,700 for Great Bend & Central Kansas businesses. Compare both and see live demos.",
+      "ogTitle": "Services & Pricing — Prairie Web Studio",
+      "ogDescription": "Simple Sites ($1,500) for getting found, or Multi-Layer Sites ($2,700) for logins, payments & bookings. Compare both side by side.",
       "preloadImage": "./assets/wordpress-import/kansas-fields.avif",
       "sitemap": {
         "changefreq": "monthly",

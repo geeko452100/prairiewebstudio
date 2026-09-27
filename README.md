@@ -4,7 +4,7 @@ A static HTML + Tailwind CSS marketing site for Prairie Web Studio, a Great Bend
 
 ## How this repo actually works
 
-There's no build step in this checkout — `index.html`, `simple.html`, `multi-layer.html`, `faq.html`, `contact.html`, `success.html`, and `404.html` at the repo root **are** the live source files. Each page links its own pre-compiled Tailwind stylesheet from `css/<page>.css` (e.g. `simple.html` → `css/simple.css`), so there's nothing to run before deploying.
+There's no build step in this checkout — `index.html`, `services.html`, `faq.html`, `contact.html`, `success.html`, and `404.html` at the repo root **are** the live source files. Each page links its own pre-compiled Tailwind stylesheet from `css/<page>.css` (e.g. `services.html` → `css/services.css`), so there's nothing to run before deploying.
 
 This matters when editing:
 
@@ -33,8 +33,7 @@ Open the URL `serve` prints. This serves the static files as-is — no build req
 | File | Purpose |
 |------|---------|
 | `index.html` | Homepage — hero, why-us, "what does your business need" paths |
-| `simple.html` | Simple Sites — static site pricing, TLC Plan add-on, and live static-site demos |
-| `multi-layer.html` | Multi-Layer Sites — custom web app pricing, TLC Plan add-on, and live web-app demos |
+| `services.html` | Services & Pricing — compares Simple Sites vs. Multi-Layer Sites side by side, with each option's pricing and live demos (`#simple`, `#multi-layer`) plus the shared TLC Plan add-on |
 | `faq.html` | FAQ accordion with matching `FAQPage` JSON-LD |
 | `contact.html` | Contact form + business info (phone, hours, service area) |
 | `success.html` | Post-payment landing page (Stripe redirect target) |
@@ -46,7 +45,7 @@ Open the URL `serve` prints. This serves the static files as-is — no build req
 
 ## How to Update Content
 
-Edit the relevant page directly (e.g. `index.html`, `simple.html`) in a text editor.
+Edit the relevant page directly (e.g. `index.html`, `services.html`) in a text editor.
 
 ### Business Hours & Contact Info
 
@@ -54,7 +53,7 @@ Update in `contact.html` — search for `<address` for hours, phone, and service
 
 ### Services & Pricing
 
-Simple Sites (static) pricing lives in `simple.html`; Multi-Layer Sites (web app) pricing lives in `multi-layer.html`. Each page has its own pricing card (`id="pricing"`) and its own copy of the TLC Plan add-on (`id="care-plan"`) — update plan names in `<h3>` tags, features in `<li class="pricing-feature">`, and prices in `<p class="pricing-amount">`. Prices are also listed in each page's own JSON-LD `hasOfferCatalog` block — keep those in sync manually.
+All pricing lives in `services.html`: the Simple Sites card is in `id="simple"`, the Multi-Layer Sites card is in `id="multi-layer"`, and the shared TLC Plan add-on is in `id="care-plan"`. The prices also appear in the comparison table (`id="compare"`) and the two option cards at the top of the page — update plan names in `<h3>` tags, features in `<li class="pricing-feature">`, and prices in `<p class="pricing-amount">`. Prices are also listed in the page's JSON-LD `hasOfferCatalog` block — keep those in sync manually.
 
 ### FAQ
 
