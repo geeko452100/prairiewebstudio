@@ -1,9 +1,15 @@
 /payment https://buy.stripe.com/fZudR2ga913D9P411JdQQ04 302
 /payment https://buy.stripe.com/9B63co0bb3bL6CSfWDdQQ03 302
 
+# Old static-site URLs -> clean React routes
+/index.html / 301
+/services.html /services 301
+/faq.html /faq 301
+/contact.html /contact 301
+/success.html /success 301
+
 /simple /services 301
 /simple.html /services 301
 /multi-layer /services 301
 /multi-layer.html /services 301
 /work.html /services 301
-

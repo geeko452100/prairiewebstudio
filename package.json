@@ -1,17 +1,28 @@
 {
-  "name": "prairie-wb-studio",
-  "version": "1.0.0",
+  "name": "prairie-web-studio",
+  "version": "2.0.0",
   "private": true,
+  "type": "module",
   "scripts": {
-    "build:css": "tailwindcss -i ./src/input.css -o ./assets/css/main.css --minify",
-    "build:inline": "node scripts/inline-css.js",
-    "build:partials": "node scripts/apply-partials.js",
-    "build:seo": "node scripts/apply-seo.js",
-    "build": "npm run build:partials && npm run build:seo && npm run build:css && npm run build:inline",
-    "lighthouse": "npm run build && node scripts/lighthouse-check.js",
-    "watch:css": "tailwindcss -i ./src/input.css -o ./assets/css/main.css --watch"
+    "dev": "vite",
+    "typecheck": "tsc --noEmit",
+    "build": "tsc --noEmit && vite build && vite build --ssr src/entry-server.tsx --outDir dist-ssr && node scripts/prerender.js",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0",
+    "react-router": "^7.18.4"
   },
   "devDependencies": {
-    "tailwindcss": "^4.3.2"
+    "@types/node": "^26.6.4",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@vitejs/plugin-react": "^4.7.0",
+    "autoprefixer": "^10.6.1",
+    "postcss": "^8.5.28",
+    "tailwindcss": "^3.4.19",
+    "typescript": "^7.0.2",
+    "vite": "^6.4.3"
   }
 }

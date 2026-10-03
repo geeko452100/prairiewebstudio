@@ -1,5 +1,4 @@
 node_modules/
-package-lock.json
 .dev.vars
 lighthouse-report.json
 lighthouse-full.json
@@ -7,3 +6,5 @@ lighthouse-mobile.json
 .wrangler
 PRICING.md
 PRICING.html
+dist/
+dist-ssr/
