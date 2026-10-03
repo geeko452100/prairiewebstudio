@@ -1,97 +1,73 @@
 # Prairie Web Studio - Great Bend Business Website
 
-A static HTML + Tailwind CSS marketing site for Prairie Web Studio, a Great Bend, KS web shop — built to load fast, rank well, and stay accessible. The contact form posts to a small Cloudflare Pages Function in this repo (`functions/api/contact.js`), which sends the lead via Resend directly — no external dispatch service involved.
+The marketing site for Prairie Web Studio, a Great Bend, KS web shop. It's a **React app** (Vite + React Router + Tailwind CSS) that gets **prerendered to static HTML** at build time. Every page ships its real content and SEO tags, and React takes over in the browser. The contact form posts to a small Cloudflare Pages Function (`functions/api/contact.js`), which sends the lead through Resend.
 
-## How this repo actually works
-
-There's no build step in this checkout — `index.html`, `services.html`, `faq.html`, `contact.html`, `success.html`, and `404.html` at the repo root **are** the live source files. Each page links its own pre-compiled Tailwind stylesheet from `css/<page>.css` (e.g. `services.html` → `css/services.css`), so there's nothing to run before deploying.
-
-This matters when editing:
-
-- **Reuse existing utility classes.** If a Tailwind class (e.g. `mt-3`, `object-contain`) isn't already used somewhere on the page, it has no matching rule in that page's compiled CSS file and will silently do nothing. Check the class exists elsewhere in the file first (or in its `css/<page>.css`), or fall back to an inline `style="..."` attribute, which always works regardless of what's compiled.
-- **All pages share near-identical `<head>`, header, and footer markup.** There's no templating — changes to shared chrome (nav links, footer, JSON-LD business info) need to be copied into each HTML file by hand.
-- **`package.json` still lists `build`, `build:css`, `build:seo`, etc.**, and `seo.config.json` describes per-page SEO data, but the `src/` and `scripts/` directories those commands depend on aren't present in this repo, so those scripts will fail if run. Treat `seo.config.json` as reference/history, not as something that currently drives the pages — SEO meta tags, JSON-LD, and FAQ schema are hand-maintained directly in each HTML file's `<!-- SEO:HEAD-START -->` / `<!-- SEO:FAQ-START -->` / `<!-- SEO:JSONLD-START -->` blocks.
-
-### View locally
+## Quick start
 
 ```bash
-npx serve .
+npm install
+npm run dev       # dev server with hot reload (client-rendered, no prerender)
+npm run build     # production build + prerender -> dist/
+npm run preview   # serve dist/ locally
 ```
 
-Open the URL `serve` prints. This serves the static files as-is — no build required.
+`/api/contact` only exists on Cloudflare. To test the form locally, run `npx wrangler pages dev dist` after a build (put secrets in `.dev.vars`).
 
-## Built With
+## Project layout
 
-- **HTML5** — Semantic structure, schema.org `LocalBusiness`/`ProfessionalService` markup, local SEO meta tags
-- **Tailwind CSS** — Pre-compiled and inlined per page (no runtime CDN compiler, no live build step)
-- **SVG graphics** — Crisp, lightweight illustrations with zero raster overhead
-- **Vanilla JavaScript** (`main.js`) — Deferred `<script type="module">`; handles the mobile nav toggle and the contact form's submit flow
-- **Cloudflare Pages Function** (`functions/api/contact.js`) — same-origin `/api/contact` endpoint that validates the submission and sends it via the Resend API; holds `RESEND_API_KEY` server-side, never exposed to the browser
+| Path | What it is |
+|------|------------|
+| `index.html` | Vite HTML template. Holds the site-wide `<head>` tags; per-page tags are injected at `<!--app-head-->` |
+| `src/main.jsx` | Browser entry. Hydrates the prerendered HTML |
+| `src/entry-server.jsx` | Build-time entry used by the prerender script |
+| `src/App.jsx` | Routes (`/`, `/services`, `/faq`, `/contact`, `/success`, 404) |
+| `src/pages/` | One component per page |
+| `src/components/` | Header (with the mobile menu), footer, layouts, skip link, head/scroll helpers |
+| `src/site.js` | Phone, email, nav links, hero image: shared business details |
+| `src/seo.js` | Per-page title/description/Open Graph tags, plus the JSON-LD (business info, offer catalog without prices, FAQ schema) |
+| `src/data/faqs.js` | FAQ questions and answers. Feeds both the FAQ page and its `FAQPage` JSON-LD |
+| `src/index.css` | Tailwind entry plus the shared component classes (`btn-primary`, `card`, `pricing-*`, `svc-*`, …) |
+| `scripts/prerender.js` | Runs after `vite build`. Renders each route to `dist/<route>/index.html` and `dist/404.html` |
+| `public/` | Copied to `dist/` as-is: `assets/`, `_redirects`, `robots.txt`, `sitemap.xml`, `CNAME` |
+| `functions/api/contact.js` | Cloudflare Pages Function. Validates the form and sends it with Resend |
 
-## Site Structure
+## How to update content
 
-| File | Purpose |
-|------|---------|
-| `index.html` | Homepage — hero, why-us, "what does your business need" paths |
-| `services.html` | Services & Pricing — compares Simple Sites vs. Multi-Layer Sites side by side, with each option's pricing and live demos (`#simple`, `#multi-layer`) plus the shared TLC Plan add-on |
-| `faq.html` | FAQ accordion with matching `FAQPage` JSON-LD |
-| `contact.html` | Contact form + business info (phone, hours, service area) |
-| `success.html` | Post-payment landing page (Stripe redirect target) |
-| `main.js` | Shared vanilla JS: mobile nav toggle, contact form submission to `/api/contact` |
-| `functions/api/contact.js` | Cloudflare Pages Function — validates the submission and sends it via Resend |
-| `assets/` | Logos, icons, and photos (`.avif`/`.svg`) |
-| `_redirects` | Stripe payment link redirects (`/payment` → Stripe Checkout URLs) |
-| `robots.txt`, `sitemap.xml` | Hand-maintained, not generated |
+- **Phone, email, nav links:** `src/site.js`. The header, footer, and contact page all pick up changes.
+- **Business hours / service area:** `src/pages/Contact.jsx` (visible) and `openingHoursSpecification` in `src/seo.js` (JSON-LD).
+- **Services & plans:** `src/pages/Services.jsx` (plan cards, comparison table, chooser cards) and the `OFFERS` list in `src/seo.js`. Prices are intentionally not shown anywhere on the site or in the structured data.
+- **FAQ:** edit `src/data/faqs.js`. The page and the structured data both update.
+- **Page titles / descriptions / social previews:** `PAGES` in `src/seo.js`.
 
-## How to Update Content
+### Adding a page
 
-Edit the relevant page directly (e.g. `index.html`, `services.html`) in a text editor.
+1. Create `src/pages/NewPage.jsx`.
+2. Add a `<Route>` in `src/App.jsx`.
+3. Add an entry to `PAGES` in `src/seo.js`.
+4. Add it to `ROUTES` in `scripts/prerender.js` and to `public/sitemap.xml`.
 
-### Business Hours & Contact Info
+## Styling
 
-Update in `contact.html` — search for `<address` for hours, phone, and service area. The same phone number and hours also appear in the JSON-LD block (`<!-- SEO:JSONLD-START -->`) near the bottom of every page and in the header's "Call" button — update all instances together.
+Tailwind is now compiled at build time from `tailwind.config.js` (brand/ink colours, shadows), so **any Tailwind class works**. You no longer have to reuse classes that already appear on the page. Shared component styles live in `src/index.css`.
 
-### Services & Pricing
+## Contact form & lead alerts
 
-All pricing lives in `services.html`: the Simple Sites card is in `id="simple"`, the Multi-Layer Sites card is in `id="multi-layer"`, and the shared TLC Plan add-on is in `id="care-plan"`. The prices also appear in the comparison table (`id="compare"`) and the two option cards at the top of the page — update plan names in `<h3>` tags, features in `<li class="pricing-feature">`, and prices in `<p class="pricing-amount">`. Prices are also listed in the page's JSON-LD `hasOfferCatalog` block — keep those in sync manually.
+`src/pages/Contact.jsx` posts JSON to `/api/contact`, which is handled by `functions/api/contact.js`. The function validates the submission, then sends two emails through [Resend](https://resend.com): a lead notification to you (reply-able straight to the customer) and a best-effort confirmation to the customer. The `_gotcha` field is a honeypot for bots.
 
-### FAQ
-
-Edit `faq.html` — each question is a `<details class="card group">` block. The visible answer and the `FAQPage` JSON-LD entry at the bottom of the file are separate; update both when adding, removing, or editing a question.
-
-## Modifying Styles
-
-Because CSS is pre-compiled and inlined, there's no `tailwind.config.js` rebuild step wired up in this repo. To add new styling:
-
-1. Prefer reusing a utility class that's already present somewhere on the same page.
-2. For anything not already compiled (spacing values, new colors, etc.), use an inline `style="..."` attribute — it always renders regardless of the missing build pipeline.
-3. Small custom rules (like the page background image, or hero gradient overlays) live in the page's second `<style>` block, right after the `<!-- BUILD:CSS-END -->` marker — add plain CSS there if a rule needs to apply broadly across a page.
-
-`tailwind.config.js` and the `src/input.css` referenced by `package.json`'s `build:css` script describe the intended source-of-truth setup but aren't present here; if that pipeline gets restored later, this section should be rewritten to match.
-
-## Contact Form & Lead Alerts
-
-The contact form (`contact.html`) posts JSON to `/api/contact`, handled by `functions/api/contact.js` — a Cloudflare Pages Function in this repo. It validates the submission server-side, then sends two emails via the [Resend](https://resend.com) API: a lead notification to you (reply-able straight to the customer, via `reply_to`) and a short confirmation to the customer's own address (best-effort — a failure there doesn't fail the form, since the lead notification is what matters). `main.js`'s `initContactForm()` does the client-side honeypot check (`_gotcha`) and shows the success/error state based on the function's response.
-
-Required Pages environment variables (Settings → Environment variables on the Pages project):
+Required Pages environment variables:
 
 | Name | Type | Notes |
 |------|------|-------|
 | `RESEND_API_KEY` | secret | from resend.com/api-keys |
-| `RESEND_FROM` | var | sender address — **must be on a domain verified in the Resend dashboard**, or every send fails even with a valid key |
-| `CONTACT_TO` | var | where leads are delivered (defaults to `ggriffith@prairiewebstudio.com` if unset) |
+| `RESEND_FROM` | var | sender address. **Must be on a domain verified in Resend**, or every send fails |
+| `CONTACT_TO` | var | where leads go (defaults to `ggriffith@prairiewebstudio.com`) |
 
-To change where leads go, or how they're formatted, edit `functions/api/contact.js` directly — there's no external service involved anymore.
+## Deployment (Cloudflare Pages)
 
-## Deployment
+In the Pages project settings:
 
-Deploy to [Cloudflare Pages](https://pages.cloudflare.com).
+- **Build command:** `npm run build`
+- **Build output directory:** `dist`
+- **Environment variables:** the three above. Pin `NODE_VERSION` to `22` if the default is older.
 
-1. Connect the repo in the Cloudflare Pages dashboard.
-2. Leave the build command empty (or `true`/no-op) and set the output directory to **`.`** (repo root) — there's nothing to build.
-3. Set `RESEND_API_KEY`, `RESEND_FROM`, and `CONTACT_TO` in the Pages project's environment variables (see Contact Form section above) — the form will silently fail to deliver mail without these, even though the page itself loads fine.
-4. Deploy and test the contact form on the live site.
-
-Stripe payment redirects in `_redirects` are supported automatically on Cloudflare Pages. `CNAME` pins the custom domain for GitHub Pages-style hosting if that's ever used instead; Cloudflare Pages manages its own custom domain configuration separately in the dashboard.
-
-`seo.config.json` documents `site.url` and related fields as reference, but — per the note above — nothing in this repo currently reads it. The canonical tags, `robots.txt`, `sitemap.xml`, and JSON-LD blocks in each HTML file are the actual source of truth and are updated by hand.
+Pages serves `/faq` from `dist/faq/index.html` and uses `dist/404.html` for unknown URLs. `public/_redirects` holds the Stripe payment links and 301s from the old `.html` URLs (`/services.html` → `/services`, etc.) so existing links and search results keep working.

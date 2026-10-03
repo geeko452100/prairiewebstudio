@@ -1,0 +1,306 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    ::before,
+    ::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
+  :focus-visible {
+    outline-width: 2px;
+    outline-offset: 2px;
+    outline-color: theme('colors.brand.500');
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: ui-rounded, 'Hiragino Maru Gothic ProN', system-ui, sans-serif;
+    letter-spacing: -0.01em;
+  }
+
+  body {
+    background-color: #eee1a8;
+    background-image:
+      linear-gradient(rgba(238, 225, 168, 0.86), rgba(235, 219, 158, 0.89)),
+      url('/assets/wordpress-import/kansas-fields.avif');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+  }
+}
+
+@layer components {
+  .section-pad {
+    padding: 3.5rem 1rem;
+  }
+  @screen sm {
+    .section-pad {
+      padding: 4rem 1.5rem;
+    }
+  }
+  @screen lg {
+    .section-pad {
+      padding: 5rem 2rem;
+    }
+  }
+
+  .container-site {
+    @apply mx-auto max-w-6xl;
+  }
+
+  .btn-primary {
+    @apply inline-flex min-h-[2.75rem] items-center justify-center rounded-full bg-brand-600 px-7 py-3 text-sm font-semibold text-white shadow-glow transition-colors hover:bg-brand-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500;
+  }
+
+  .btn-secondary {
+    @apply inline-flex min-h-[2.75rem] items-center justify-center rounded-full border border-brand-200 bg-white px-7 py-3 text-sm font-semibold text-brand-800 transition-colors hover:border-brand-400 hover:bg-brand-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500;
+  }
+
+  .nav-link {
+    @apply min-h-[2.75rem] items-center text-sm font-medium text-ink-700 underline-offset-2 transition-colors hover:text-brand-800 hover:underline focus-visible:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-2;
+  }
+
+  .text-link {
+    @apply font-medium text-brand-800 underline-offset-2 hover:text-brand-900 hover:underline focus-visible:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-2;
+  }
+
+  .footer-link-light {
+    @apply text-ink-200 underline-offset-2 hover:text-white hover:underline focus-visible:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-300 focus-visible:ring-offset-2 focus-visible:ring-offset-brand-900;
+  }
+
+  .card {
+    @apply rounded-3xl border border-ink-100 bg-white p-6 shadow-card transition-shadow hover:shadow-card-hover;
+  }
+
+  .defer-paint {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 40rem;
+  }
+
+  /* Pricing cards (services page) */
+  .pricing-card {
+    @apply rounded-3xl border border-ink-100 bg-white p-6 shadow-card transition-shadow hover:shadow-card-hover;
+  }
+  .pricing-icon {
+    @apply mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-brand-100 text-brand-700;
+  }
+  .pricing-box {
+    @apply mt-6 space-y-3;
+  }
+  .pricing-features {
+    @apply mt-5 flex-grow space-y-2 text-sm text-ink-600;
+  }
+  .pricing-feature {
+    @apply flex items-start gap-2;
+  }
+  .pricing-check {
+    @apply mt-0.5 shrink-0 text-brand-600;
+  }
+  .pricing-cta {
+    @apply mt-6 w-full;
+  }
+
+  /* Form fields (contact page) */
+  .field-input {
+    @apply mt-1 block w-full rounded-lg border border-ink-200 bg-white px-4 py-3 text-ink-900 placeholder:text-ink-400 focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20;
+  }
+}
+
+/* Homepage hero — photo behind a dark gradient so white text stays readable */
+.hero-country {
+  background-image:
+    linear-gradient(90deg, rgba(16, 24, 12, 0.86) 0%, rgba(24, 34, 18, 0.66) 48%, rgba(24, 34, 18, 0.18) 100%),
+    url('/assets/wordpress-import/kansas-fields.avif');
+  background-position: center;
+  background-size: cover;
+}
+@media (max-width: 767px) {
+  .hero-country {
+    background-image:
+      linear-gradient(180deg, rgba(16, 24, 12, 0.88) 0%, rgba(24, 34, 18, 0.68) 100%),
+      url('/assets/wordpress-import/kansas-fields.avif');
+    background-position: center top;
+  }
+}
+
+/* Services page — option chooser, comparison table, and section bands */
+.svc-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 9999px;
+  padding: 0.375rem 0.875rem;
+  font-size: 0.75rem;
+  line-height: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  border: 1px solid #cddfb4;
+  background: #fff;
+  color: #354a27;
+}
+.svc-band-simple {
+  background: #fff;
+  border-top: 1px solid #ecece4;
+}
+.svc-band-multi {
+  background: #2d3e23;
+  color: #fff;
+}
+.svc-band-multi .svc-eyebrow {
+  border-color: #507030;
+  background: #354a27;
+  color: #cddfb4;
+}
+.svc-band-multi .pricing-card,
+.svc-band-multi .card {
+  color: #34342e;
+}
+
+.svc-choice {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.75rem;
+  border-radius: 1.5rem;
+  border: 1px solid #dadacd;
+  background: #fff;
+  padding: 1.75rem;
+  box-shadow: 0 4px 22px -6px rgba(35, 35, 31, 0.12);
+  text-decoration: none;
+  color: #23231f;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+.svc-choice:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px -8px rgba(35, 35, 31, 0.22);
+}
+.svc-choice:focus-visible {
+  outline: 2px solid #678c3e;
+  outline-offset: 3px;
+}
+.svc-choice-multi {
+  background: #2d3e23;
+  border-color: #2d3e23;
+  color: #fff;
+}
+.svc-choice-multi .svc-eyebrow {
+  border-color: #507030;
+  background: #354a27;
+  color: #cddfb4;
+}
+.svc-choice-multi img {
+  filter: brightness(0) invert(1);
+}
+.svc-choice-lede {
+  font-size: 1.125rem;
+  line-height: 1.5;
+}
+.svc-choice-body {
+  color: #616153;
+}
+.svc-choice-multi .svc-choice-body {
+  color: #dadacd;
+}
+.svc-choice-link {
+  margin-top: auto;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #507030;
+}
+.svc-choice-multi .svc-choice-link {
+  color: #abc886;
+}
+
+.svc-compare {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  overflow: hidden;
+  border: 1px solid #dadacd;
+  border-radius: 1rem;
+  background: #fff;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+.svc-compare th,
+.svc-compare td {
+  padding: 0.875rem 1rem;
+  text-align: left;
+  vertical-align: top;
+  border-top: 1px solid #ecece4;
+}
+.svc-compare thead th,
+.svc-compare thead td {
+  border-top: 0;
+  font-size: 1.125rem;
+  font-weight: 700;
+}
+.svc-compare tbody th {
+  width: 30%;
+  font-weight: 600;
+  color: #4d4d43;
+}
+.svc-compare td {
+  color: #4d4d43;
+}
+.svc-compare .svc-col-multi {
+  background: #2d3e23;
+  color: #fff;
+  border-top-color: #3f5a2a;
+}
+.svc-yes {
+  font-weight: 700;
+  color: #678c3e;
+}
+.svc-col-multi .svc-yes {
+  color: #abc886;
+}
+.svc-no {
+  color: #999985;
+}
+@media (max-width: 639px) {
+  .svc-compare thead {
+    display: none;
+  }
+  .svc-compare tr {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  .svc-compare tbody th {
+    grid-column: 1 / -1;
+    width: auto;
+    padding-bottom: 0.25rem;
+    background: #f8f8f4;
+  }
+  .svc-compare tbody tr:first-child th {
+    border-top: 0;
+  }
+  .svc-compare td {
+    font-size: 0.9375rem;
+  }
+  .svc-compare td::before {
+    content: attr(data-label);
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    opacity: 0.7;
+  }
+}
