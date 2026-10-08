@@ -21,13 +21,26 @@
  * confirmation back to the customer's own address.
  */
 
+interface Env {
+  RESEND_API_KEY: string;
+  RESEND_FROM: string;
+  CONTACT_TO?: string;
+}
+
+interface PagesContext {
+  request: Request;
+  env: Env;
+}
+
 const MAX_FIELD_LENGTH = 2000;
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-export async function onRequestPost({ request, env }) {
-  let body;
+export async function onRequestPost({ request, env }: PagesContext): Promise<Response> {
+  let body: Record<string, unknown>;
   try {
-    body = await request.json();
+    const parsed: unknown = await request.json();
+    if (typeof parsed !== 'object' || parsed === null || Array.isArray(parsed)) throw new Error();
+    body = parsed as Record<string, unknown>;
   } catch {
     return Response.json({ error: 'Malformed request body.' }, { status: 400 });
   }
@@ -138,11 +151,11 @@ export async function onRequestPost({ request, env }) {
   return Response.json({ ok: true });
 }
 
-export async function onRequestOptions() {
+export async function onRequestOptions(): Promise<Response> {
   return new Response(null, { status: 405, headers: { Allow: 'POST' } });
 }
 
-function escapeHtml(value) {
+function escapeHtml(value: string): string {
   return value
     .replace(/&/g, '&amp;')
     .replace(/</g, '&lt;')

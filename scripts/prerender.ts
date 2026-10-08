@@ -3,7 +3,8 @@
 // previews work) and React then hydrates it in the browser.
 import fs from 'node:fs';
 import path from 'node:path';
-import { fileURLToPath } from 'node:url';
+import { fileURLToPath, pathToFileURL } from 'node:url';
+import type * as EntryServer from '../src/entry-server';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const dist = path.join(root, 'dist');
@@ -11,7 +12,7 @@ const ssrDir = path.join(root, 'dist-ssr');
 
 // [url, output file]. Cloudflare Pages serves /faq from faq/index.html and
 // uses 404.html for anything that doesn't match.
-const ROUTES = [
+const ROUTES: [url: string, file: string][] = [
   ['/', 'index.html'],
   ['/services', 'services/index.html'],
   ['/faq', 'faq/index.html'],
@@ -20,7 +21,9 @@ const ROUTES = [
   ['/404', '404.html'],
 ];
 
-const { render, headTags, headTagsToHtml } = await import(path.join(ssrDir, 'entry-server.js'));
+const { render, headTags, headTagsToHtml }: typeof EntryServer = await import(
+  pathToFileURL(path.join(ssrDir, 'entry-server.js')).href
+);
 const template = fs.readFileSync(path.join(dist, 'index.html'), 'utf8');
 
 for (const [url, file] of ROUTES) {
