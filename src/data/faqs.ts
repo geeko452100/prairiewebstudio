@@ -14,9 +14,9 @@ export const FAQS: Faq[] = [
       "Most small businesses just need to be found online and share information — that's exactly what a Simple Static Site is built for: fast, multi-page, and easy to update. If you need user accounts, secure authentication, or custom backend logic, a Full Custom Web Application is the better fit. Tell us what you need your site to do and we'll recommend the right build.",
   },
   {
-    question: 'Do you only work with businesses in Great Bend?',
+    question: 'Where are you located, and what areas do you serve?',
     answer:
-      'We specialize in Great Bend and Central Kansas, but we build static sites and custom web applications remotely for clients across Kansas and beyond. Every static site includes local SEO setup tailored to your service area.',
+      "We're based in Wichita with roots in Great Bend, and we work with businesses all across Kansas — Wichita, Great Bend, Hays, Hutchinson, Salina, Topeka, the Kansas City area, and small towns in between. We're a fully digital studio, so we can build your static site or custom web application wherever you are, with calls and video meetings that fit your schedule. Every static site includes local SEO setup tailored to your own town and service area.",
   },
   {
     question: 'What SEO is included with every website?',

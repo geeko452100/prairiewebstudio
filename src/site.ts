@@ -9,7 +9,7 @@ export const PHONE_HREF = 'tel:+16202823847';
 export const EMAIL = 'ggriffith@prairiewebstudio.com';
 
 export const HERO_IMAGE = '/assets/wordpress-import/kansas-fields.avif';
-export const HERO_IMAGE_ALT = 'Sunset over Kansas prairie fields near Central Kansas';
+export const HERO_IMAGE_ALT = 'Sunset over Kansas prairie fields';
 
 export const NAV_LINKS: { to: string; label: string }[] = [
   { to: '/services', label: 'Services' },

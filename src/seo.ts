@@ -9,7 +9,7 @@ const INDEX_ROBOTS = 'index, follow, max-image-preview:large, max-snippet:-1, ma
 const NOINDEX_ROBOTS = 'noindex, nofollow';
 
 const ORG_DESCRIPTION =
-  'Prairie Web Studio is a Great Bend, KS web shop building fast, affordable websites and custom web applications for local businesses. Friendly web design, secure web apps, SEO, and hosting at a fair price.';
+  'Prairie Web Studio is a Kansas web shop based in Wichita, with roots in Great Bend, building fast, secure websites, custom web applications, and professional business email for businesses across Kansas. Friendly web design, secure web apps, SEO, and hosting at a fair price.';
 
 export type PageConfig = {
   title: string;
@@ -32,44 +32,44 @@ export type HeadTag = {
 
 export const PAGES: Record<string, PageConfig> = {
   '/': {
-    title: 'Web Design & Custom Web Apps | Great Bend, KS',
+    title: 'Web Design & Custom Web Apps | Wichita, Great Bend & Kansas',
     description:
-      'Prairie Web Studio builds fast, affordable websites and custom web applications for small town businesses in Great Bend, Hays, and Central Kansas. Friendly web design, secure web apps, SEO, and hosting at a fair price.',
-    ogTitle: 'Prairie Web Studio — Great Bend & Hays Web Design & Web Apps',
+      'Based in Wichita, Prairie Web Studio builds fast, secure websites and custom web applications for businesses across Kansas — from Great Bend and Hays to small towns statewide. Honest pricing, real conversations.',
+    ogTitle: 'Prairie Web Studio — Kansas Web Design & Web Apps | Wichita & Great Bend',
     ogDescription:
-      'Friendly, fast websites and custom web applications for Great Bend, Hays, and Central Kansas businesses. Quick to load, easy to find on Google, and priced for Main Street.',
+      'Fast, secure websites and custom applications for Kansas businesses in Wichita, Great Bend, Hays, and beyond. Honest pricing and zero big-agency runaround.',
     orgDescription: ORG_DESCRIPTION,
   },
   '/services': {
-    title: 'Services — Websites & Web Apps | Great Bend, KS',
+    title: 'Services & Pricing — Websites & Business Email | Wichita, KS',
     description:
-      'Simple Sites for getting found, or Multi-Layer Sites (custom web apps with logins, payments & dashboards) for Great Bend, Hays & Central Kansas businesses. Compare both and see live demos.',
-    ogTitle: 'Services — Great Bend & Hays, KS | Prairie Web Studio',
+      'Static websites ($1,500), custom web apps (from $3,000), and Microsoft 365 business email & setup (from $150/mo) for Wichita, Great Bend & businesses across Kansas. See pricing and live demos.',
+    ogTitle: 'Services & Pricing — Wichita, Great Bend & Kansas | Prairie Web Studio',
     ogDescription:
-      'Simple Sites for getting found, or Multi-Layer Sites for logins, payments & bookings. Compare both side by side.',
+      'Three packages with honest prices: static websites, custom web apps, and professional business email & setup.',
     orgDescription:
-      'Simple, fast static websites for Great Bend & Central Kansas businesses — honest, Main-Street pricing.',
+      'Static websites, custom web apps, and professional business email for Wichita, Great Bend & Kansas businesses — honest, Main-Street pricing.',
   },
   '/faq': {
-    title: 'Web Design FAQ | Great Bend, KS',
+    title: 'Web Design FAQ | Wichita & Kansas',
     description:
-      'Answers to common questions about Prairie Web Studio — timelines, pricing, local SEO, site speed, and ownership for both static websites and custom web applications in Great Bend, Hays & Central Kansas.',
-    ogTitle: 'FAQ — Great Bend & Hays, KS | Prairie Web Studio',
+      'Answers to common questions about Prairie Web Studio — timelines, pricing, local SEO, site speed, and ownership for both static websites and custom web applications in Wichita, Great Bend & across Kansas.',
+    ogTitle: 'FAQ — Wichita, Great Bend & Kansas | Prairie Web Studio',
     ogDescription:
-      'Common questions about our web design and web application process, pricing, and local SEO for Great Bend, Hays & Central Kansas businesses.',
+      'Common questions about our web design and web application process, pricing, and local SEO for Kansas businesses in Wichita, Great Bend, Hays & beyond.',
     orgDescription:
-      'Answers to common questions about Prairie Web Studio — timelines, pricing, local SEO, site speed, and ownership for both static websites and custom web applications in Great Bend.',
+      'Answers to common questions about Prairie Web Studio — timelines, pricing, local SEO, site speed, and ownership for both static websites and custom web applications across Kansas.',
     faq: true,
   },
   '/contact': {
-    title: 'Contact Us | Great Bend, KS',
+    title: 'Contact Us | Wichita & Kansas Web Design',
     description:
-      'Get in touch with Prairie Web Studio for a free website or web application quote. Serving Great Bend, Hays & Central Kansas — we respond within one business day.',
-    ogTitle: 'Contact — Great Bend & Hays, KS | Prairie Web Studio',
+      'Get in touch with Prairie Web Studio for a free website or web application quote. Based in Wichita, serving Great Bend, Hays & businesses across Kansas — we respond within one business day.',
+    ogTitle: 'Contact — Wichita, Great Bend & Kansas | Prairie Web Studio',
     ogDescription:
-      "Ready to get online, launch a custom web application, or upgrade what you've got? Serving Great Bend, Hays & Central Kansas — we respond within one business day.",
+      "Ready to get online, launch a custom web application, or upgrade what you've got? Serving Wichita, Great Bend & businesses across Kansas — we respond within one business day.",
     orgDescription:
-      'Get in touch with Prairie Web Studio for a free website or web application quote. Serving Great Bend & Central Kansas — we respond within one business day.',
+      'Get in touch with Prairie Web Studio for a free website or web application quote. Serving Wichita, Great Bend & all of Kansas — we respond within one business day.',
   },
   '/success': {
     title: 'Thank You | Prairie Web Studio',
@@ -134,16 +134,23 @@ export function headTags(pathname: string): HeadTag[] {
   return tags;
 }
 
+// Statewide service area, with the cities we're physically rooted in named
+// first so they stay strong local signals.
+const KANSAS = { '@type': 'State', name: 'Kansas', sameAs: 'https://en.wikipedia.org/wiki/Kansas' };
 const AREA_SERVED = [
-  { '@type': 'City', name: 'Great Bend', containedInPlace: { '@type': 'State', name: 'KS' } },
-  { '@type': 'City', name: 'Hays', containedInPlace: { '@type': 'State', name: 'KS' } },
-  { '@type': 'Place', name: 'Central Kansas' },
+  KANSAS,
+  ...['Wichita', 'Great Bend', 'Hays', 'Hutchinson', 'Salina', 'Topeka', 'Lawrence', 'Manhattan', 'Overland Park', 'Kansas City', 'Dodge City', 'Garden City'].map(
+    (name) => ({ '@type': 'City', name, containedInPlace: KANSAS })
+  ),
 ];
 
-// Services listed in the offer catalog. Prices are deliberately left out.
-const OFFERS: [name: string, description: string][] = [
-  ['Simple Static Site', 'Custom multi-page static website. Fast, search-friendly, and fully yours at launch.'],
-  ['Full Custom Web Application', 'Custom web application with secure authentication and two free code reviews after deployment.'],
+// Services listed in the offer catalog. Prices match the Services page; leave
+// a price out when the service is quoted per project.
+type OfferPrice = { price: number } | { minPrice: number; monthly?: true };
+const OFFERS: [name: string, description: string, price?: OfferPrice][] = [
+  ['Simple Static Site', 'Custom multi-page static website. Fast, search-friendly, and fully yours at launch.', { price: 1500 }],
+  ['Full Custom Web Application', 'Custom web application with secure authentication and two free code reviews after deployment.', { minPrice: 3000 }],
+  ['Professional Business Email & Setup', 'Microsoft 365 email at your own domain for your whole team: full setup, migration from your old account, shared calendars, multi-factor authentication with Microsoft Entra ID, and spam, phishing, and spoofing protection (SPF, DKIM, DMARC).', { minPrice: 150, monthly: true }],
   ['TLC (Monthly)', 'Optional post-launch care plan for any Prairie Web Studio project, static site or web application: hosting and uptime monitoring, up to two small updates a month, and priority phone support. Cancel anytime.'],
   ['TLC (Quarterly)', 'Optional post-launch care plan for any Prairie Web Studio project billed every three months: everything in the monthly TLC plan, plus one seasonal refresh of copy, photos, and a speed/security check.'],
   ['Static Site Bug Fix — Diagnostic', 'Flat diagnostic fee to investigate a static site issue, credited toward the repair cost if you approve the quote.'],
@@ -152,6 +159,15 @@ const OFFERS: [name: string, description: string][] = [
   ['Static Site Moderate Bug Fix', 'Flat-rate fix for a moderate static site issue such as a form or feature not working correctly.'],
   ['Web App Moderate Bug Fix', 'Flat-rate fix for a moderate web application issue such as a feature or logic bug.'],
 ];
+
+function offerPrice(price?: OfferPrice) {
+  if (!price) return {};
+  if ('price' in price) return { price: price.price, priceCurrency: 'USD' };
+  const monthly = price.monthly ? { unitCode: 'MON', unitText: 'month' } : {};
+  return {
+    priceSpecification: { '@type': 'UnitPriceSpecification', minPrice: price.minPrice, priceCurrency: 'USD', ...monthly },
+  };
+}
 
 function jsonLd(page: PageConfig) {
   const orgId = `${SITE_URL}/#organization`;
@@ -176,7 +192,9 @@ function jsonLd(page: PageConfig) {
       logo: `${SITE_URL}/assets/logo.svg`,
       priceRange: '$$',
       areaServed: AREA_SERVED,
-      geo: { '@type': 'GeoCoordinates', latitude: 38.3645, longitude: -98.7648 },
+      // Service-area business: city-level address only, no street.
+      address: { '@type': 'PostalAddress', addressLocality: 'Wichita', addressRegion: 'KS', addressCountry: 'US' },
+      geo: { '@type': 'GeoCoordinates', latitude: 37.6872, longitude: -97.3301 },
       openingHoursSpecification: [
         {
           '@type': 'OpeningHoursSpecification',
@@ -187,9 +205,10 @@ function jsonLd(page: PageConfig) {
       ],
       hasOfferCatalog: {
         '@type': 'OfferCatalog',
-        name: 'Website & Web Application Design Services',
-        itemListElement: OFFERS.map(([name, description]) => ({
+        name: 'Website, Web Application & Business Email Services',
+        itemListElement: OFFERS.map(([name, description, price]) => ({
           '@type': 'Offer',
+          ...offerPrice(price),
           itemOffered: {
             '@type': 'Service',
             name,

@@ -8,7 +8,7 @@ export default function Faq() {
         <div className="container-site">
           <div className="mx-auto max-w-2xl text-center">
             <h2 id="faq-heading" className="text-3xl font-bold tracking-tight text-ink-950 sm:text-4xl">Frequently Asked Questions</h2>
-            <p className="mt-4 text-lg text-ink-600">Common questions about our web design and web application process, pricing, and local SEO for Great Bend businesses.</p>
+            <p className="mt-4 text-lg text-ink-600">Common questions about our web design and web application process, pricing, and local SEO for Kansas businesses — from Wichita to Great Bend and beyond.</p>
           </div>
           <div className="mx-auto mt-14 max-w-3xl space-y-4">
             {FAQS.map(({ question, answer }) => (

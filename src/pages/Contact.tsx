@@ -103,7 +103,7 @@ export default function Contact() {
                   </>
                 }
               >
-                <p className="text-ink-600">Great Bend &amp; Central Kansas — Fully digital agency | Consultations by appointment</p>
+                <p className="text-ink-600">Based in Wichita, serving Great Bend, Hays &amp; businesses across Kansas — Fully digital agency | Consultations by appointment</p>
               </InfoItem>
               <InfoItem
                 title="Business Hours"

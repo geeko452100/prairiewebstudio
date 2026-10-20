@@ -8,7 +8,7 @@ const WHY_US = [
   },
   {
     title: 'Easy to Find on Google',
-    body: 'We set things up so your Great Bend neighbors find you first — with your name, hours, and location right where Google looks.',
+    body: 'We set things up so customers in your town find you first — with your name, hours, and location right where Google looks.',
     icon: (
       <>
         <circle cx="12" cy="12" r="10" />
@@ -24,8 +24,8 @@ const WHY_US = [
 ];
 
 const HIGHLIGHTS = [
-  ['Great Bend, KS', 'Local, Not Outsourced'],
-  ['You Own It', 'No Monthly Fees'],
+  ['Kansas-Based', 'Local, Not Outsourced'],
+  ['You Own It', 'No License Fees'],
   ['Real Callback', 'No Call Centers'],
   ['1 Business Day', 'We Call You Back'],
 ];
@@ -57,14 +57,14 @@ export default function Home() {
             <div>
               <p className="mb-4 inline-flex items-center gap-2 rounded-full border border-brand-300 bg-white px-4 py-1.5 text-sm font-medium text-brand-900">
                 <span className="h-2 w-2 rounded-full bg-brand-800" aria-hidden="true" />
-                Serving Great Bend &amp; Central Kansas
+                Based in Wichita, Serving Businesses Across Kansas
               </p>
               <h1 id="hero-heading" className="text-4xl font-extrabold leading-tight tracking-tight text-white sm:text-5xl lg:text-[3.25rem] lg:leading-[1.1]">
                 Websites &amp; web apps built for
-                <span className="text-brand-300"> local businesses</span>
+                <span className="text-brand-300"> Kansas businesses</span>
               </h1>
               <p className="mt-6 max-w-xl text-lg leading-relaxed text-ink-200">
-                We're a Great Bend web shop that builds quick, good-looking websites and custom web applications for the folks down the street — honest prices, real conversations, and a site you'll be proud to share. No big-agency runaround.
+                We build fast, secure websites and custom applications for the folks down the block and companies across the state — honest pricing, real conversations, and zero big-agency runaround.
               </p>
               <div className="mt-8 flex flex-wrap gap-4">
                 <Link to="/contact" className="btn-primary">Let's Talk About Your Project</Link>

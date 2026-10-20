@@ -1,6 +1,6 @@
-# Prairie Web Studio - Great Bend Business Website
+# Prairie Web Studio - Kansas Business Website
 
-The marketing site for Prairie Web Studio, a Great Bend, KS web shop. It's a **React app** (Vite + React Router + Tailwind CSS) that gets **prerendered to static HTML** at build time. Every page ships its real content and SEO tags, and React takes over in the browser. The contact form posts to a small Cloudflare Pages Function (`functions/api/contact.ts`), which sends the lead through Resend.
+The marketing site for Prairie Web Studio, a Wichita, KS web shop serving businesses across Kansas (including its original home, Great Bend). It's a **React app** (Vite + React Router + Tailwind CSS) that gets **prerendered to static HTML** at build time. Every page ships its real content and SEO tags, and React takes over in the browser. The contact form posts to a small Cloudflare Pages Function (`functions/api/contact.ts`), which sends the lead through Resend.
 
 ## Quick start
 
@@ -36,7 +36,7 @@ npm run preview   # serve dist/ locally
 
 - **Phone, email, nav links:** `src/site.ts`. The header, footer, and contact page all pick up changes.
 - **Business hours / service area:** `src/pages/Contact.tsx` (visible) and `openingHoursSpecification` in `src/seo.ts` (JSON-LD).
-- **Services & plans:** `src/pages/Services.tsx` (plan cards, comparison table, chooser cards) and the `OFFERS` list in `src/seo.ts`. Prices are intentionally not shown anywhere on the site or in the structured data.
+- **Services & plans:** `src/pages/Services.tsx` (plan cards with prices, comparison table, chooser cards) and the `OFFERS` list in `src/seo.ts`. When a price changes, update it in both places so the page and the structured data match.
 - **FAQ:** edit `src/data/faqs.ts`. The page and the structured data both update.
 - **Page titles / descriptions / social previews:** `PAGES` in `src/seo.ts`.
 
@@ -49,7 +49,7 @@ npm run preview   # serve dist/ locally
 
 ## Styling
 
-Tailwind is now compiled at build time from `tailwind.config.ts` (brand/ink colours, shadows), so **any Tailwind class works**. You no longer have to reuse classes that already appear on the page. Shared component styles live in `src/index.css`.
+Tailwind v4 is compiled at build time by the `@tailwindcss/vite` plugin. The brand/ink colours, font, and shadows are defined in the `@theme` block at the top of `src/index.css` (there is no `tailwind.config.ts`), so **any Tailwind class works**. You no longer have to reuse classes that already appear on the page. Shared component styles live in `src/index.css`.
 
 ## Contact form & lead alerts
 
