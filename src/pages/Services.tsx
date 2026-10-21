@@ -68,13 +68,13 @@ const MULTI_PLAN: Plan = {
 
 const SIMPLE_DEMOS: Demo[] = [
   {
-    href: 'https://plumbing.prairiewebstudio.com',
+    href: '/demo/plumbing',
     label: 'Local service business site example',
     title: 'Local Service Business',
     body: 'A fast, findable site with hours, service area, and a click-to-call number front and center — built for someone searching for help right now.',
   },
   {
-    href: 'https://construction.prairiewebstudio.com',
+    href: '/demo/construction',
     label: 'Trades and contractor site example',
     title: 'Trades & Contractors',
     body: 'A clean multi-page site listing services and pricing, set up so the business shows up when someone nearby searches for what they do.',
@@ -83,13 +83,7 @@ const SIMPLE_DEMOS: Demo[] = [
 
 const MULTI_DEMOS: Demo[] = [
   {
-    href: 'https://eats.prairiewebstudio.com',
-    label: 'Online ordering and reservations example',
-    title: 'Online Ordering & Reservations',
-    body: 'Customers can place online orders and book a table, while staff update the menu and daily specials themselves — no code, no waiting on a developer.',
-  },
-  {
-    href: 'https://booking.prairiewebstudio.com',
+    href: '/demo/booking',
     label: 'Client login and appointment booking example',
     title: 'Client Login & Appointment Booking',
     body: 'Customers log in to book appointments and manage their account, while staff see everything from one private dashboard.',
@@ -245,7 +239,7 @@ export default function Services() {
 
           <h3 id="multi-projects-heading" className="mt-14 text-center text-2xl font-bold tracking-tight text-white">See a Multi-Layer Site in Action</h3>
           <p className="mt-2 text-center text-ink-200">Real, live examples — not mockups.</p>
-          <div className="mx-auto mt-8 grid max-w-3xl gap-6 sm:grid-cols-2">
+          <div className={`mx-auto mt-8 grid gap-6 ${MULTI_DEMOS.length > 1 ? 'max-w-3xl sm:grid-cols-2' : 'max-w-md'}`}>
             {MULTI_DEMOS.map((demo) => (
               <DemoCard key={demo.href} demo={demo} badge="Demo Web App" icon="/assets/build.svg" />
             ))}
