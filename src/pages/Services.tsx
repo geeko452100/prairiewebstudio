@@ -16,11 +16,11 @@ const No = () => (
 
 const COMPARE_ROWS: [label: string, simple: ReactNode, multi: ReactNode][] = [
   ['What it is', 'A fast, informational website', 'A custom web application'],
-  ['Customers can', 'Find you on Google, read about you, tap to call', 'Log in, pay, order, or book on their own'],
+  ['Customers can', 'Find you on Google, read about you, tap to call', 'Log in, pay, book, or message you on their own'],
   ['Customer accounts & logins', <No />, <Yes>Secure authentication</Yes>],
   ['Online payments & booking', <No />, <Yes>Built to fit your business</Yes>],
-  ['Staff dashboard', <No />, <Yes>Update menus, schedules &amp; content — no code</Yes>],
-  ['Good fit for', 'Service businesses, trades & contractors', 'Restaurants, clubs & memberships, appointment-based businesses'],
+  ['Staff dashboard', <No />, <Yes>Update services, schedules &amp; content — no code</Yes>],
+  ['Good fit for', 'Service businesses, trades & contractors', 'Salons, studios, home services & other appointment-based businesses'],
 ];
 
 type Plan = {
