@@ -1,3 +1,10 @@
+# Demo sites. /demo/<name> is the public address for each demo; the pages link
+# here, never to the demo's own hostname. If a demo moves, change its target below.
+/demo/plumbing https://plumbing.prairiewebstudio.com 302
+/demo/construction https://construction.prairiewebstudio.com 302
+/demo/booking https://booking.prairiewebstudio.com 302
+/demo /services 302
+
 /payment https://buy.stripe.com/fZudR2ga913D9P411JdQQ04 302
 /payment https://buy.stripe.com/9B63co0bb3bL6CSfWDdQQ03 302
 

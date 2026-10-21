@@ -32,6 +32,10 @@ npm run preview   # serve dist/ locally
 | `public/` | Copied to `dist/` as-is: `assets/`, `_redirects`, `robots.txt`, `sitemap.xml`, `CNAME` |
 | `functions/api/contact.ts` | Cloudflare Pages Function. Validates the form and sends it with Resend |
 
+## Demo sites
+
+The Services page links to each demo through `/demo/<name>` (`/demo/plumbing`, `/demo/construction`, `/demo/booking`), never to a demo's own hostname. Each path is a 302 redirect in `public/_redirects`, so if a demo moves, change its target there and nothing else. `robots.txt` keeps `/demo/` out of search results.
+
 ## How to update content
 
 - **Phone, email, nav links:** `src/site.ts`. The header, footer, and contact page all pick up changes.
